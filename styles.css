@@ -193,7 +193,6 @@ button{font-family:inherit; cursor:pointer;}
   background: linear-gradient(135deg, var(--blue-950) 0%, var(--blue-900) 55%, var(--blue-600) 100%);
   color:#fff;
   overflow:hidden;
-  padding:88px 0 0;
   min-height:660px;
 }
 .hero-grain{
