@@ -269,7 +269,7 @@ html[lang="ar"] .stat b{font-family:var(--font-display-ar);}
 .category-block.teal{background:linear-gradient(135deg, #14B8A6 0%, #0d9488 100%); color:var(--indigo-950);}
 .block-decor{
   position:absolute; top:0; bottom:0; z-index:0;
-  width:380px; opacity:0.55; pointer-events:none;
+  width:380px; opacity:1; pointer-events:none;
   display:flex; align-items:center;
 }
 .block-decor img{width:100%; height:auto; display:block;}
