@@ -269,12 +269,12 @@ html[lang="ar"] .stat b{font-family:var(--font-display-ar);}
 .category-block.teal{background:linear-gradient(135deg, var(--teal-500) 0%, #0d9488 100%); color:var(--indigo-950);}
 .block-decor{
   position:absolute; top:0; bottom:0; z-index:0;
-  width:260px; opacity:0.5; pointer-events:none;
+  width:380px; opacity:0.75; pointer-events:none;
   display:flex; align-items:center;
 }
 .block-decor img{width:100%; height:auto; display:block;}
-.block-decor-start{inset-inline-start:-90px;}
-.block-decor-end{inset-inline-end:-90px; transform:scaleX(-1);}
+.block-decor-start{inset-inline-start:-60px;}
+.block-decor-end{inset-inline-end:-60px; transform:scaleX(-1);}
 .category-block .container{position:relative; z-index:1;}
 .category-block .container{
   display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
