@@ -230,38 +230,32 @@ button{font-family:inherit; cursor:pointer;}
 .btn-ghost{border:1px solid rgba(255,255,255,0.35); color:#fff;}
 .btn-ghost:hover{border-color:var(--teal-400); color:var(--teal-400);}
 
-/* signature: layered real-product visual */
+/* signature: tilted real-product photo mosaic */
 .hero-visual{
-  position:relative; aspect-ratio:5/4; min-height:300px;
+  position:relative; aspect-ratio:5/4; min-height:320px;
+  overflow:hidden; border-radius:26px;
 }
 .hero-visual::before{
   content:""; position:absolute; inset:6% 10%;
   background:radial-gradient(circle, var(--teal-500) 0%, transparent 70%);
   opacity:0.35; filter:blur(30px); z-index:0;
 }
-.hero-product-card{
-  position:absolute; border-radius:18px; overflow:hidden;
-  box-shadow:0 26px 54px rgba(4,3,20,0.45);
-  border:4px solid rgba(255,255,255,0.14);
-  z-index:2;
+.hero-mosaic{
+  position:absolute; inset:-16% -18%; z-index:1;
+  display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr);
+  gap:12px;
+  transform:rotate(-9deg);
 }
-.hero-product-card img{width:100%; height:100%; object-fit:cover; display:block;}
-.hero-product-card.card-1{
-  width:62%; aspect-ratio:4/3; top:4%; inset-inline-start:0;
-  transform:rotate(-7deg);
+.mosaic-tile{
+  border-radius:14px; overflow:hidden;
+  box-shadow:0 14px 30px rgba(4,3,20,0.35);
+  border:2px solid rgba(255,255,255,0.1);
 }
-.hero-product-card.card-2{
-  width:46%; aspect-ratio:1/1; bottom:2%; inset-inline-end:0;
-  transform:rotate(8deg); z-index:3;
+.mosaic-tile img{width:100%; height:100%; object-fit:cover; display:block;}
+.mosaic-tile.logo-tile{
+  display:flex; align-items:center; justify-content:center; padding:16%;
 }
-.hero-badge{
-  position:absolute; top:2%; inset-inline-end:14%; width:84px; height:84px;
-  border-radius:50%; background:#fff; padding:14px;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 16px 32px rgba(4,3,20,0.4);
-  transform:rotate(-10deg); z-index:4;
-}
-.hero-badge img{width:100%; height:100%; object-fit:contain;}
+.mosaic-tile.logo-tile img{object-fit:contain; width:100%; height:100%;}
 .hero-stats{
   position:relative; z-index:2;
   display:grid; grid-template-columns:repeat(4,1fr);
@@ -519,7 +513,7 @@ footer ul li a:hover{color:var(--teal-400);}
   .nav-toggle{display:block;}
   .hero .container{grid-template-columns:1fr;}
   .hero-visual{max-width:360px; margin:0 auto; aspect-ratio:1/1;}
-  .hero-badge{width:64px; height:64px; padding:10px;}
+  .hero-mosaic{gap:8px;}
   .about .container{grid-template-columns:1fr;}
   .reach-list{grid-template-columns:repeat(2,1fr);}
   .brand-grid{grid-template-columns:repeat(2,1fr);}
