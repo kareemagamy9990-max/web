@@ -422,6 +422,16 @@ html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px
 
 /* Products preview */
 .products{background:var(--cream-50);}
+.products-subnav{
+  background:var(--lavender-50); border-bottom:1px solid var(--line);
+}
+.products-subnav .container{display:flex; gap:8px; padding:14px 28px;}
+.products-subnav a{
+  font-size:14px; font-weight:700; color:rgba(26,21,51,0.55);
+  padding:8px 18px; border-radius:var(--radius-pill); transition:background .18s, color .18s;
+}
+.products-subnav a:hover{color:var(--ink);}
+.products-subnav a.active{background:var(--indigo-950); color:#fff;}
 .product-strip{
   display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
 }
