@@ -242,6 +242,7 @@ button{font-family:inherit; cursor:pointer;}
   -webkit-mask-image:linear-gradient(to left, black 68%, transparent 100%);
   mask-image:linear-gradient(to left, black 68%, transparent 100%);
 }
+.hero-eyebrow-row{position:relative; z-index:2; padding-top:10px;}
 .hero-stats{
   position:relative; z-index:2;
   display:grid; grid-template-columns:repeat(4,1fr);
