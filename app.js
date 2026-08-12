@@ -77,43 +77,57 @@
 
     renderEvents(l);
 
-    // Brands (brands page)
+    // Brands (brands page) — split into snacks / candy sections
+    const brandCard = b => `
+      <div class="brand-card">
+        <div class="brand-card-media" style="background:linear-gradient(135deg, ${b.color} 0%, ${b.color}CC 100%)">
+          ${b.logo
+            ? `<img src="${b.logo}" alt="${pick(b.name,l)}">`
+            : `<span class="brand-monogram">${pick(b.init,l)}</span>`}
+        </div>
+        <div class="brand-card-body">
+          <span class="brand-swatch" style="background:${b.color}"></span>
+          <h3>${pick(b.name,l)}</h3>
+          <p>${pick(b.desc,l)}</p>
+          <span class="brand-tag">${pick(b.tag,l)}</span>
+        </div>
+      </div>
+    `;
+    const brandGridSnacks = document.getElementById('brandGridSnacks');
+    const brandGridCandy = document.getElementById('brandGridCandy');
+    if ((brandGridSnacks || brandGridCandy) && SITE_DATA.brands) {
+      if (brandGridSnacks) brandGridSnacks.innerHTML = SITE_DATA.brands.filter(b => b.category === 'snacks').map(brandCard).join('');
+      if (brandGridCandy) brandGridCandy.innerHTML = SITE_DATA.brands.filter(b => b.category === 'candy').map(brandCard).join('');
+    }
     const brandGrid = document.getElementById('brandGrid');
     if (brandGrid && SITE_DATA.brands) {
-      brandGrid.innerHTML = SITE_DATA.brands.map(b => `
-        <div class="brand-card">
-          <div class="brand-card-media" style="background:linear-gradient(135deg, ${b.color} 0%, ${b.color}CC 100%)">
-            ${b.logo
-              ? `<img src="${b.logo}" alt="${pick(b.name,l)}">`
-              : `<span class="brand-monogram">${pick(b.init,l)}</span>`}
-          </div>
-          <div class="brand-card-body">
-            <span class="brand-swatch" style="background:${b.color}"></span>
-            <h3>${pick(b.name,l)}</h3>
-            <p>${pick(b.desc,l)}</p>
-            <span class="brand-tag">${pick(b.tag,l)}</span>
-          </div>
-        </div>
-      `).join('');
+      brandGrid.innerHTML = SITE_DATA.brands.map(brandCard).join('');
     }
 
-    // Products (products page)
+    // Products (products page) — split into snacks / candy sections
+    const productCard = p => `
+      <div class="product-card">
+        <div class="product-media" style="background:${p.color}1A">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="22" fill="${p.color}" opacity="0.85"/>
+            <circle cx="30" cy="30" r="8" fill="#FFF8ED"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span>${pick(p.brand,l)}</span>
+          <h4>${pick(p.name,l)}</h4>
+        </div>
+      </div>
+    `;
+    const productStripSnacks = document.getElementById('productStripSnacks');
+    const productStripCandy = document.getElementById('productStripCandy');
+    if ((productStripSnacks || productStripCandy) && SITE_DATA.products) {
+      if (productStripSnacks) productStripSnacks.innerHTML = SITE_DATA.products.filter(p => p.category === 'snacks').map(productCard).join('');
+      if (productStripCandy) productStripCandy.innerHTML = SITE_DATA.products.filter(p => p.category === 'candy').map(productCard).join('');
+    }
     const strip = document.getElementById('productStrip');
     if (strip && SITE_DATA.products) {
-      strip.innerHTML = SITE_DATA.products.map(p => `
-        <div class="product-card">
-          <div class="product-media" style="background:${p.color}1A">
-            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="30" cy="30" r="22" fill="${p.color}" opacity="0.85"/>
-              <circle cx="30" cy="30" r="8" fill="#FFF8ED"/>
-            </svg>
-          </div>
-          <div class="product-body">
-            <span>${pick(p.brand,l)}</span>
-            <h4>${pick(p.name,l)}</h4>
-          </div>
-        </div>
-      `).join('');
+      strip.innerHTML = SITE_DATA.products.map(productCard).join('');
     }
 
     // Certifications (certifications page)
