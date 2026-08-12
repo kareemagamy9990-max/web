@@ -49,6 +49,7 @@
 <!-- Contact info -->
 <section class="about" id="contact-info">
   <div class="container">
+    <div>
     <div class="section-head" style="max-width:640px;">
       <span class="eyebrow" data-i18n="contact.eyebrow">تواصل معنا</span>
       <h2 data-i18n="contact.title">فريق التصدير في استقبالك</h2>
@@ -72,6 +73,36 @@
         <div><h4 data-i18n="contact.webH">الموقع الإلكتروني</h4><p><a href="https://www.egygulf-foods.com" target="_blank" rel="noopener">www.egygulf-foods.com</a></p></div>
       </div>
     </div>
+    </div>
+    <div class="contact-form-card">
+      <h3>ابعتلنا طلبك</h3>
+      <p>املا البيانات وفريق التصدير هيتواصل معاك خلال يوم عمل.</p>
+      <form class="cta-form" action="mailto:export@egygulf-foods.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="infoFirstName">الاسم الأول</label>
+          <input type="text" id="infoFirstName" name="firstName" required>
+        </div>
+        <div class="field">
+          <label for="infoLastName">الاسم الأخير</label>
+          <input type="text" id="infoLastName" name="lastName" required>
+        </div>
+        <div class="field">
+          <label for="infoEmail">البريد الإلكتروني</label>
+          <input type="email" id="infoEmail" name="email" required>
+        </div>
+        <div class="field">
+          <label for="infoPhone">الهاتف</label>
+          <input type="tel" id="infoPhone" name="phone">
+        </div>
+        <div class="field field-full">
+          <label for="infoMessage">الرسالة</label>
+          <textarea id="infoMessage" name="message" required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -80,7 +111,31 @@
   <div class="container">
     <h2 data-i18n="cta.title">جاهزون نبدأ شحنة تجريبية أو اتفاقية علامة خاصة؟</h2>
     <p data-i18n="cta.sub">أرسل تفاصيل طلبك وفريق التصدير هيرد عليك خلال يوم عمل.</p>
-    <a href="mailto:export@egygulf-foods.com" class="btn btn-primary" data-i18n="cta.button">راسلنا الآن</a>
+    <form class="cta-form" action="mailto:export@egygulf-foods.com" method="post" enctype="text/plain">
+      <div class="field">
+        <label for="ctaFirstName">الاسم الأول</label>
+        <input type="text" id="ctaFirstName" name="firstName" required>
+      </div>
+      <div class="field">
+        <label for="ctaLastName">الاسم الأخير</label>
+        <input type="text" id="ctaLastName" name="lastName" required>
+      </div>
+      <div class="field">
+        <label for="ctaEmail">البريد الإلكتروني</label>
+        <input type="email" id="ctaEmail" name="email" required>
+      </div>
+      <div class="field">
+        <label for="ctaPhone">الهاتف</label>
+        <input type="tel" id="ctaPhone" name="phone">
+      </div>
+      <div class="field field-full">
+        <label for="ctaMessage">الرسالة</label>
+        <textarea id="ctaMessage" name="message" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" data-i18n="cta.button">راسلنا الآن</button>
+      </div>
+    </form>
   </div>
 </section>
 <!-- Footer -->
