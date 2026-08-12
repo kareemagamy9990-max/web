@@ -82,12 +82,17 @@
     if (brandGrid && SITE_DATA.brands) {
       brandGrid.innerHTML = SITE_DATA.brands.map(b => `
         <div class="brand-card">
-          ${b.logo
-            ? `<div class="brand-logo-box"><img src="${b.logo}" alt="${pick(b.name,l)}" class="brand-logo-img"></div>`
-            : `<div class="brand-swatch" style="background:${b.color}">${pick(b.init,l)}</div>`}
-          <h3>${pick(b.name,l)}</h3>
-          <p>${pick(b.desc,l)}</p>
-          <span class="brand-tag">${pick(b.tag,l)}</span>
+          <div class="brand-card-media" style="background:linear-gradient(135deg, ${b.color} 0%, ${b.color}CC 100%)">
+            ${b.logo
+              ? `<img src="${b.logo}" alt="${pick(b.name,l)}">`
+              : `<span class="brand-monogram">${pick(b.init,l)}</span>`}
+          </div>
+          <div class="brand-card-body">
+            <span class="brand-swatch" style="background:${b.color}"></span>
+            <h3>${pick(b.name,l)}</h3>
+            <p>${pick(b.desc,l)}</p>
+            <span class="brand-tag">${pick(b.tag,l)}</span>
+          </div>
         </div>
       `).join('');
     }
