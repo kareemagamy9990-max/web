@@ -134,7 +134,31 @@
   <div class="container">
     <h2 data-i18n="cta.title">جاهزون نبدأ شحنة تجريبية أو اتفاقية علامة خاصة؟</h2>
     <p data-i18n="cta.sub">أرسل تفاصيل طلبك وفريق التصدير هيرد عليك خلال يوم عمل.</p>
-    <a href="mailto:export@egygulf-foods.com" class="btn btn-primary" data-i18n="cta.button">راسلنا الآن</a>
+    <form class="cta-form" action="mailto:export@egygulf-foods.com" method="post" enctype="text/plain">
+      <div class="field">
+        <label for="ctaFirstName">الاسم الأول</label>
+        <input type="text" id="ctaFirstName" name="firstName" required>
+      </div>
+      <div class="field">
+        <label for="ctaLastName">الاسم الأخير</label>
+        <input type="text" id="ctaLastName" name="lastName" required>
+      </div>
+      <div class="field">
+        <label for="ctaEmail">البريد الإلكتروني</label>
+        <input type="email" id="ctaEmail" name="email" required>
+      </div>
+      <div class="field">
+        <label for="ctaPhone">الهاتف</label>
+        <input type="tel" id="ctaPhone" name="phone">
+      </div>
+      <div class="field field-full">
+        <label for="ctaMessage">الرسالة</label>
+        <textarea id="ctaMessage" name="message" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" data-i18n="cta.button">راسلنا الآن</button>
+      </div>
+    </form>
   </div>
 </section>
 <!-- Footer -->
