@@ -379,6 +379,7 @@ section{padding:96px 0;}
   color:var(--violet-700); background:var(--lavender-50); border-radius:var(--radius-pill);
   padding:5px 12px; display:inline-block;
 }
+.brand-grid.single{grid-template-columns:minmax(280px, 460px); justify-content:center;}
 
 /* Certifications */
 .certs{background:var(--white);}
@@ -436,6 +437,7 @@ html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px
 .product-body{padding:16px 18px 20px;}
 .product-body span{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--violet-700);}
 .product-body h4{font-size:15.5px; margin:6px 0 0;}
+.product-strip.compact{grid-template-columns:repeat(2,1fr); max-width:520px; margin:0 auto;}
 
 /* CTA band */
 .cta-band{
