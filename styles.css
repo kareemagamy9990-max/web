@@ -346,6 +346,7 @@ section{padding:96px 0;}
   display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative;
 }
 .about-figure svg{width:78%; height:78%;}
+.about-figure video{width:100%; height:100%; object-fit:cover; display:block;}
 .about-points{display:grid; gap:22px; margin-top:8px;}
 .about-point{display:flex; gap:16px;}
 .about-point .num{
