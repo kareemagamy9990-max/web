@@ -11,8 +11,8 @@
   --blue-100:      #ECEBF7;
   --gold-500:      #FDB815;
   --gold-400:      #FFCB4D;
-  --teal-500:      #14B8A6;
-  --teal-400:      #5EEAD4;
+  --teal-500:      #FDB815;
+  --teal-400:      #FFCB4D;
   --cream-50:      #FFFFFF;
   --lavender-50:   #F1F0FA;
   --white:         #FFFFFF;
@@ -213,7 +213,7 @@ button{font-family:inherit; cursor:pointer;}
 .hero-eyebrow{
   display:inline-flex; align-items:center; gap:9px;
   font-family:var(--font-mono); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--teal-400); border:1px solid rgba(94,234,212,0.4); border-radius:var(--radius-pill);
+  color:var(--teal-400); border:1px solid rgba(255,203,77,0.4); border-radius:var(--radius-pill);
   padding:7px 16px; margin-bottom:26px;
 }
 .hero-eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--teal-400);}
@@ -266,7 +266,7 @@ html[lang="ar"] .stat b{font-family:var(--font-display-ar);}
    ========================================================================== */
 .category-block{padding:64px 0; color:#fff; position:relative; overflow:hidden;}
 .category-block.navy{background:var(--blue-950);}
-.category-block.teal{background:linear-gradient(135deg, var(--teal-500) 0%, #0d9488 100%); color:var(--indigo-950);}
+.category-block.teal{background:linear-gradient(135deg, var(--teal-500) 0%, #C97A0C 100%); color:var(--indigo-950);}
 .block-decor{
   position:absolute; top:0; bottom:0; z-index:0;
   width:380px; opacity:0.55; pointer-events:none;
