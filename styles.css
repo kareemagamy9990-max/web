@@ -370,6 +370,23 @@ section{padding:96px 0;}
   position:relative; height:190px; display:flex; align-items:center; justify-content:center;
   overflow:hidden;
 }
+.brand-card-media::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,0.16) 1.5px, transparent 1.5px);
+  background-size:15px 15px;
+  opacity:0.55;
+}
+.brand-card-media::after{
+  content:""; position:absolute; pointer-events:none;
+  width:150px; height:150px; border-radius:44% 56% 62% 38% / 46% 40% 60% 54%;
+  background:rgba(255,255,255,0.14);
+  top:-46px; inset-inline-end:-40px;
+}
+.brand-card-media span.deco-dot{
+  position:absolute; pointer-events:none; border-radius:50%;
+  width:34px; height:34px; background:rgba(255,255,255,0.12);
+  bottom:14px; inset-inline-start:20px;
+}
 .brand-card-media img{
   width:64%; height:64%; object-fit:contain; position:relative; z-index:1;
   filter:drop-shadow(0 14px 22px rgba(0,0,0,0.3));
