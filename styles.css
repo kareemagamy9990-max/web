@@ -144,7 +144,6 @@ button{font-family:inherit; cursor:pointer;}
 .utility-links a{opacity:0.9; transition:opacity .2s;}
 .utility-links a:hover{opacity:1; color:var(--teal-400);}
 .lang-toggle{
-  display:none;
   background:transparent; border:1px solid var(--line-on-dark); color:#fff;
   border-radius:var(--radius-pill); padding:4px 14px; font-size:12.5px;
   letter-spacing:.03em;
@@ -623,4 +622,24 @@ footer ul li a:hover{color:var(--teal-400);}
 /* Keyboard focus visibility */
 a:focus-visible, button:focus-visible{
   outline:2px solid var(--teal-500); outline-offset:3px;
+}
+
+/* ==========================================================================
+   English mode — layout stays RTL (structure), but running text reads
+   naturally left-to-right instead of inheriting right alignment.
+   ========================================================================== */
+body.lang-en{ text-align:left; }
+body.lang-en p,
+body.lang-en li{ direction:ltr; }
+body.lang-en .utility-links{ direction:ltr; }
+body.lang-en .cta-band,
+body.lang-en .cta-band .container,
+body.lang-en .footer-bottom{ text-align:center; }
+body.lang-en .category-block .container{ text-align:left; }
+body.lang-en .section-head{ text-align:left; }
+body.lang-en .chairman-body{ text-align:left; }
+body.lang-en .cta-form,
+body.lang-en .cta-form .field{ text-align:left; }
+@media (max-width:960px){
+  body.lang-en .category-block .container{ text-align:center; }
 }
