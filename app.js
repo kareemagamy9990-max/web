@@ -112,7 +112,6 @@
             : `<span class="brand-monogram">${pick(b.init,l)}</span>`}
         </div>
         <div class="brand-card-body">
-          <span class="brand-swatch" style="background:${b.color}"></span>
           <h3>${pick(b.name,l)}</h3>
           <p>${pick(b.desc,l)}</p>
           <span class="brand-tag">${pick(b.tag,l)}</span>
