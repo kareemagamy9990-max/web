@@ -107,6 +107,7 @@
     const brandCard = b => `
       <div class="brand-card">
         <div class="brand-card-media" style="background:linear-gradient(135deg, ${b.color} 0%, ${b.color}CC 100%)">
+          <span class="deco-dot"></span>
           ${b.logo
             ? `<img src="${b.logo}" alt="${pick(b.name,l)}">`
             : `<span class="brand-monogram">${pick(b.init,l)}</span>`}
