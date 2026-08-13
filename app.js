@@ -1,10 +1,9 @@
 (function(){
-  // Language toggle disabled for now (site is Arabic-only while edits are in progress).
-  // Text edits made directly in the HTML files will now stick, since we no longer
-  // overwrite [data-i18n] elements from i18n.js on load.
-  const lang = 'ar';
-  document.documentElement.lang = 'ar';
-  document.documentElement.dir = 'rtl';
+  // Language is remembered across page loads via localStorage so navigating
+  // between pages keeps the visitor's chosen language.
+  let lang = localStorage.getItem('egygulf_lang') || 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = 'rtl'; // layout stays RTL in both languages
 
   const navToggleBtn = document.querySelector('.nav-toggle');
   if (navToggleBtn) {
@@ -14,6 +13,33 @@
   }
 
   function pick(field, l){ return field[l] || field.ar; }
+
+  // Apply translated text to every element carrying a data-i18n key
+  function applyI18n(l){
+    if (typeof I18N === 'undefined') return;
+    const dict = I18N[l] || I18N.ar;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.documentElement.lang = l;
+    document.body.classList.toggle('lang-en', l === 'en');
+  }
+
+  const langToggleBtn = document.getElementById('langToggle');
+  function updateToggleLabel(){
+    if (langToggleBtn) langToggleBtn.textContent = lang === 'ar' ? 'EN' : 'AR';
+  }
+  updateToggleLabel();
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      localStorage.setItem('egygulf_lang', lang);
+      updateToggleLabel();
+      applyI18n(lang);
+      renderContent(lang);
+    });
+  }
 
   // Events banner carousel (home page only)
   let eventIndex = 0;
@@ -179,6 +205,7 @@
     }
   }
 
+  applyI18n(lang);
   renderContent(lang);
   restartAutoplay();
 })();
