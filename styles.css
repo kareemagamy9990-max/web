@@ -476,6 +476,7 @@ html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px
   aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
 }
 .product-media svg{width:56%; height:56%;}
+.product-photo{width:62%; height:88%; object-fit:contain; filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2));}
 .product-body{padding:16px 18px 20px;}
 .product-body span{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--violet-700);}
 .product-more{
