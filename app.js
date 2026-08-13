@@ -137,10 +137,12 @@
       return `
       <div class="product-card${hasGallery ? ' has-gallery' : ''}" ${hasGallery ? `data-product-idx="${idx}"` : ''}>
         <div class="product-media" style="background:${p.color}1A">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          ${hasGallery
+            ? `<img src="${p.flavors[0].img}" alt="${pick(p.name,l)}" class="product-photo">`
+            : `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="30" cy="30" r="22" fill="${p.color}" opacity="0.85"/>
             <circle cx="30" cy="30" r="8" fill="#FFF8ED"/>
-          </svg>
+          </svg>`}
         </div>
         <div class="product-body">
           <span>${pick(p.brand,l)}</span>
