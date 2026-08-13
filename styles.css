@@ -630,16 +630,24 @@ a:focus-visible, button:focus-visible{
    ========================================================================== */
 body.lang-en{ text-align:left; }
 body.lang-en p,
-body.lang-en li{ direction:ltr; }
+body.lang-en li,
+body.lang-en h1,
+body.lang-en h2,
+body.lang-en h3,
+body.lang-en h4{ direction:ltr; }
 body.lang-en .utility-links{ direction:ltr; }
 body.lang-en .cta-band,
 body.lang-en .cta-band .container,
-body.lang-en .footer-bottom{ text-align:center; }
-body.lang-en .category-block .container{ text-align:left; }
+body.lang-en .footer-bottom{ text-align:center; direction:ltr; }
 body.lang-en .section-head{ text-align:left; }
 body.lang-en .chairman-body{ text-align:left; }
 body.lang-en .cta-form,
 body.lang-en .cta-form .field{ text-align:left; }
+body.lang-en .contact-form-card{ direction:ltr; }
+body.lang-en .category-block-copy{ text-align:right; }
+body.lang-en .category-block-copy p,
+body.lang-en .category-block-copy h3{ direction:rtl; }
 @media (max-width:960px){
   body.lang-en .category-block .container{ text-align:center; }
+  body.lang-en .category-block-copy{ text-align:center; }
 }
