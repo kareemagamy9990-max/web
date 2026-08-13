@@ -131,8 +131,11 @@
     }
 
     // Products (products page) — split into snacks / candy sections
-    const productCard = p => `
-      <div class="product-card">
+    const productCard = p => {
+      const idx = SITE_DATA.products.indexOf(p);
+      const hasGallery = Array.isArray(p.flavors) && p.flavors.length > 0;
+      return `
+      <div class="product-card${hasGallery ? ' has-gallery' : ''}" ${hasGallery ? `data-product-idx="${idx}"` : ''}>
         <div class="product-media" style="background:${p.color}1A">
           <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="30" cy="30" r="22" fill="${p.color}" opacity="0.85"/>
@@ -142,9 +145,10 @@
         <div class="product-body">
           <span>${pick(p.brand,l)}</span>
           <h4>${pick(p.name,l)}</h4>
+          ${hasGallery ? `<span class="product-more">${l === 'ar' ? 'عرض النكهات ›' : 'View flavors ›'}</span>` : ''}
         </div>
       </div>
-    `;
+    `;};
     const productStripSnacks = document.getElementById('productStripSnacks');
     const productStripCandy = document.getElementById('productStripCandy');
     if ((productStripSnacks || productStripCandy) && SITE_DATA.products) {
@@ -246,6 +250,60 @@
         if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; }
       }
     });
+  });
+
+  // Product detail modal (flavor gallery) — built once, reused for any product
+  function ensureProductModal(){
+    let modal = document.getElementById('productModal');
+    if (modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'productModal';
+    modal.className = 'product-modal';
+    modal.innerHTML = `
+      <div class="product-modal-backdrop"></div>
+      <div class="product-modal-panel" role="dialog" aria-modal="true">
+        <button type="button" class="product-modal-close" aria-label="close">&times;</button>
+        <div class="product-modal-head">
+          <span class="product-modal-brand"></span>
+          <h3 class="product-modal-title"></h3>
+          <p class="product-modal-desc"></p>
+        </div>
+        <div class="product-modal-gallery"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.querySelector('.product-modal-backdrop').addEventListener('click', closeProductModal);
+    modal.querySelector('.product-modal-close').addEventListener('click', closeProductModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProductModal(); });
+    return modal;
+  }
+  function closeProductModal(){
+    const modal = document.getElementById('productModal');
+    if (modal) modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+  function openProductModal(product, l){
+    if (typeof SITE_DATA === 'undefined') return;
+    const modal = ensureProductModal();
+    modal.querySelector('.product-modal-brand').textContent = pick(product.brand, l);
+    modal.querySelector('.product-modal-title').textContent = pick(product.name, l);
+    modal.querySelector('.product-modal-desc').textContent = product.details ? pick(product.details, l) : '';
+    const gallery = modal.querySelector('.product-modal-gallery');
+    gallery.innerHTML = (product.flavors || []).map(f => `
+      <div class="product-modal-flavor">
+        <img src="${f.img}" alt="${pick(f.name, l)}">
+        <span>${pick(f.name, l)}</span>
+      </div>
+    `).join('');
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.product-card.has-gallery');
+    if (!card) return;
+    const idx = parseInt(card.getAttribute('data-product-idx'), 10);
+    if (typeof SITE_DATA === 'undefined' || !SITE_DATA.products || !SITE_DATA.products[idx]) return;
+    openProductModal(SITE_DATA.products[idx], lang);
   });
 
   applyI18n(lang);
