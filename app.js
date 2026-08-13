@@ -205,6 +205,49 @@
     }
   }
 
+  // Contact/lead forms: submit via fetch to Formspree so the message is
+  // delivered directly by email, with no mail client popup and no page reload.
+  document.querySelectorAll('form[data-formspree]').forEach(form => {
+    const endpoint = form.getAttribute('data-formspree');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitLabel = submitBtn ? submitBtn.innerHTML : '';
+
+    let status = form.querySelector('.form-status');
+    if (!status) {
+      status = document.createElement('p');
+      status.className = 'form-status';
+      form.appendChild(status);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      status.className = 'form-status';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = lang === 'ar' ? 'جارٍ الإرسال...' : 'Sending...'; }
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent = lang === 'ar' ? 'تم الإرسال بنجاح، هنتواصل معاك قريباً.' : 'Sent successfully — we\'ll be in touch soon.';
+          status.classList.add('form-status-success');
+        } else {
+          status.textContent = lang === 'ar' ? 'حصل خطأ أثناء الإرسال، حاول تاني.' : 'Something went wrong — please try again.';
+          status.classList.add('form-status-error');
+        }
+      } catch (err) {
+        status.textContent = lang === 'ar' ? 'حصل خطأ أثناء الإرسال، حاول تاني.' : 'Something went wrong — please try again.';
+        status.classList.add('form-status-error');
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; }
+      }
+    });
+  });
+
   applyI18n(lang);
   renderContent(lang);
   restartAutoplay();
