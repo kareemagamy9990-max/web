@@ -513,6 +513,10 @@ html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px
 }
 .product-modal-title{font-size:24px; margin:6px 0 10px;}
 .product-modal-desc{font-size:14.5px; color:rgba(26,21,51,0.65); max-width:560px;}
+.product-modal-sizes{
+  font-size:13px; font-weight:700; color:var(--violet-700); margin-top:8px;
+  font-family:var(--font-mono); letter-spacing:.02em;
+}
 .product-modal-gallery{
   display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;
 }
