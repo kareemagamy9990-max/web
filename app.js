@@ -134,8 +134,13 @@
     const productCard = p => {
       const idx = SITE_DATA.products.indexOf(p);
       const hasGallery = Array.isArray(p.flavors) && p.flavors.length > 0;
+      const hasInfo = Boolean(p.sizes || p.details);
+      const clickable = hasGallery || hasInfo;
+      const moreLabel = hasGallery
+        ? (l === 'ar' ? 'عرض النكهات ›' : 'View flavors ›')
+        : (clickable ? (l === 'ar' ? 'التفاصيل ›' : 'View details ›') : '');
       return `
-      <div class="product-card${hasGallery ? ' has-gallery' : ''}" ${hasGallery ? `data-product-idx="${idx}"` : ''}>
+      <div class="product-card${clickable ? ' has-gallery' : ''}" ${clickable ? `data-product-idx="${idx}"` : ''}>
         <div class="product-media" style="background:${p.color}1A">
           ${hasGallery
             ? `<img src="${p.flavors[0].img}" alt="${pick(p.name,l)}" class="product-photo">`
@@ -147,7 +152,7 @@
         <div class="product-body">
           <span>${pick(p.brand,l)}</span>
           <h4>${pick(p.name,l)}</h4>
-          ${hasGallery ? `<span class="product-more">${l === 'ar' ? 'عرض النكهات ›' : 'View flavors ›'}</span>` : ''}
+          ${moreLabel ? `<span class="product-more">${moreLabel}</span>` : ''}
         </div>
       </div>
     `;};
@@ -269,6 +274,7 @@
           <span class="product-modal-brand"></span>
           <h3 class="product-modal-title"></h3>
           <p class="product-modal-desc"></p>
+          <p class="product-modal-sizes"></p>
         </div>
         <div class="product-modal-gallery"></div>
       </div>
@@ -290,6 +296,14 @@
     modal.querySelector('.product-modal-brand').textContent = pick(product.brand, l);
     modal.querySelector('.product-modal-title').textContent = pick(product.name, l);
     modal.querySelector('.product-modal-desc').textContent = product.details ? pick(product.details, l) : '';
+    const sizesEl = modal.querySelector('.product-modal-sizes');
+    if (product.sizes) {
+      sizesEl.textContent = (l === 'ar' ? 'المقاسات المتاحة: ' : 'Available sizes: ') + pick(product.sizes, l);
+      sizesEl.style.display = '';
+    } else {
+      sizesEl.textContent = '';
+      sizesEl.style.display = 'none';
+    }
     const gallery = modal.querySelector('.product-modal-gallery');
     gallery.innerHTML = (product.flavors || []).map(f => `
       <div class="product-modal-flavor">
