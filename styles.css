@@ -477,6 +477,7 @@ html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px
 }
 .product-media svg{width:56%; height:56%;}
 .product-photo{width:62%; height:88%; object-fit:contain; filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2));}
+.product-photo[src*="gourmet-popcorn"]{width:88%; height:96%;}
 .product-body{padding:16px 18px 20px;}
 .product-body span{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--violet-700);}
 .product-more{
