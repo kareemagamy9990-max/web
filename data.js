@@ -143,7 +143,11 @@ const SITE_DATA = {
         { img:'images/puffs-korean-chicken.webp', name:{ar:'دجاج كوري', en:'Korean Chicken'} },
       ] },
     { name:{ar:'سبيشيال بافس', en:'Special Puffs'}, brand:{ar:'سبيشيال', en:'Special'}, color:'#C0392B', category:'snacks',
-      sizes:{ar:'15 جم / 30 جم / 70 جم', en:'15g / 30g / 70g'}  },
+      sizes:{ar:'15 جم / 30 جم / 70 جم', en:'15g / 30g / 70g'},
+      details:{ar:'بافس ذرة مخبوزة غير مقلية، بنكهات جريئة.', en:'Baked, never-fried corn puffs in bold flavours.'},
+      flavors:[
+        { img:'images/special-puffs-sweet-pepper.webp', name:{ar:'فلفل حلو', en:'Sweet Pepper'} },
+      ] },
     { name:{ar:'بوزو بافس', en:'Bozo Puffs'}, brand:{ar:'برافو', en:'Bravo'}, color:'#14123B', category:'snacks',
       sizes:{ar:'30-35 جم، عبوة (15 كيس)', en:'30-35g, bag pack (15 bags)'},
       details:{ar:'مقرمشات ذرة كبيرة ومنفوخة، بافس بأحجام كبيرة وطعم غني.', en:'Big, extra-puffed corn snacks with bold, rich flavours.'},
