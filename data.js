@@ -81,7 +81,17 @@ const SITE_DATA = {
         { img:'images/fire-fingers-spicy-cheese.webp', name:{ar:'جبنة حارة', en:'Spicy Cheese'} },
         { img:'images/fire-fingers-spicy-chicken.webp', name:{ar:'دجاج سامبينج حار', en:'Spicy Chicken'} },
       ] },
-    { name:{ar:'كرانشي فينجرز', en:'Crunchy Fingers'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks' },
+    { name:{ar:'كرانشي فينجرز', en:'Crunchy Fingers'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
+      details:{ar:'أصابع ذرة مقرمشة غير مقلية، من حبوب كاملة وبدون مواد حافظة.', en:'Never-fried crunchy corn fingers, made from whole grains with no preservatives.'},
+      flavors:[
+        { img:'images/crunchy-corn-fingers-spice-lemon.webp', name:{ar:'ليمون حار', en:'Spice Lemon'} },
+        { img:'images/crunchy-corn-fingers-barbeque.webp', name:{ar:'باربكيو', en:'Barbeque'} },
+        { img:'images/crunchy-corn-fingers-sweet-pepper.webp', name:{ar:'فلفل حلو', en:'Sweet Pepper'} },
+        { img:'images/crunchy-corn-fingers-cheddar-cheese.webp', name:{ar:'جبنة تشيدر', en:'Cheddar Cheese'} },
+        { img:'images/crunchy-corn-fingers-chicken.webp', name:{ar:'دجاج', en:'Chicken'} },
+        { img:'images/crunchy-corn-fingers-shrimps.webp', name:{ar:'جمبري', en:'Shrimps'} },
+        { img:'images/crunchy-corn-fingers-tomatoes.webp', name:{ar:'طماطم', en:'Tomatoes'} },
+      ] },
     { name:{ar:'حلقات الشوفان', en:'Oat Rings'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
       details:{ar:'حلقات شوفان مخبوزة بالكامل، غنية بالألياف ومصنوعة من حبوب كاملة.', en:'Fully baked oat rings, high in fibre and made from whole grains.'},
       flavors:[
