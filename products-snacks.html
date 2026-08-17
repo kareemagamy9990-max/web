@@ -76,24 +76,28 @@
     <p data-i18n="cta.sub">أرسل تفاصيل طلبك وفريق التصدير هيرد عليك خلال يوم عمل.</p>
     <form class="cta-form" data-formspree="https://formspree.io/f/maewjkel">
       <div class="field">
-        <label for="ctaFirstName" data-i18n="form.firstName">الاسم الأول</label>
-        <input type="text" id="ctaFirstName" name="firstName" required>
+        <label for="ctaCompanyName" data-i18n="form.companyName">اسم الشركة</label>
+        <input type="text" id="ctaCompanyName" name="companyName" required>
       </div>
       <div class="field">
-        <label for="ctaLastName" data-i18n="form.lastName">الاسم الأخير</label>
-        <input type="text" id="ctaLastName" name="lastName" required>
+        <label for="ctaCountry" data-i18n="form.country">الدولة</label>
+        <input type="text" id="ctaCountry" name="country" required>
       </div>
       <div class="field">
-        <label for="ctaEmail" data-i18n="contact.emailH">البريد الإلكتروني</label>
-        <input type="email" id="ctaEmail" name="email" required>
+        <label for="ctaProductInterest" data-i18n="form.productInterest">المنتج المطلوب</label>
+        <input type="text" id="ctaProductInterest" name="productInterest" required>
+      </div>
+      <div class="field">
+        <label for="ctaQuantity" data-i18n="form.quantity">الكمية</label>
+        <input type="text" id="ctaQuantity" name="quantity">
       </div>
       <div class="field">
         <label for="ctaPhone" data-i18n="contact.phoneH">الهاتف</label>
-        <input type="tel" id="ctaPhone" name="phone">
+        <input type="tel" id="ctaPhone" name="phone" required>
       </div>
       <div class="field field-full">
         <label for="ctaMessage" data-i18n="form.message">الرسالة</label>
-        <textarea id="ctaMessage" name="message" required></textarea>
+        <textarea id="ctaMessage" name="message"></textarea>
       </div>
       <div class="form-actions">
         <button type="submit" class="btn btn-primary" data-i18n="cta.button">راسلنا الآن</button>
