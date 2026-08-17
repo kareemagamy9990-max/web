@@ -346,6 +346,7 @@ section{padding:96px 0;}
 }
 .about-figure svg{width:78%; height:78%;}
 .about-figure video{width:100%; height:100%; object-fit:cover; display:block;}
+.about-figure img.about-logo{width:55%; max-width:280px; height:auto; object-fit:contain; display:block;}
 .about-points{display:grid; gap:22px; margin-top:8px;}
 .about-point{display:flex; gap:16px;}
 .about-point .num{
