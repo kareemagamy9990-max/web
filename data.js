@@ -1,6 +1,9 @@
 // Bilingual content data for EgyGulf Foods site
 const SITE_DATA = {
   events: [
+    { image:'images/events/event-7-new-product.jpg', position:'center 50%',
+      title:{ar:'منتج جديد: كريزي كريسبس', en:'New Product: Crazy Crisps'},
+      sub:{ar:'نكهات جديدة من كريسبس الذرة المقرمشة', en:'New flavours of crispy corn crisps'} },
     { image:'images/events/event-3.jpg', position:'center 15%',
       title:{ar:'جناحنا في المعرض', en:'Our Booth at the Expo'},
       sub:{ar:'ChillOut وLight Pop على واجهة الجناح', en:'ChillOut and Light Pop on display at our stand'} },
