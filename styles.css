@@ -461,6 +461,12 @@ html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px
   font-size:14px; color:rgba(255,255,255,0.65); text-align:center;
 }
 .private-label-note strong{color:#fff; font-weight:700;}
+.expo-video-section{background:var(--cream-50); padding-top:0;}
+.expo-video-frame{
+  border-radius:var(--radius-card); overflow:hidden; box-shadow:var(--shadow-card);
+  aspect-ratio:16/9; max-width:900px; margin:0 auto; background:var(--indigo-950);
+}
+.expo-video-frame video{width:100%; height:100%; object-fit:cover; display:block;}
 
 /* Products preview */
 .products{background:var(--cream-50);}
