@@ -160,7 +160,6 @@ button{font-family:inherit; cursor:pointer;}
 }
 .brand{display:flex; align-items:center;}
 .brand-mark-box{
-  background:#fff; border-radius:12px; padding:8px 16px;
   display:inline-flex; align-items:center; line-height:0;
 }
 .brand-mark-img{height:32px; width:auto; display:block;}
