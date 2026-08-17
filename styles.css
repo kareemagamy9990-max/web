@@ -451,6 +451,11 @@ section{padding:96px 0;}
 .reach-item h4{font-size:16px;}
 .reach-item span{font-family:var(--font-body-ar); font-size:13.5px; color:rgba(255,255,255,0.7); line-height:1.7;}
 html[lang="en"] .reach-item span{font-family:var(--font-body-en); font-size:13px;}
+.private-label-note{
+  margin-top:36px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.15);
+  font-size:14px; color:rgba(255,255,255,0.65); text-align:center;
+}
+.private-label-note strong{color:#fff; font-weight:700;}
 
 /* Products preview */
 .products{background:var(--cream-50);}

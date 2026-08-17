@@ -58,6 +58,8 @@ const I18N = {
     'chairman.name':'[الاسم]','chairman.role':'رئيس مجلس إدارة شركة إيجي جالف فودز',
     'leadership.eyebrow':'فريقنا','leadership.title':'فريق القيادة',
     'markets.eyebrow':'انتشارنا','markets.title':'أسواقنا',
+    'privateLabel.title':'تصنيع خاص (Private Label):',
+    'privateLabel.sub':'بننتج كمان تحت علامتك التجارية الخاصة، بنفس معايير الجودة اللي بنصنّع بيها علاماتنا.',
   },
   en: {
     'util.phone':'01099281170 · 01222574360',
@@ -118,5 +120,7 @@ const I18N = {
     'chairman.name':'[Name]','chairman.role':'Chairman of the Board, EgyGulf Foods',
     'leadership.eyebrow':'Our Team','leadership.title':'Leadership Team',
     'markets.eyebrow':'Our Reach','markets.title':'Our Markets',
+    'privateLabel.title':'Private Label:',
+    'privateLabel.sub':'We also manufacture under your own brand, to the same quality standards behind our own brands.',
   }
 };
