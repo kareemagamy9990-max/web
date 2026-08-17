@@ -265,7 +265,7 @@ html[lang="ar"] .stat b{font-family:var(--font-display-ar);}
    ========================================================================== */
 .category-block{padding:64px 0; color:#fff; position:relative; overflow:hidden;}
 .category-block.navy{background:var(--blue-950);}
-.category-block.teal{background:linear-gradient(135deg, #6E2350 0%, #3B1330 100%); color:#fff;}
+.category-block.teal{background:linear-gradient(135deg, var(--blue-600) 0%, var(--blue-900) 100%); color:#fff;}
 .block-decor{
   position:absolute; top:0; bottom:0; z-index:0;
   width:380px; opacity:1; pointer-events:none;
