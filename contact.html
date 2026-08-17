@@ -80,24 +80,28 @@
       <p data-i18n="contact.formSub">املا البيانات وفريق التصدير هيتواصل معاك خلال يوم عمل.</p>
       <form class="cta-form" data-formspree="https://formspree.io/f/maewjkel">
         <div class="field">
-          <label for="infoFirstName" data-i18n="form.firstName">الاسم الأول</label>
-          <input type="text" id="infoFirstName" name="firstName" required>
+          <label for="infoCompanyName" data-i18n="form.companyName">اسم الشركة</label>
+          <input type="text" id="infoCompanyName" name="companyName" required>
         </div>
         <div class="field">
-          <label for="infoLastName" data-i18n="form.lastName">الاسم الأخير</label>
-          <input type="text" id="infoLastName" name="lastName" required>
+          <label for="infoCountry" data-i18n="form.country">الدولة</label>
+          <input type="text" id="infoCountry" name="country" required>
         </div>
         <div class="field">
-          <label for="infoEmail" data-i18n="contact.emailH">البريد الإلكتروني</label>
-          <input type="email" id="infoEmail" name="email" required>
+          <label for="infoProductInterest" data-i18n="form.productInterest">المنتج المطلوب</label>
+          <input type="text" id="infoProductInterest" name="productInterest" required>
+        </div>
+        <div class="field">
+          <label for="infoQuantity" data-i18n="form.quantity">الكمية</label>
+          <input type="text" id="infoQuantity" name="quantity">
         </div>
         <div class="field">
           <label for="infoPhone" data-i18n="contact.phoneH">الهاتف</label>
-          <input type="tel" id="infoPhone" name="phone">
+          <input type="tel" id="infoPhone" name="phone" required>
         </div>
         <div class="field field-full">
           <label for="infoMessage" data-i18n="form.message">الرسالة</label>
-          <textarea id="infoMessage" name="message" required></textarea>
+          <textarea id="infoMessage" name="message"></textarea>
         </div>
         <div class="form-actions">
           <button type="submit" class="btn btn-primary" data-i18n="form.submit">إرسال الطلب</button>
