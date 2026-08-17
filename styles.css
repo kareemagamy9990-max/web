@@ -699,6 +699,14 @@ footer ul li a:hover{color:var(--teal-400);}
   height:88px; display:flex; align-items:center; justify-content:center;
   font-family:var(--font-mono); font-size:13px; color:rgba(15,13,46,0.4); text-align:center; padding:8px;
 }
+.markets-grid{grid-template-columns:repeat(6,1fr);}
+.market-chip{
+  background:var(--indigo-950); border:none; border-radius:var(--radius-pill);
+  height:auto; padding:12px 10px; color:#fff; font-family:var(--font-display-ar); font-size:14.5px; font-weight:600;
+}
+html[lang="en"] .market-chip{font-family:var(--font-display-en);}
+@media (max-width:960px){ .markets-grid{grid-template-columns:repeat(4,1fr);} }
+@media (max-width:560px){ .markets-grid{grid-template-columns:repeat(3,1fr);} }
 
 @media (max-width:960px){
   .chairman .container{grid-template-columns:1fr;}

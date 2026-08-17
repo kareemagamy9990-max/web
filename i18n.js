@@ -56,7 +56,7 @@ const I18N = {
     'chairman.p3':'نتطلع دائماً لمزيد من النمو والابتكار، ونؤمن أن النجاح الحقيقي هو نجاح مشترك مع عملائنا وموزعينا وموظفينا.',
     'chairman.name':'[الاسم]','chairman.role':'رئيس مجلس إدارة شركة إيجي جالف فودز',
     'leadership.eyebrow':'فريقنا','leadership.title':'فريق القيادة',
-    'partners.eyebrow':'علاقاتنا','partners.title':'شركاؤنا في النجاح',
+    'markets.eyebrow':'انتشارنا','markets.title':'أسواقنا',
   },
   en: {
     'util.phone':'01099281170 · 01222574360',
@@ -115,6 +115,6 @@ const I18N = {
     'chairman.p3':'We remain committed to growth and innovation, and we believe true success is shared success — with our customers, distributors and employees alike.',
     'chairman.name':'[Name]','chairman.role':'Chairman of the Board, EgyGulf Foods',
     'leadership.eyebrow':'Our Team','leadership.title':'Leadership Team',
-    'partners.eyebrow':'Relationships','partners.title':'Partners in Success',
+    'markets.eyebrow':'Our Reach','markets.title':'Our Markets',
   }
 };

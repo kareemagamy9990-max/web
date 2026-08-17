@@ -207,11 +207,11 @@
       `).join('');
     }
 
-    // Partners (about page)
-    const partnersGrid = document.getElementById('partnersGrid');
-    if (partnersGrid && SITE_DATA.partners) {
-      partnersGrid.innerHTML = SITE_DATA.partners.map(p => `
-        <div class="partner-logo">${pick(p.name,l)}</div>
+    // Markets (about page)
+    const marketsGrid = document.getElementById('marketsGrid');
+    if (marketsGrid && SITE_DATA.markets) {
+      marketsGrid.innerHTML = SITE_DATA.markets.map(p => `
+        <div class="partner-logo market-chip">${pick(p.name,l)}</div>
       `).join('');
     }
   }
