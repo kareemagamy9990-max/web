@@ -19,9 +19,6 @@ const SITE_DATA = {
     { image:'images/events/event-5.jpg', position:'center 30%',
       title:{ar:'لقاءات وشراكات جديدة', en:'New Meetings and Partnerships'},
       sub:{ar:'تبادل الخبرات مع زملاء الصناعة', en:'Exchanging insight with industry peers'} },
-    { image:'images/events/event-6.jpg', position:'center 30%',
-      title:{ar:'نقاشات على هامش الفعالية', en:'Conversations on the Sidelines'},
-      sub:{ar:'فريق العمل في حوار مع زوار المعرض', en:'Our team in discussion with expo visitors'} },
   ],
   brands: [
     { key:'chillout', category:'snacks', color:'#2E2A74', init:{ar:'C',en:'C'}, logo:'images/brands/chillout.webp',
