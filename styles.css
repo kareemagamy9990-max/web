@@ -82,6 +82,11 @@ button{font-family:inherit; cursor:pointer;}
   content:""; position:absolute; inset:0;
   background:linear-gradient(0deg, rgba(15,13,46,0.88) 0%, rgba(15,13,46,0.25) 55%, rgba(15,13,46,0.15) 100%);
 }
+.event-slide.banner-slide{
+  background-size:contain; background-repeat:no-repeat; background-position:center;
+  background-color:var(--indigo-950);
+}
+.event-slide.banner-slide::after{display:none;}
 .event-caption{
   position:absolute; inset-inline-start:0; bottom:0; z-index:2;
   padding:30px 40px 34px; max-width:640px;

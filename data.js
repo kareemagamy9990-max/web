@@ -1,7 +1,10 @@
 // Bilingual content data for EgyGulf Foods site
 const SITE_DATA = {
   events: [
-    { image:'images/events/event-7-new-product.jpg', position:'center 50%',
+    { image:'images/events/event-8-sial-paris.jpg', banner:true,
+      title:{ar:'إيجي جالف فودز في SIAL باريس', en:'EgyGulf Foods at SIAL Paris'},
+      sub:{ar:'اكتشف حلولنا الغذائية في باريس', en:'Discover our food solutions in Paris'} },
+    { image:'images/events/event-7-new-product.jpg', banner:true,
       title:{ar:'منتج جديد: كريزي كريسبس', en:'New Product: Crazy Crisps'},
       sub:{ar:'نكهات جديدة من كريسبس الذرة المقرمشة', en:'New flavours of crispy corn crisps'} },
     { image:'images/events/event-3.jpg', position:'center 15%',

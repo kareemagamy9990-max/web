@@ -49,7 +49,9 @@
     const track = document.getElementById('eventTrack');
     const dots = document.getElementById('eventDots');
     if (!track || !dots || typeof SITE_DATA === 'undefined' || !SITE_DATA.events) return;
-    track.innerHTML = SITE_DATA.events.map(ev => `
+    track.innerHTML = SITE_DATA.events.map(ev => ev.banner ? `
+      <div class="event-slide banner-slide" style="background-image:url('${ev.image}')"></div>
+    ` : `
       <div class="event-slide" style="background-image:url('${ev.image}'); background-position:${ev.position || 'center'}">
         <div class="event-caption">
           <span class="event-eyebrow"><span class="dot"></span>${l === 'ar' ? 'من فعالياتنا' : 'From our events'}</span>
