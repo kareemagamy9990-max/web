@@ -206,7 +206,7 @@ const SITE_DATA = {
       sizes:{ar:'30-45 جم، علبة (24 علبة)', en:'30-45g, box pack (24 boxes)'}  },
   ],
   certifications: [
-    { name:{ar:'شهادة هالال', en:'HALAL Certified'}, code:'HALAL' },
+    { name:{ar:'شهادة حلال', en:'HALAL Certified'}, code:'HALAL' },
     { name:{ar:'ISO 22000', en:'ISO 22000'}, code:'FOOD SAFETY' },
     { name:{ar:'ISO 9001', en:'ISO 9001'}, code:'QUALITY MGMT' },
     { name:{ar:'HACCP', en:'HACCP'}, code:'HAZARD CONTROL' },
