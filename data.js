@@ -53,18 +53,6 @@ const SITE_DATA = {
   ],
   "events": [
     {
-      "image": "images/events/event-8-sial-paris.jpg",
-      "banner": true,
-      "title": {
-        "ar": "إيجي جالف فودز في SIAL باريس",
-        "en": "EgyGulf Foods at SIAL Paris"
-      },
-      "sub": {
-        "ar": "اكتشف حلولنا الغذائية في باريس",
-        "en": "Discover our food solutions in Paris"
-      }
-    },
-    {
       "image": "images/events/event-7-new-product.jpg",
       "banner": true,
       "title": {
@@ -113,7 +101,7 @@ const SITE_DATA = {
       }
     },
     {
-      "image": "images/uploads/whatsapp-video-2026-10-26-at-10-50-13-am-mw0ll8hc-poster.webp",
+      "image": "",
       "banner": true,
       "title": {
         "ar": "",
@@ -125,6 +113,19 @@ const SITE_DATA = {
       },
       "link": "",
       "video": "images/uploads/whatsapp-video-2026-10-26-at-10-50-13-am-mw0ll8hc.mp4"
+    },
+    {
+      "image": "images/uploads/whatsapp-image-2026-10-26-at-10-53-30-am-mw0mod8c.webp",
+      "banner": true,
+      "title": {
+        "ar": "",
+        "en": ""
+      },
+      "sub": {
+        "ar": "",
+        "en": ""
+      },
+      "link": ""
     }
   ],
   "brands": [
