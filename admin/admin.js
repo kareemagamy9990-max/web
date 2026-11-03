@@ -279,7 +279,10 @@ async function save(){
   } catch(e){
     hideLoading();
     $('#saveBtn').disabled = false;
-    toast('الحفظ ما نجحش: ' + esc(e.message) + (e.status === 409 ? ' — جرّب تاني.' : ''), 'error', 10000);
+    const noWrite = e.status === 403 || e.status === 404;
+    toast(noWrite
+      ? `الحفظ ما نجحش: الـ token ده يقدر يقرا الريبو بس مش يكتب عليه.<br>اعمل token جديد وانت داخل بحساب <b>${esc(A.owner)}</b>، واختار فيه <b>Resource owner = ${esc(A.owner)}</b> وريبو <b>${esc(A.repo)}</b>، و<b>Contents = Read and write</b>. وبعدين اعمل تسجيل خروج وادخل بيه.`
+      : 'الحفظ ما نجحش: ' + esc(e.message) + (e.status === 409 ? ' — جرّب تاني.' : ''), 'error', 20000);
   }
 }
 
