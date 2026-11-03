@@ -87,6 +87,10 @@ button{font-family:inherit; cursor:pointer;}
 .banner-bg, .banner-img{position:absolute; inset:0; background-image:var(--img); background-position:center; background-repeat:no-repeat;}
 .banner-bg{background-size:cover; filter:blur(22px) brightness(.55); transform:scale(1.15);}
 .banner-img{background-size:contain;}
+.video-slide video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+.video-slide.banner-slide video{object-fit:contain;}
+.video-slide:not(.banner-slide)::after{z-index:1; pointer-events:none;}
+.video-slide .event-caption{z-index:2;}
 .event-caption{
   position:absolute; inset-inline-start:0; bottom:0; z-index:2;
   padding:30px 40px 34px; max-width:640px;

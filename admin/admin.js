@@ -522,18 +522,19 @@ const SECTIONS = [
 ];
 
 function secBanner(){
-  return `<p class="lead">الصور اللي بتقلّب أول الصفحة الرئيسية. رتّبها بالأسهم، وأول صورة هي اللي بتظهر الأول.</p>
+  return `<p class="lead">الصور والفيديوهات اللي بتقلّب أول الصفحة الرئيسية. رتّبها بالأسهم، وأول صورة هي اللي بتظهر الأول.</p>
   <div class="tip">المقاس الأنسب لصورة البانر الكاملة <b>1900×535</b>. ولو عايزها تبان أكبر على الموبايل، ارفع لها نسخة موبايل بمقاس <b>1200×750</b>.</div>
   ${cards(P('d','events'), {
-    newKey:'event', addLabel:'إضافة صورة للبانر',
+    newKey:'event', addLabel:'إضافة صورة أو فيديو للبانر',
     thumb:e => e.image,
-    title:(e, i) => pick(e.title, 'ar') || ('صورة ' + (i + 1)),
-    sub:e => e.banner ? 'بانر كامل' : 'صورة بعنوان',
+    title:(e, i) => pick(e.title, 'ar') || ((e.video ? 'فيديو ' : 'صورة ') + (i + 1)),
+    sub:e => (e.video ? '🎬 فيديو · ' : '') + (e.banner ? 'بانر كامل' : 'بعنوان'),
     body:(p, e) => `
       <div class="grid2">
-        ${fImage(P(p,'image'), 'الصورة', { max:2000, wide:true, dark:true, required:true })}
-        ${fImage(P(p,'imageMobile'), 'نسخة الموبايل (اختياري)', { max:1300, dark:true, help:'لو سبتها فاضية، هتظهر نفس الصورة.' })}
+        ${fImage(P(p,'image'), e.video ? 'صورة الغلاف (بتظهر لحد ما الفيديو يحمّل)' : 'الصورة', { max:2000, wide:true, dark:true, required:!e.video })}
+        ${e.video ? '' : fImage(P(p,'imageMobile'), 'نسخة الموبايل (اختياري)', { max:1300, dark:true, help:'لو سبتها فاضية، هتظهر نفس الصورة.' })}
       </div>
+      ${fImage(P(p,'video'), 'فيديو بدل الصورة (اختياري)', { kind:'video', dark:true, wide:true, help:'MP4 قصير (5–20 ثانية) ويفضّل أقل من 10 ميجا عشان الموقع يفضل سريع. الفيديو بيشتغل من غير صوت وبيعيد نفسه.' })}
       ${fSelect(P(p,'banner'), 'نوع العرض', [[true,'بانر كامل — الصورة فيها التصميم والكلام'],[false,'صورة عادية — يظهر عليها عنوان ووصف']])}
       ${fBi(P(p,'title'), e.banner ? 'وصف الصورة (لمحركات البحث)' : 'العنوان')}
       ${e.banner ? '' : fBi(P(p,'sub'), 'الوصف')}

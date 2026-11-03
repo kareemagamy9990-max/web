@@ -106,7 +106,7 @@
   /* ---------- Events banner carousel ---------- */
   let eventIndex = 0;
   let eventTimer = null;
-  const events = () => (D.events || []).filter(ev => ev && ev.image && !ev.hidden);
+  const events = () => (D.events || []).filter(ev => ev && (ev.image || ev.video) && !ev.hidden);
 
   function renderEvents(l){
     const track = document.getElementById('eventTrack');
@@ -120,6 +120,17 @@
       const href = ev.link ? ` href="${esc(ev.link)}"` : '';
       const tag = ev.link ? 'a' : 'div';
       const mob = ev.imageMobile ? ` --m:url('${esc(ev.imageMobile)}');` : '';
+      if (ev.video) {
+        const t = pick(ev.title, l), sub = pick(ev.sub, l);
+        return `<${tag} class="event-slide video-slide${ev.banner ? ' banner-slide' : ''}"${href} style="--img:url('${esc(ev.image || '')}');">
+          ${ev.banner ? '<span class="banner-bg"></span>' : ''}
+          <video src="${esc(ev.video)}" ${ev.image ? `poster="${esc(ev.image)}"` : ''} muted loop playsinline preload="${i === 0 ? 'auto' : 'metadata'}" aria-label="${esc(t)}"></video>
+          ${!ev.banner && (t || sub) ? `<div class="event-caption">
+            <span class="event-eyebrow"><span class="dot"></span>${l === 'ar' ? 'من فعالياتنا' : 'From our events'}</span>
+            ${t ? `<h3>${esc(t)}</h3>` : ''}${sub ? `<p>${esc(sub)}</p>` : ''}
+          </div>` : ''}
+        </${tag}>`;
+      }
       if (ev.banner) {
         return `<${tag} class="event-slide banner-slide"${href} style="--img:url('${esc(ev.image)}');${mob}" role="img" aria-label="${esc(pick(ev.title,l))}">
           <span class="banner-bg"></span><span class="banner-img"></span></${tag}>`;
@@ -147,6 +158,12 @@
     const rtl = document.documentElement.dir === 'rtl';
     track.style.transform = `translateX(${(rtl ? 1 : -1) * eventIndex * 100}%)`;
     document.querySelectorAll('.event-dot').forEach((d, i) => d.classList.toggle('active', i === eventIndex));
+    // only the visible slide's video plays
+    track.querySelectorAll('.event-slide').forEach((slide, i) => {
+      const v = slide.querySelector('video'); if (!v) return;
+      if (i === eventIndex) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+      else { v.pause(); }
+    });
   }
   function goToEvent(i){
     const total = events().length;
