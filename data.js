@@ -113,7 +113,7 @@ const SITE_DATA = {
       }
     },
     {
-      "image": "",
+      "image": "images/uploads/whatsapp-video-2026-10-26-at-10-50-13-am-mw0ll8hc-poster.webp",
       "banner": true,
       "title": {
         "ar": "",

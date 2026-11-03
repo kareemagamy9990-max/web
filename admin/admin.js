@@ -276,7 +276,7 @@ async function save(){
     const newTree = await gh(`${repoPath()}/git/trees`, { method:'POST', body:JSON.stringify({ base_tree:head.tree.sha, tree }) });
     const parts = [];
     if (changed.length) parts.push('المحتوى');
-    if (imgs.length) parts.push(imgs.length === 1 ? 'صورة' : imgs.length + ' صور');
+    if (imgs.length) parts.push(imgs.length === 1 ? 'ملف' : imgs.length + ' ملفات');
     const commit = await gh(`${repoPath()}/git/commits`, { method:'POST', body:JSON.stringify({
       message:'تحديث ' + parts.join(' و') + ' من لوحة التحكم', tree:newTree.sha, parents:[headSha] }) });
     A.step = 'تحديث الفرع';
@@ -346,6 +346,23 @@ async function processImage(file, maxSide){
   if (!blob || blob.type !== 'image/webp'){ blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.86)); ext = 'jpg'; }
   return { blob, ext };
 }
+function videoFrame(file){
+  return new Promise((resolve, reject) => {
+    const v = document.createElement('video');
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.src = URL.createObjectURL(file);
+    const fail = () => reject(new Error('frame'));
+    v.onerror = fail;
+    v.onloadedmetadata = () => { v.currentTime = Math.min(1, (v.duration || 2) / 2); };
+    v.onseeked = () => {
+      const w = Math.min(1600, v.videoWidth), h = Math.round(v.videoHeight * w / v.videoWidth);
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      c.getContext('2d').drawImage(v, 0, 0, w, h);
+      c.toBlob(b => b ? resolve({ blob:b, ext:b.type === 'image/webp' ? 'webp' : 'jpg' }) : fail(), 'image/webp', 0.8);
+    };
+    setTimeout(fail, 15000);
+  });
+}
 async function handleUpload(input){
   const file = input.files && input.files[0];
   if (!file) return;
@@ -354,7 +371,18 @@ async function handleUpload(input){
     let blob, ext;
     if (isVideo){
       if (file.size > 40 * 1024 * 1024){ toast('الفيديو أكبر من 40 ميجا. صغّره الأول (مثلاً بـ HandBrake) وجرّب تاني.', 'error', 8000); return; }
+      if (file.size > 10 * 1024 * 1024) toast(`الفيديو حجمه ${Math.round(file.size/1048576)} ميجا — هيتقل الموقع على الموبايل. يفضّل تصغّره لأقل من 10 ميجا وتشيل منه الصوت.`, 'info', 12000);
       blob = file; ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
+      // auto cover image from the first second of the video (if the slide has none)
+      const coverPath = path.replace(/\|video$/, '|image');
+      if (coverPath !== path && !getP(coverPath)){
+        try {
+          const cover = await videoFrame(file);
+          const cFile = `images/uploads/${slug(file.name)}-cover-${Date.now().toString(36)}.${cover.ext}`;
+          A.pending.set(cFile, { b64:await blobToB64(cover.blob), url:URL.createObjectURL(cover.blob), size:cover.blob.size });
+          setP(coverPath, cFile);
+        } catch(e){ /* cover is optional */ }
+      }
     } else {
       if (!file.type.startsWith('image/')){ toast('اختار ملف صورة.', 'error'); return; }
       ({ blob, ext } = await processImage(file, max));

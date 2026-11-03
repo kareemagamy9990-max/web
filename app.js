@@ -174,8 +174,14 @@
   }
   function restartAutoplay(){
     if (!document.getElementById('eventBanner')) return;
-    if (eventTimer) clearInterval(eventTimer);
-    if (events().length > 1) eventTimer = setInterval(() => goToEvent(eventIndex + 1), 5500);
+    if (eventTimer) clearTimeout(eventTimer);
+    if (events().length < 2) return;
+    // a video slide stays up for its length (max 30s); images for 5.5s
+    const slide = document.querySelectorAll('#eventTrack .event-slide')[eventIndex];
+    const v = slide && slide.querySelector('video');
+    let ms = 5500;
+    if (v) ms = Math.max(ms, Math.min(30000, ((isFinite(v.duration) && v.duration) || 15) * 1000));
+    eventTimer = setTimeout(() => goToEvent(eventIndex + 1), ms);
   }
   const eventBanner = document.getElementById('eventBanner');
   const eventNextBtn = document.getElementById('eventNext');
@@ -183,7 +189,7 @@
   if (eventNextBtn) eventNextBtn.addEventListener('click', () => goToEvent(eventIndex + 1));
   if (eventPrevBtn) eventPrevBtn.addEventListener('click', () => goToEvent(eventIndex - 1));
   if (eventBanner) {
-    eventBanner.addEventListener('mouseenter', () => eventTimer && clearInterval(eventTimer));
+    eventBanner.addEventListener('mouseenter', () => eventTimer && clearTimeout(eventTimer));
     eventBanner.addEventListener('mouseleave', restartAutoplay);
     // swipe on touch screens
     let x0 = null;
