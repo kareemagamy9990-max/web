@@ -1,263 +1,1537 @@
-// Bilingual content data for EgyGulf Foods site
+// EgyGulf Foods — site content. Edited from /admin.html; you can also edit by hand.
 const SITE_DATA = {
-  events: [
-    { image:'images/events/event-8-sial-paris.jpg', banner:true,
-      title:{ar:'إيجي جالف فودز في SIAL باريس', en:'EgyGulf Foods at SIAL Paris'},
-      sub:{ar:'اكتشف حلولنا الغذائية في باريس', en:'Discover our food solutions in Paris'} },
-    { image:'images/events/event-7-new-product.jpg', banner:true,
-      title:{ar:'منتج جديد: كريزي كريسبس', en:'New Product: Crazy Crisps'},
-      sub:{ar:'نكهات جديدة من كريسبس الذرة المقرمشة', en:'New flavours of crispy corn crisps'} },
-    { image:'images/events/event-1.jpg', position:'center 35%',
-      title:{ar:'اجتماع مع أحد الموزعين', en:'Meeting with a Distributor'},
-      sub:{ar:'مناقشة تفاصيل التعاون على هامش المعرض', en:'Working out partnership details on the sidelines'} },
-    { image:'images/events/event-4.jpg', position:'center 40%',
-      title:{ar:'جولة على أجنحة المعرض', en:'Touring the Exhibition Halls'},
-      sub:{ar:'تواصل مباشر مع العارضين وشركاء الصناعة', en:'Connecting with exhibitors and industry partners'} },
-    { image:'images/events/event-5.jpg', position:'center 30%',
-      title:{ar:'لقاءات وشراكات جديدة', en:'New Meetings and Partnerships'},
-      sub:{ar:'تبادل الخبرات مع زملاء الصناعة', en:'Exchanging insight with industry peers'} },
+  "settings": {
+    "siteUrl": "https://www.egygulf-foods.com",
+    "email": "export@egygulf-foods.com",
+    "phones": [
+      "01099281170",
+      "01222574360"
+    ],
+    "whatsapp": "",
+    "facebook": "https://www.facebook.com/egygulffoods",
+    "instagram": "https://www.instagram.com/egygulffoods/",
+    "linkedin": "https://www.linkedin.com/company/102147127/",
+    "formEndpoint": "https://formspree.io/f/maewjkel"
+  },
+  "images": {
+    "heroMosaic": "images/products-mosaic.webp",
+    "snacksMosaic": "images/snacks-mosaic.webp",
+    "candyMosaic": "images/candy-mosaic.webp",
+    "aboutImage": "images/logo.png",
+    "chairmanPhoto": "",
+    "expoVideo": "images/videos/expo-booth.mp4"
+  },
+  "stats": [
+    {
+      "value": "2004",
+      "label": {
+        "ar": "سنة التأسيس",
+        "en": "Founded"
+      }
+    },
+    {
+      "value": "9",
+      "label": {
+        "ar": "خطوط إنتاج",
+        "en": "Production lines"
+      }
+    },
+    {
+      "value": "6",
+      "label": {
+        "ar": "علامات تجارية",
+        "en": "House brands"
+      }
+    },
+    {
+      "value": "28",
+      "label": {
+        "ar": "دولة تصدير",
+        "en": "Export countries"
+      }
+    }
   ],
-  brands: [
-    { key:'chillout', category:'snacks', color:'#2E2A74', init:{ar:'C',en:'C'}, logo:'images/brands/chillout.webp',
-      name:{ar:'شيل آوت', en:'ChillOut'},
-      desc:{ar:'سناكس وشيبس مخبوز غير مقلي: أوت شيبس، فاير فينجرز، بوفس، فشار جورميه، وسوداني مغطى — بـ70% دهون أقل.', en:'Baked, never-fried snacks: oat chips, fire fingers, puffs, gourmet popcorn and coated peanuts — 70% less fat.'},
-      tag:{ar:'سناكس وشيبس', en:'Snacks & Chips'} },
-    { key:'special', category:'snacks', color:'#C0392B', init:{ar:'S',en:'S'}, logo:'images/special.webp',
-      name:{ar:'سبيشيال', en:'Special'},
-      desc:{ar:'بافس مقرمشة بنكهات متنوعة، تعبئة أكياس بأحجام مختلفة تناسب أي رف بيع.', en:'Crunchy puffs in a range of flavours, bagged in multiple sizes for any shelf.'},
-      tag:{ar:'بافس', en:'Puffs'} },
-    { key:'bozo', category:'snacks', color:'#14123B', init:{ar:'B',en:'B'}, logo:'images/bravo.webp',
-      name:{ar:'بوزو', en:'Bozo'},
-      desc:{ar:'بافس بنكهات جريئة من علامة برافو، تعبئة أكياس عملية.', en:'Bold-flavoured puffs from the Bravo brand, in practical bag packs.'},
-      tag:{ar:'بافس', en:'Puffs'} },
-    { key:'crazy', category:'snacks', color:'#D62839', init:{ar:'C',en:'C'}, logo:'images/crazy.webp',
-      name:{ar:'كريزي', en:'Crazy'},
-      desc:{ar:'كريسبس وفرايدو ذرة مقرمشة بنكهات متعددة من علامة زجزاج.', en:'Crispy corn crisps and Frido snacks in multiple flavours from Zegzag.'},
-      tag:{ar:'كريسبس وفرايدو', en:'Crisps & Frido'} },
-    { key:'lightpop', category:'candy', color:'#FDB815', init:{ar:'L',en:'L'}, logo:'images/lightpop.webp',
-      name:{ar:'لايت بوب', en:'Light Pop'},
-      desc:{ar:'مصاصات ولولي بوب بأشكال وتعبئات متعددة (أكياس، شجرة، حافلة، برطمان)، وبونبون وتوفي وإكلير.', en:'Lollipops in bags, jars and display stands, plus bonbon, toffee and eclair candy.'},
-      tag:{ar:'مصاصات وحلوى', en:'Lollipops & Candy'} },
-    { key:'honeygum', category:'candy', color:'#201C63', init:{ar:'H',en:'H'}, logo:'images/brands/honey.webp',
-      name:{ar:'هَني', en:'Honey'},
-      desc:{ar:'لبان محشو بنكهات الفاكهة والنعناع، تعبئة علبة وبرطمان.', en:'Center-filled chewing gum in fruit and mint flavours, boxed or jarred.'},
-      tag:{ar:'لبان', en:'Chewing Gum'} },
-    { key:'mojo', category:'candy', color:'#FFCB4D', init:{ar:'M',en:'M'}, logo:'images/mojo.webp',
-      name:{ar:'موجو', en:'MOJO'},
-      desc:{ar:'لولي بوب محشو ببابل جم بتصميم كرتوني موجه للأطفال.', en:'Bubble-gum-filled lollipops with playful cartoon packaging for kids.'},
-      tag:{ar:'لولي بوب للأطفال', en:"Kids' Lollipops"} },
-    { key:'tuttilolly', category:'candy', color:'#4A44A8', init:{ar:'T',en:'T'}, logo:'images/tuttilolly.webp',
-      name:{ar:'توتي لولي', en:'Tutti Lolly'},
-      desc:{ar:'لولي بوب حجم ميني بخلطة فواكه طبيعية الألوان.', en:'Mini-size lollipops in a natural-colour fruit blend.'},
-      tag:{ar:'لولي بوب ميني', en:'Mini Lollipops'} },
-    { key:'bravo', category:'candy', color:'#14123B', init:{ar:'B',en:'B'}, logo:'images/bravo.webp',
-      name:{ar:'برافو لايت', en:'Bravo Light'},
-      desc:{ar:'حلوى صلبة ولبان خاليين تماماً من السكر المضاف.', en:'Sugar-free hard candy and chewing gum, 0% added sugar.'},
-      tag:{ar:'خالي من السكر', en:'Sugar-Free'} },
+  "events": [
+    {
+      "image": "images/events/event-8-sial-paris.jpg",
+      "banner": true,
+      "title": {
+        "ar": "إيجي جالف فودز في SIAL باريس",
+        "en": "EgyGulf Foods at SIAL Paris"
+      },
+      "sub": {
+        "ar": "اكتشف حلولنا الغذائية في باريس",
+        "en": "Discover our food solutions in Paris"
+      }
+    },
+    {
+      "image": "images/events/event-7-new-product.jpg",
+      "banner": true,
+      "title": {
+        "ar": "منتج جديد: كريزي كريسبس",
+        "en": "New Product: Crazy Crisps"
+      },
+      "sub": {
+        "ar": "نكهات جديدة من كريسبس الذرة المقرمشة",
+        "en": "New flavours of crispy corn crisps"
+      }
+    },
+    {
+      "image": "images/events/event-1.jpg",
+      "position": "center 35%",
+      "title": {
+        "ar": "اجتماع مع أحد الموزعين",
+        "en": "Meeting with a Distributor"
+      },
+      "sub": {
+        "ar": "مناقشة تفاصيل التعاون على هامش المعرض",
+        "en": "Working out partnership details on the sidelines"
+      }
+    },
+    {
+      "image": "images/events/event-4.jpg",
+      "position": "center 40%",
+      "title": {
+        "ar": "جولة على أجنحة المعرض",
+        "en": "Touring the Exhibition Halls"
+      },
+      "sub": {
+        "ar": "تواصل مباشر مع العارضين وشركاء الصناعة",
+        "en": "Connecting with exhibitors and industry partners"
+      }
+    },
+    {
+      "image": "images/events/event-5.jpg",
+      "position": "center 30%",
+      "title": {
+        "ar": "لقاءات وشراكات جديدة",
+        "en": "New Meetings and Partnerships"
+      },
+      "sub": {
+        "ar": "تبادل الخبرات مع زملاء الصناعة",
+        "en": "Exchanging insight with industry peers"
+      }
+    }
   ],
-  products: [
-    { name:{ar:'أوت شيبس', en:'Oat Chips'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'50-60 جم، عبوة (15 كيس)', en:'50-60g, bag pack (15 bags)'},
-      details:{ar:'شيبس شوفان مخبوز غير مقلي، بـ70% دهون أقل، مصنوع من حبوب كاملة وغني بالبروتين والألياف.', en:'Baked, never-fried oat chips with 70% less fat, made with whole grains and high in protein and fibers.'},
-      flavors:[
-        { img:'images/cheese.webp', name:{ar:'جبنة', en:'Cheese'} },
-        { img:'images/sweet-lemon.webp', name:{ar:'ليمون حلو', en:'Sweet Lemon'} },
-        { img:'images/sour-cream.webp', name:{ar:'قشدة حامضة', en:'Sour Cream'} },
-        { img:'images/smokey-bbq.webp', name:{ar:'باربكيو مدخن', en:'Smokey BBQ'} },
-        { img:'images/chicken.webp', name:{ar:'دجاج', en:'Chicken'} },
-        { img:'images/flamin-hot.webp', name:{ar:'حار لاهب', en:"Flamin' Hot"} },
-        { img:'images/grilled-ribs.webp', name:{ar:'ريش مشوية', en:'Grilled Ribs'} },
-        { img:'images/sweet-chilli.webp', name:{ar:'شيلي حلو', en:'Sweet Chilli'} },
-      ] },
-    { name:{ar:'فاير فينجرز', en:'Fire Fingers'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'50-60 جم، عبوة (15 كيس)', en:'50-60g, bag pack (15 bags)'},
-      details:{ar:'مقرمشات ذرة مخفوفة غير مقلية بنكهات حارة جريئة.', en:'Puffed, never-fried corn crisps in bold spicy flavours.'},
-      flavors:[
-        { img:'images/fire-fingers-spicy-shrimp.webp', name:{ar:'جمبري حار', en:'Spicy Shrimp'} },
-        { img:'images/fire-fingers-spicy-salsa.webp', name:{ar:'طاطة حارة', en:'Spicy Salsa'} },
-        { img:'images/fire-fingers-spicy-honey.webp', name:{ar:'عسل حار', en:'Spicy Honey'} },
-        { img:'images/fire-fingers-spicy-lemon.webp', name:{ar:'ليمون حار', en:'Spicy Lemon'} },
-        { img:'images/fire-fingers-spicy-cheese.webp', name:{ar:'جبنة حارة', en:'Spicy Cheese'} },
-        { img:'images/fire-fingers-spicy-chicken.webp', name:{ar:'دجاج سامبينج حار', en:'Spicy Chicken'} },
-      ] },
-    { name:{ar:'كرانشي فينجرز', en:'Crunchy Fingers'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'30 جم، عبوة (15 كيس)', en:'30g, bag pack (15 bags)'},
-      details:{ar:'أصابع ذرة مقرمشة غير مقلية، من حبوب كاملة وبدون مواد حافظة.', en:'Never-fried crunchy corn fingers, made from whole grains with no preservatives.'},
-      flavors:[
-        { img:'images/crunchy-corn-fingers-spice-lemon.webp', name:{ar:'ليمون حار', en:'Spice Lemon'} },
-        { img:'images/crunchy-corn-fingers-barbeque.webp', name:{ar:'باربكيو', en:'Barbeque'} },
-        { img:'images/crunchy-corn-fingers-sweet-pepper.webp', name:{ar:'فلفل حلو', en:'Sweet Pepper'} },
-        { img:'images/crunchy-corn-fingers-cheddar-cheese.webp', name:{ar:'جبنة تشيدر', en:'Cheddar Cheese'} },
-        { img:'images/crunchy-corn-fingers-chicken.webp', name:{ar:'دجاج', en:'Chicken'} },
-        { img:'images/crunchy-corn-fingers-shrimps.webp', name:{ar:'جمبري', en:'Shrimps'} },
-        { img:'images/crunchy-corn-fingers-tomatoes.webp', name:{ar:'طماطم', en:'Tomatoes'} },
-      ] },
-    { name:{ar:'حلقات الشوفان', en:'Oat Rings'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'50-60 جم، عبوة (15 كيس)', en:'50-60g, bag pack (15 bags)'},
-      details:{ar:'حلقات شوفان مخبوزة بالكامل، غنية بالألياف ومصنوعة من حبوب كاملة.', en:'Fully baked oat rings, high in fibre and made from whole grains.'},
-      flavors:[
-        { img:'images/oat-rings-seasoned-cheese.webp', name:{ar:'جبنة متبلة', en:'Seasoned Cheese'} },
-        { img:'images/oat-rings-sour-cream.webp', name:{ar:'كريمة حامضة', en:'Sour Cream'} },
-        { img:'images/oat-rings-grilled-chicken.webp', name:{ar:'دجاج مشوي', en:'Grilled Chicken'} },
-        { img:'images/oat-rings-spicy-shrimp.webp', name:{ar:'جمبري حار', en:'Spicy Shrimp'} },
-        { img:'images/oat-rings-tomato-basil.webp', name:{ar:'طماطم وريحان', en:'Tomato & Basil'} },
-        { img:'images/oat-rings-sweet-chilli.webp', name:{ar:'شيلي حلو', en:'Sweet Chilli'} },
-      ] },
-    { name:{ar:'كريزي كريسبس بوب كورن', en:'Crazy Crisps Popcorn'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      details:{ar:'كريسبس بوب كورن مقرمشة بنكهات جريئة.', en:'Crunchy popcorn-shaped crisps in bold flavours.'},
-      flavors:[
-        { img:'images/crazy-crisps-popcorn-lemon-twist.webp', name:{ar:'ليمون تويست', en:'Lemon Twist'} },
-        { img:'images/crazy-crisps-popcorn-chili-shrimp.webp', name:{ar:'جمبري تشيلي', en:'Chili Shrimp'} },
-      ] },
-    { name:{ar:'سوداني مغطى', en:'Coated Peanuts'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'50 جم، عبوة (20 كيس)', en:'50g, bag pack (20 bags)'},
-      details:{ar:'فول سوداني مقرمش مغطى بطبقة متبلة، متوفر بعدة نكهات.', en:'Crunchy coated peanuts with a seasoned crust, available in several flavours.'},
-      flavors:[
-        { img:'images/coated-peanuts-bbq.webp', name:{ar:'باربكيو', en:'BBQ'} },
-        { img:'images/coated-peanuts-salt-vinegar.webp', name:{ar:'ملح وخل', en:'Salt & Vinegar'} },
-        { img:'images/coated-peanuts-cheese.webp', name:{ar:'جبنة', en:'Cheese'} },
-        { img:'images/coated-peanuts-paprika.webp', name:{ar:'بابريكا', en:'Paprika'} },
-      ] },
-    { name:{ar:'فشار جورميه', en:'Gourmet Popcorn'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'40-50 جم، عبوة (15 كيس)', en:'40-50g, bag pack (15 bags)'},
-      details:{ar:'فشار مقرمش بالهواء، خالٍ من الجلوتين وGMO، بنكهات جورميه متنوعة.', en:'Air-popped, gluten-free, non-GMO popcorn in gourmet flavours.'},
-      flavors:[
-        { img:'images/gourmet-popcorn-sweet-chili.webp', name:{ar:'فلفل حلو حار', en:'Sweet Chili'} },
-        { img:'images/gourmet-popcorn-smoked-bbq.webp', name:{ar:'باربكيو مدخن', en:'Smoked Hickory BBQ'} },
-        { img:'images/gourmet-popcorn-chicken.webp', name:{ar:'دجاج', en:'Chicken'} },
-        { img:'images/gourmet-popcorn-korean-chicken.webp', name:{ar:'دجاج كوري', en:'Korean Chicken'} },
-        { img:'images/gourmet-popcorn-sweet-lemon.webp', name:{ar:'ليمون حلو', en:'Sweet Lemon'} },
-        { img:'images/gourmet-popcorn-sour-cream.webp', name:{ar:'كريمة حامضة', en:'Sour Cream'} },
-        { img:'images/gourmet-popcorn-cheesy-bliss.webp', name:{ar:'جبنة', en:'Cheesy Bliss'} },
-        { img:'images/gourmet-popcorn-spicy-korean-fusion.webp', name:{ar:'كوري حار', en:'Spicy Korean Fusion'} },
-      ] },
-    { name:{ar:'بافس', en:'Puffs'}, brand:{ar:'شيل آوت', en:'ChillOut'}, color:'#2E2A74', category:'snacks',
-      sizes:{ar:'50-60 جم، عبوة (15 كيس)', en:'50-60g, bag pack (15 bags)'},
-      details:{ar:'بافس ذرة مخبوزة في الفرن غير مقلية، بطعم ذهبي حقيقي.', en:'Oven-baked, never-fried corn puffs with the real golden taste.'},
-      flavors:[
-        { img:'images/puffs-creamy-onion.webp', name:{ar:'كريمي أونيون', en:'Creamy Onion'} },
-        { img:'images/puffs-melted-cheese.webp', name:{ar:'جبنة ذايبة', en:'Melted Cheese'} },
-        { img:'images/puffs-korean-chicken.webp', name:{ar:'دجاج كوري', en:'Korean Chicken'} },
-      ] },
-    { name:{ar:'سبيشيال بافس', en:'Special Puffs'}, brand:{ar:'سبيشيال', en:'Special'}, color:'#C0392B', category:'snacks',
-      sizes:{ar:'15 جم / 30 جم / 70 جم', en:'15g / 30g / 70g'},
-      details:{ar:'بافس ذرة مخبوزة غير مقلية، بنكهات جريئة.', en:'Baked, never-fried corn puffs in bold flavours.'},
-      flavors:[
-        { img:'images/special-puffs-sweet-pepper.webp', name:{ar:'فلفل حلو', en:'Sweet Pepper'} },
-      ] },
-    { name:{ar:'بوزو بافس', en:'Bozo Puffs'}, brand:{ar:'برافو', en:'Bravo'}, color:'#14123B', category:'snacks',
-      sizes:{ar:'30-35 جم، عبوة (15 كيس)', en:'30-35g, bag pack (15 bags)'},
-      details:{ar:'مقرمشات ذرة كبيرة ومنفوخة، بافس بأحجام كبيرة وطعم غني.', en:'Big, extra-puffed corn snacks with bold, rich flavours.'},
-      flavors:[
-        { img:'images/bozo-puffs-peanut-butter.webp', name:{ar:'زبدة فول سوداني', en:'Peanut Butter'} },
-        { img:'images/bozo-puffs-hot-seafood.webp', name:{ar:'سي فوود حار', en:'Hot Seafood'} },
-        { img:'images/bozo-puffs-bbq.webp', name:{ar:'باربيكيو', en:'BBQ'} },
-        { img:'images/bozo-puffs-mexican-salsa.webp', name:{ar:'صلصة مكسيكية', en:'Mexican Salsa'} },
-        { img:'images/bozo-puffs-sour-cream-onion.webp', name:{ar:'كريمة حامضة وبصل', en:'Sour Cream & Onion'} },
-        { img:'images/bozo-puffs-cheese.webp', name:{ar:'جبنة', en:'Cheese'} },
-      ] },
-    { name:{ar:'كريزي كريسبس', en:'Crazy Crisps'}, brand:{ar:'زجزاج', en:'Zegzag'}, color:'#1A1A1A', category:'snacks',
-      sizes:{ar:'30-35 جم، عبوة (15 كيس)', en:'30-35g, bag pack (15 bags)'},
-      details:{ar:'كريسبس ذرة محمصة وليست مقلية، طبيعية 100%، بنكهات جريئة.', en:'Roasted, not fried, 100% natural corn crisps in bold flavours.'},
-      flavors:[
-        { img:'images/crazy-crisps-chicken.webp', name:{ar:'دجاج', en:'Chicken'} },
-        { img:'images/crazy-crisps-shrimps.webp', name:{ar:'جمبري', en:'Shrimps'} },
-        { img:'images/crazy-crisps-tomatoes.webp', name:{ar:'طماطم', en:'Tomatoes'} },
-        { img:'images/crazy-crisps-flaming-hot.webp', name:{ar:'حار ناري', en:'Flaming Hot'} },
-      ] },
-    { name:{ar:'كريزي كريسبس كرينكل', en:'Crazy Crisps Crinkle'}, brand:{ar:'زجزاج', en:'Zegzag'}, color:'#D62839', category:'snacks',
-      sizes:{ar:'15 جم، عبوة (100 كيس)', en:'15g, bag pack (100 bags)'},
-      details:{ar:'كريسبس كرينكل بنكهات جريئة ومتنوعة من زجزاج.', en:'Crinkle-cut crisps in bold, varied flavours from Zegzag.'},
-      flavors:[
-        { img:'images/crazy-frido-korean-mixture.webp', name:{ar:'كوريان مكستشر', en:'Korean Mixture'} },
-        { img:'images/crazy-frido-sweet-paprika.webp', name:{ar:'بابريكا حلوة', en:'Sweet Paprika'} },
-        { img:'images/crazy-frido-chili-lemon.webp', name:{ar:'تشيلي وليمون', en:'Chili & Lemon'} },
-        { img:'images/crazy-frido-rich-tomato.webp', name:{ar:'طماطم غنية', en:'Rich Tomato'} },
-      ] },
-    { name:{ar:'لولي بوب مِكس فليفرز', en:'Lollipop Mix Flavors'}, brand:{ar:'لايت بوب', en:'Light Pop'}, color:'#FDB815', category:'candy',
-      sizes:{ar:'14-20 جم للقطعة، أكياس 50-100 قطعة', en:'14-20g per piece, bags of 50-100 pieces'}  },
-    { name:{ar:'لولي بوب فروتس', en:'Fruits Lollipop'}, brand:{ar:'لايت بوب', en:'Light Pop'}, color:'#FDB815', category:'candy',
-      sizes:{ar:'9-15 جم للقطعة، عرض 75-120 قطعة', en:'9-15g per piece, displays of 75-120 pieces'}  },
-    { name:{ar:'بون بون فواكه ولبن', en:'Fruits & Milk Bon Bon'}, brand:{ar:'لايت بوب', en:'Light Pop'}, color:'#FDB815', category:'candy',
-      sizes:{ar:'3-4 جم للقطعة، أكياس/برطمانات 50-250 قطعة', en:'3-4g per piece, bags/jars of 50-250 pieces'},
-      flavors:[ { img:'images/lightpop-fruits-bonbon.webp', name:{ar:'فواكه', en:'Fruits'} } ] },
-    { name:{ar:'توفي', en:'Toffee'}, brand:{ar:'لايت بوب', en:'Light Pop'}, color:'#FDB815', category:'candy',
-      sizes:{ar:'90-100 جم، عبوة (24 كيس)', en:'90-100g, bag pack (24 bags)'}  },
-    { name:{ar:'إكلير لايت', en:'Eclair'}, brand:{ar:'لايت بوب', en:'Light Pop'}, color:'#FDB815', category:'candy',
-      sizes:{ar:'70-80 جم كيس / 400 جم علبة / 200 قطعة برطمان', en:'70-80g bag / 400g box / 200-piece jar'},
-      flavors:[ { img:'images/eclair-light.webp', name:{ar:'كراميل بشوكولاتة', en:'Chocolate Caramel'} } ] },
-    { name:{ar:'لولي بوب محشو بابل جم', en:'Bubble Gum Filled Lollipop'}, brand:{ar:'موجو', en:'MOJO'}, color:'#FFCB4D', category:'candy',
-      sizes:{ar:'14-24 جم للقطعة، علب 30-100 قطعة', en:'14-24g per piece, boxes of 30-100 pieces'}  },
-    { name:{ar:'توتي لولي ميني سايز', en:'Mini Size Lollipop'}, brand:{ar:'توتي لولي', en:'Tutti Lolly'}, color:'#4A44A8', category:'candy',
-      sizes:{ar:'7-8 جم، كيس (50 قطعة)', en:'7-8g, bag (50 pieces)'},
-      flavors:[ { img:'images/tuttilolly-mini.webp', name:{ar:'كولا', en:'Cola'} } ] },
-    { name:{ar:'لبان هَني', en:'Honey Gum'}, brand:{ar:'هَني', en:'Honey'}, color:'#201C63', category:'candy',
-      sizes:{ar:'3-4 جم للقطعة، علب/برطمانات 50-250 قطعة', en:'3-4g per piece, boxes/jars of 50-250 pieces'},
-      flavors:[
-        { img:'images/honey-gum-mint.webp', name:{ar:'نعناع', en:'Mint'} },
-        { img:'images/honey-gum-green-apple.webp', name:{ar:'تفاح أخضر', en:'Green Apple'} },
-        { img:'images/honey-gum-strawberry.webp', name:{ar:'فراولة', en:'Strawberry'} },
-        { img:'images/honey-gum-cola.webp', name:{ar:'كولا', en:'Cola'} },
-        { img:'images/honey-gum-mango.webp', name:{ar:'مانجو', en:'Mango'} },
-        { img:'images/honey-gum-banana.webp', name:{ar:'موز', en:'Banana'} },
-        { img:'images/honey-gum-mix.webp', name:{ar:'نكهات مشكلة', en:'Mix Flavors'} },
-      ] },
-    { name:{ar:'حلوى ولبان خالي من السكر', en:'Sugar-Free Candy & Gum'}, brand:{ar:'برافو لايت', en:'Bravo Light'}, color:'#14123B', category:'candy',
-      sizes:{ar:'30-45 جم، علبة (24 علبة)', en:'30-45g, box pack (24 boxes)'}  },
+  "brands": [
+    {
+      "key": "chillout",
+      "category": "snacks",
+      "color": "#2E2A74",
+      "init": {
+        "ar": "C",
+        "en": "C"
+      },
+      "logo": "images/brands/chillout.webp",
+      "name": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "desc": {
+        "ar": "سناكس وشيبس مخبوز غير مقلي: أوت شيبس، فاير فينجرز، بوفس، فشار جورميه، وسوداني مغطى — بـ70% دهون أقل.",
+        "en": "Baked, never-fried snacks: oat chips, fire fingers, puffs, gourmet popcorn and coated peanuts — 70% less fat."
+      },
+      "tag": {
+        "ar": "سناكس وشيبس",
+        "en": "Snacks & Chips"
+      }
+    },
+    {
+      "key": "special",
+      "category": "snacks",
+      "color": "#C0392B",
+      "init": {
+        "ar": "S",
+        "en": "S"
+      },
+      "logo": "images/special.webp",
+      "name": {
+        "ar": "سبيشيال",
+        "en": "Special"
+      },
+      "desc": {
+        "ar": "بافس مقرمشة بنكهات متنوعة، تعبئة أكياس بأحجام مختلفة تناسب أي رف بيع.",
+        "en": "Crunchy puffs in a range of flavours, bagged in multiple sizes for any shelf."
+      },
+      "tag": {
+        "ar": "بافس",
+        "en": "Puffs"
+      }
+    },
+    {
+      "key": "bozo",
+      "category": "snacks",
+      "color": "#14123B",
+      "init": {
+        "ar": "B",
+        "en": "B"
+      },
+      "logo": "images/bravo.webp",
+      "name": {
+        "ar": "بوزو",
+        "en": "Bozo"
+      },
+      "desc": {
+        "ar": "بافس بنكهات جريئة من علامة برافو، تعبئة أكياس عملية.",
+        "en": "Bold-flavoured puffs from the Bravo brand, in practical bag packs."
+      },
+      "tag": {
+        "ar": "بافس",
+        "en": "Puffs"
+      }
+    },
+    {
+      "key": "crazy",
+      "category": "snacks",
+      "color": "#D62839",
+      "init": {
+        "ar": "C",
+        "en": "C"
+      },
+      "logo": "images/crazy.webp",
+      "name": {
+        "ar": "كريزي",
+        "en": "Crazy"
+      },
+      "desc": {
+        "ar": "كريسبس وفرايدو ذرة مقرمشة بنكهات متعددة من علامة زجزاج.",
+        "en": "Crispy corn crisps and Frido snacks in multiple flavours from Zegzag."
+      },
+      "tag": {
+        "ar": "كريسبس وفرايدو",
+        "en": "Crisps & Frido"
+      }
+    },
+    {
+      "key": "lightpop",
+      "category": "candy",
+      "color": "#FDB815",
+      "init": {
+        "ar": "L",
+        "en": "L"
+      },
+      "logo": "images/lightpop.webp",
+      "name": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "desc": {
+        "ar": "مصاصات ولولي بوب بأشكال وتعبئات متعددة (أكياس، شجرة، حافلة، برطمان)، وبونبون وتوفي وإكلير.",
+        "en": "Lollipops in bags, jars and display stands, plus bonbon, toffee and eclair candy."
+      },
+      "tag": {
+        "ar": "مصاصات وحلوى",
+        "en": "Lollipops & Candy"
+      }
+    },
+    {
+      "key": "honeygum",
+      "category": "candy",
+      "color": "#201C63",
+      "init": {
+        "ar": "H",
+        "en": "H"
+      },
+      "logo": "images/brands/honey.webp",
+      "name": {
+        "ar": "هَني",
+        "en": "Honey"
+      },
+      "desc": {
+        "ar": "لبان محشو بنكهات الفاكهة والنعناع، تعبئة علبة وبرطمان.",
+        "en": "Center-filled chewing gum in fruit and mint flavours, boxed or jarred."
+      },
+      "tag": {
+        "ar": "لبان",
+        "en": "Chewing Gum"
+      }
+    },
+    {
+      "key": "mojo",
+      "category": "candy",
+      "color": "#FFCB4D",
+      "init": {
+        "ar": "M",
+        "en": "M"
+      },
+      "logo": "images/mojo.webp",
+      "name": {
+        "ar": "موجو",
+        "en": "MOJO"
+      },
+      "desc": {
+        "ar": "لولي بوب محشو ببابل جم بتصميم كرتوني موجه للأطفال.",
+        "en": "Bubble-gum-filled lollipops with playful cartoon packaging for kids."
+      },
+      "tag": {
+        "ar": "لولي بوب للأطفال",
+        "en": "Kids' Lollipops"
+      }
+    },
+    {
+      "key": "tuttilolly",
+      "category": "candy",
+      "color": "#4A44A8",
+      "init": {
+        "ar": "T",
+        "en": "T"
+      },
+      "logo": "images/tuttilolly.webp",
+      "name": {
+        "ar": "توتي لولي",
+        "en": "Tutti Lolly"
+      },
+      "desc": {
+        "ar": "لولي بوب حجم ميني بخلطة فواكه طبيعية الألوان.",
+        "en": "Mini-size lollipops in a natural-colour fruit blend."
+      },
+      "tag": {
+        "ar": "لولي بوب ميني",
+        "en": "Mini Lollipops"
+      }
+    },
+    {
+      "key": "bravo",
+      "category": "candy",
+      "color": "#14123B",
+      "init": {
+        "ar": "B",
+        "en": "B"
+      },
+      "logo": "images/bravo.webp",
+      "name": {
+        "ar": "برافو لايت",
+        "en": "Bravo Light"
+      },
+      "desc": {
+        "ar": "حلوى صلبة ولبان خاليين تماماً من السكر المضاف.",
+        "en": "Sugar-free hard candy and chewing gum, 0% added sugar."
+      },
+      "tag": {
+        "ar": "خالي من السكر",
+        "en": "Sugar-Free"
+      }
+    }
   ],
-  certifications: [
-    { name:{ar:'شهادة حلال', en:'HALAL Certified'}, code:'HALAL' },
-    { name:{ar:'ISO 22000', en:'ISO 22000'}, code:'FOOD SAFETY' },
-    { name:{ar:'ISO 9001', en:'ISO 9001'}, code:'QUALITY MGMT' },
-    { name:{ar:'HACCP', en:'HACCP'}, code:'HAZARD CONTROL' },
-    { name:{ar:'اعتماد FDA', en:'FDA Registered'}, code:'US MARKET' },
+  "products": [
+    {
+      "name": {
+        "ar": "أوت شيبس",
+        "en": "Oat Chips"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "50-60 جم، عبوة (15 كيس)",
+        "en": "50-60g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "شيبس شوفان مخبوز غير مقلي، بـ70% دهون أقل، مصنوع من حبوب كاملة وغني بالبروتين والألياف.",
+        "en": "Baked, never-fried oat chips with 70% less fat, made with whole grains and high in protein and fibers."
+      },
+      "flavors": [
+        {
+          "img": "images/cheese.webp",
+          "name": {
+            "ar": "جبنة",
+            "en": "Cheese"
+          }
+        },
+        {
+          "img": "images/sweet-lemon.webp",
+          "name": {
+            "ar": "ليمون حلو",
+            "en": "Sweet Lemon"
+          }
+        },
+        {
+          "img": "images/sour-cream.webp",
+          "name": {
+            "ar": "قشدة حامضة",
+            "en": "Sour Cream"
+          }
+        },
+        {
+          "img": "images/smokey-bbq.webp",
+          "name": {
+            "ar": "باربكيو مدخن",
+            "en": "Smokey BBQ"
+          }
+        },
+        {
+          "img": "images/chicken.webp",
+          "name": {
+            "ar": "دجاج",
+            "en": "Chicken"
+          }
+        },
+        {
+          "img": "images/flamin-hot.webp",
+          "name": {
+            "ar": "حار لاهب",
+            "en": "Flamin' Hot"
+          }
+        },
+        {
+          "img": "images/grilled-ribs.webp",
+          "name": {
+            "ar": "ريش مشوية",
+            "en": "Grilled Ribs"
+          }
+        },
+        {
+          "img": "images/sweet-chilli.webp",
+          "name": {
+            "ar": "شيلي حلو",
+            "en": "Sweet Chilli"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "فاير فينجرز",
+        "en": "Fire Fingers"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "50-60 جم، عبوة (15 كيس)",
+        "en": "50-60g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "مقرمشات ذرة مخفوفة غير مقلية بنكهات حارة جريئة.",
+        "en": "Puffed, never-fried corn crisps in bold spicy flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/fire-fingers-spicy-shrimp.webp",
+          "name": {
+            "ar": "جمبري حار",
+            "en": "Spicy Shrimp"
+          }
+        },
+        {
+          "img": "images/fire-fingers-spicy-salsa.webp",
+          "name": {
+            "ar": "طاطة حارة",
+            "en": "Spicy Salsa"
+          }
+        },
+        {
+          "img": "images/fire-fingers-spicy-honey.webp",
+          "name": {
+            "ar": "عسل حار",
+            "en": "Spicy Honey"
+          }
+        },
+        {
+          "img": "images/fire-fingers-spicy-lemon.webp",
+          "name": {
+            "ar": "ليمون حار",
+            "en": "Spicy Lemon"
+          }
+        },
+        {
+          "img": "images/fire-fingers-spicy-cheese.webp",
+          "name": {
+            "ar": "جبنة حارة",
+            "en": "Spicy Cheese"
+          }
+        },
+        {
+          "img": "images/fire-fingers-spicy-chicken.webp",
+          "name": {
+            "ar": "دجاج سامبينج حار",
+            "en": "Spicy Chicken"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "كرانشي فينجرز",
+        "en": "Crunchy Fingers"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "30 جم، عبوة (15 كيس)",
+        "en": "30g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "أصابع ذرة مقرمشة غير مقلية، من حبوب كاملة وبدون مواد حافظة.",
+        "en": "Never-fried crunchy corn fingers, made from whole grains with no preservatives."
+      },
+      "flavors": [
+        {
+          "img": "images/crunchy-corn-fingers-spice-lemon.webp",
+          "name": {
+            "ar": "ليمون حار",
+            "en": "Spice Lemon"
+          }
+        },
+        {
+          "img": "images/crunchy-corn-fingers-barbeque.webp",
+          "name": {
+            "ar": "باربكيو",
+            "en": "Barbeque"
+          }
+        },
+        {
+          "img": "images/crunchy-corn-fingers-sweet-pepper.webp",
+          "name": {
+            "ar": "فلفل حلو",
+            "en": "Sweet Pepper"
+          }
+        },
+        {
+          "img": "images/crunchy-corn-fingers-cheddar-cheese.webp",
+          "name": {
+            "ar": "جبنة تشيدر",
+            "en": "Cheddar Cheese"
+          }
+        },
+        {
+          "img": "images/crunchy-corn-fingers-chicken.webp",
+          "name": {
+            "ar": "دجاج",
+            "en": "Chicken"
+          }
+        },
+        {
+          "img": "images/crunchy-corn-fingers-shrimps.webp",
+          "name": {
+            "ar": "جمبري",
+            "en": "Shrimps"
+          }
+        },
+        {
+          "img": "images/crunchy-corn-fingers-tomatoes.webp",
+          "name": {
+            "ar": "طماطم",
+            "en": "Tomatoes"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "حلقات الشوفان",
+        "en": "Oat Rings"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "50-60 جم، عبوة (15 كيس)",
+        "en": "50-60g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "حلقات شوفان مخبوزة بالكامل، غنية بالألياف ومصنوعة من حبوب كاملة.",
+        "en": "Fully baked oat rings, high in fibre and made from whole grains."
+      },
+      "flavors": [
+        {
+          "img": "images/oat-rings-seasoned-cheese.webp",
+          "name": {
+            "ar": "جبنة متبلة",
+            "en": "Seasoned Cheese"
+          }
+        },
+        {
+          "img": "images/oat-rings-sour-cream.webp",
+          "name": {
+            "ar": "كريمة حامضة",
+            "en": "Sour Cream"
+          }
+        },
+        {
+          "img": "images/oat-rings-grilled-chicken.webp",
+          "name": {
+            "ar": "دجاج مشوي",
+            "en": "Grilled Chicken"
+          }
+        },
+        {
+          "img": "images/oat-rings-spicy-shrimp.webp",
+          "name": {
+            "ar": "جمبري حار",
+            "en": "Spicy Shrimp"
+          }
+        },
+        {
+          "img": "images/oat-rings-tomato-basil.webp",
+          "name": {
+            "ar": "طماطم وريحان",
+            "en": "Tomato & Basil"
+          }
+        },
+        {
+          "img": "images/oat-rings-sweet-chilli.webp",
+          "name": {
+            "ar": "شيلي حلو",
+            "en": "Sweet Chilli"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "كريزي كريسبس بوب كورن",
+        "en": "Crazy Crisps Popcorn"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "details": {
+        "ar": "كريسبس بوب كورن مقرمشة بنكهات جريئة.",
+        "en": "Crunchy popcorn-shaped crisps in bold flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/crazy-crisps-popcorn-lemon-twist.webp",
+          "name": {
+            "ar": "ليمون تويست",
+            "en": "Lemon Twist"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-chili-shrimp.webp",
+          "name": {
+            "ar": "جمبري تشيلي",
+            "en": "Chili Shrimp"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "سوداني مغطى",
+        "en": "Coated Peanuts"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "50 جم، عبوة (20 كيس)",
+        "en": "50g, bag pack (20 bags)"
+      },
+      "details": {
+        "ar": "فول سوداني مقرمش مغطى بطبقة متبلة، متوفر بعدة نكهات.",
+        "en": "Crunchy coated peanuts with a seasoned crust, available in several flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/coated-peanuts-bbq.webp",
+          "name": {
+            "ar": "باربكيو",
+            "en": "BBQ"
+          }
+        },
+        {
+          "img": "images/coated-peanuts-salt-vinegar.webp",
+          "name": {
+            "ar": "ملح وخل",
+            "en": "Salt & Vinegar"
+          }
+        },
+        {
+          "img": "images/coated-peanuts-cheese.webp",
+          "name": {
+            "ar": "جبنة",
+            "en": "Cheese"
+          }
+        },
+        {
+          "img": "images/coated-peanuts-paprika.webp",
+          "name": {
+            "ar": "بابريكا",
+            "en": "Paprika"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "فشار جورميه",
+        "en": "Gourmet Popcorn"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "40-50 جم، عبوة (15 كيس)",
+        "en": "40-50g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "فشار مقرمش بالهواء، خالٍ من الجلوتين وGMO، بنكهات جورميه متنوعة.",
+        "en": "Air-popped, gluten-free, non-GMO popcorn in gourmet flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/gourmet-popcorn-sweet-chili.webp",
+          "name": {
+            "ar": "فلفل حلو حار",
+            "en": "Sweet Chili"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-smoked-bbq.webp",
+          "name": {
+            "ar": "باربكيو مدخن",
+            "en": "Smoked Hickory BBQ"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-chicken.webp",
+          "name": {
+            "ar": "دجاج",
+            "en": "Chicken"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-korean-chicken.webp",
+          "name": {
+            "ar": "دجاج كوري",
+            "en": "Korean Chicken"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-sweet-lemon.webp",
+          "name": {
+            "ar": "ليمون حلو",
+            "en": "Sweet Lemon"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-sour-cream.webp",
+          "name": {
+            "ar": "كريمة حامضة",
+            "en": "Sour Cream"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-cheesy-bliss.webp",
+          "name": {
+            "ar": "جبنة",
+            "en": "Cheesy Bliss"
+          }
+        },
+        {
+          "img": "images/gourmet-popcorn-spicy-korean-fusion.webp",
+          "name": {
+            "ar": "كوري حار",
+            "en": "Spicy Korean Fusion"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "بافس",
+        "en": "Puffs"
+      },
+      "brand": {
+        "ar": "شيل آوت",
+        "en": "ChillOut"
+      },
+      "color": "#2E2A74",
+      "category": "snacks",
+      "sizes": {
+        "ar": "50-60 جم، عبوة (15 كيس)",
+        "en": "50-60g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "بافس ذرة مخبوزة في الفرن غير مقلية، بطعم ذهبي حقيقي.",
+        "en": "Oven-baked, never-fried corn puffs with the real golden taste."
+      },
+      "flavors": [
+        {
+          "img": "images/puffs-creamy-onion.webp",
+          "name": {
+            "ar": "كريمي أونيون",
+            "en": "Creamy Onion"
+          }
+        },
+        {
+          "img": "images/puffs-melted-cheese.webp",
+          "name": {
+            "ar": "جبنة ذايبة",
+            "en": "Melted Cheese"
+          }
+        },
+        {
+          "img": "images/puffs-korean-chicken.webp",
+          "name": {
+            "ar": "دجاج كوري",
+            "en": "Korean Chicken"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "سبيشيال بافس",
+        "en": "Special Puffs"
+      },
+      "brand": {
+        "ar": "سبيشيال",
+        "en": "Special"
+      },
+      "color": "#C0392B",
+      "category": "snacks",
+      "sizes": {
+        "ar": "15 جم / 30 جم / 70 جم",
+        "en": "15g / 30g / 70g"
+      },
+      "details": {
+        "ar": "بافس ذرة مخبوزة غير مقلية، بنكهات جريئة.",
+        "en": "Baked, never-fried corn puffs in bold flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/special-puffs-sweet-pepper.webp",
+          "name": {
+            "ar": "فلفل حلو",
+            "en": "Sweet Pepper"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "بوزو بافس",
+        "en": "Bozo Puffs"
+      },
+      "brand": {
+        "ar": "برافو",
+        "en": "Bravo"
+      },
+      "color": "#14123B",
+      "category": "snacks",
+      "sizes": {
+        "ar": "30-35 جم، عبوة (15 كيس)",
+        "en": "30-35g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "مقرمشات ذرة كبيرة ومنفوخة، بافس بأحجام كبيرة وطعم غني.",
+        "en": "Big, extra-puffed corn snacks with bold, rich flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/bozo-puffs-peanut-butter.webp",
+          "name": {
+            "ar": "زبدة فول سوداني",
+            "en": "Peanut Butter"
+          }
+        },
+        {
+          "img": "images/bozo-puffs-hot-seafood.webp",
+          "name": {
+            "ar": "سي فوود حار",
+            "en": "Hot Seafood"
+          }
+        },
+        {
+          "img": "images/bozo-puffs-bbq.webp",
+          "name": {
+            "ar": "باربيكيو",
+            "en": "BBQ"
+          }
+        },
+        {
+          "img": "images/bozo-puffs-mexican-salsa.webp",
+          "name": {
+            "ar": "صلصة مكسيكية",
+            "en": "Mexican Salsa"
+          }
+        },
+        {
+          "img": "images/bozo-puffs-sour-cream-onion.webp",
+          "name": {
+            "ar": "كريمة حامضة وبصل",
+            "en": "Sour Cream & Onion"
+          }
+        },
+        {
+          "img": "images/bozo-puffs-cheese.webp",
+          "name": {
+            "ar": "جبنة",
+            "en": "Cheese"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "كريزي كريسبس",
+        "en": "Crazy Crisps"
+      },
+      "brand": {
+        "ar": "زجزاج",
+        "en": "Zegzag"
+      },
+      "color": "#1A1A1A",
+      "category": "snacks",
+      "sizes": {
+        "ar": "30-35 جم، عبوة (15 كيس)",
+        "en": "30-35g, bag pack (15 bags)"
+      },
+      "details": {
+        "ar": "كريسبس ذرة محمصة وليست مقلية، طبيعية 100%، بنكهات جريئة.",
+        "en": "Roasted, not fried, 100% natural corn crisps in bold flavours."
+      },
+      "flavors": [
+        {
+          "img": "images/crazy-crisps-chicken.webp",
+          "name": {
+            "ar": "دجاج",
+            "en": "Chicken"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-shrimps.webp",
+          "name": {
+            "ar": "جمبري",
+            "en": "Shrimps"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-tomatoes.webp",
+          "name": {
+            "ar": "طماطم",
+            "en": "Tomatoes"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-flaming-hot.webp",
+          "name": {
+            "ar": "حار ناري",
+            "en": "Flaming Hot"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "كريزي كريسبس كرينكل",
+        "en": "Crazy Crisps Crinkle"
+      },
+      "brand": {
+        "ar": "زجزاج",
+        "en": "Zegzag"
+      },
+      "color": "#D62839",
+      "category": "snacks",
+      "sizes": {
+        "ar": "15 جم، عبوة (100 كيس)",
+        "en": "15g, bag pack (100 bags)"
+      },
+      "details": {
+        "ar": "كريسبس كرينكل بنكهات جريئة ومتنوعة من زجزاج.",
+        "en": "Crinkle-cut crisps in bold, varied flavours from Zegzag."
+      },
+      "flavors": [
+        {
+          "img": "images/crazy-frido-korean-mixture.webp",
+          "name": {
+            "ar": "كوريان مكستشر",
+            "en": "Korean Mixture"
+          }
+        },
+        {
+          "img": "images/crazy-frido-sweet-paprika.webp",
+          "name": {
+            "ar": "بابريكا حلوة",
+            "en": "Sweet Paprika"
+          }
+        },
+        {
+          "img": "images/crazy-frido-chili-lemon.webp",
+          "name": {
+            "ar": "تشيلي وليمون",
+            "en": "Chili & Lemon"
+          }
+        },
+        {
+          "img": "images/crazy-frido-rich-tomato.webp",
+          "name": {
+            "ar": "طماطم غنية",
+            "en": "Rich Tomato"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "لولي بوب مِكس فليفرز",
+        "en": "Lollipop Mix Flavors"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "14-20 جم للقطعة، أكياس 50-100 قطعة",
+        "en": "14-20g per piece, bags of 50-100 pieces"
+      }
+    },
+    {
+      "name": {
+        "ar": "لولي بوب فروتس",
+        "en": "Fruits Lollipop"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "9-15 جم للقطعة، عرض 75-120 قطعة",
+        "en": "9-15g per piece, displays of 75-120 pieces"
+      }
+    },
+    {
+      "name": {
+        "ar": "بون بون فواكه ولبن",
+        "en": "Fruits & Milk Bon Bon"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "3-4 جم للقطعة، أكياس/برطمانات 50-250 قطعة",
+        "en": "3-4g per piece, bags/jars of 50-250 pieces"
+      },
+      "flavors": [
+        {
+          "img": "images/lightpop-fruits-bonbon.webp",
+          "name": {
+            "ar": "فواكه",
+            "en": "Fruits"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "توفي",
+        "en": "Toffee"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "90-100 جم، عبوة (24 كيس)",
+        "en": "90-100g, bag pack (24 bags)"
+      }
+    },
+    {
+      "name": {
+        "ar": "إكلير لايت",
+        "en": "Eclair"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "70-80 جم كيس / 400 جم علبة / 200 قطعة برطمان",
+        "en": "70-80g bag / 400g box / 200-piece jar"
+      },
+      "flavors": [
+        {
+          "img": "images/eclair-light.webp",
+          "name": {
+            "ar": "كراميل بشوكولاتة",
+            "en": "Chocolate Caramel"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "لولي بوب محشو بابل جم",
+        "en": "Bubble Gum Filled Lollipop"
+      },
+      "brand": {
+        "ar": "موجو",
+        "en": "MOJO"
+      },
+      "color": "#FFCB4D",
+      "category": "candy",
+      "sizes": {
+        "ar": "14-24 جم للقطعة، علب 30-100 قطعة",
+        "en": "14-24g per piece, boxes of 30-100 pieces"
+      }
+    },
+    {
+      "name": {
+        "ar": "توتي لولي ميني سايز",
+        "en": "Mini Size Lollipop"
+      },
+      "brand": {
+        "ar": "توتي لولي",
+        "en": "Tutti Lolly"
+      },
+      "color": "#4A44A8",
+      "category": "candy",
+      "sizes": {
+        "ar": "7-8 جم، كيس (50 قطعة)",
+        "en": "7-8g, bag (50 pieces)"
+      },
+      "flavors": [
+        {
+          "img": "images/tuttilolly-mini.webp",
+          "name": {
+            "ar": "كولا",
+            "en": "Cola"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "لبان هَني",
+        "en": "Honey Gum"
+      },
+      "brand": {
+        "ar": "هَني",
+        "en": "Honey"
+      },
+      "color": "#201C63",
+      "category": "candy",
+      "sizes": {
+        "ar": "3-4 جم للقطعة، علب/برطمانات 50-250 قطعة",
+        "en": "3-4g per piece, boxes/jars of 50-250 pieces"
+      },
+      "flavors": [
+        {
+          "img": "images/honey-gum-mint.webp",
+          "name": {
+            "ar": "نعناع",
+            "en": "Mint"
+          }
+        },
+        {
+          "img": "images/honey-gum-green-apple.webp",
+          "name": {
+            "ar": "تفاح أخضر",
+            "en": "Green Apple"
+          }
+        },
+        {
+          "img": "images/honey-gum-strawberry.webp",
+          "name": {
+            "ar": "فراولة",
+            "en": "Strawberry"
+          }
+        },
+        {
+          "img": "images/honey-gum-cola.webp",
+          "name": {
+            "ar": "كولا",
+            "en": "Cola"
+          }
+        },
+        {
+          "img": "images/honey-gum-mango.webp",
+          "name": {
+            "ar": "مانجو",
+            "en": "Mango"
+          }
+        },
+        {
+          "img": "images/honey-gum-banana.webp",
+          "name": {
+            "ar": "موز",
+            "en": "Banana"
+          }
+        },
+        {
+          "img": "images/honey-gum-mix.webp",
+          "name": {
+            "ar": "نكهات مشكلة",
+            "en": "Mix Flavors"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "حلوى ولبان خالي من السكر",
+        "en": "Sugar-Free Candy & Gum"
+      },
+      "brand": {
+        "ar": "برافو لايت",
+        "en": "Bravo Light"
+      },
+      "color": "#14123B",
+      "category": "candy",
+      "sizes": {
+        "ar": "30-45 جم، علبة (24 علبة)",
+        "en": "30-45g, box pack (24 boxes)"
+      }
+    }
   ],
-  reach: [
-    { name:{ar:'أوروبا (6)', en:'Europe (6)'},
-      value:{ar:'السويد، ألمانيا، فرنسا، هولندا، بلجيكا، النرويج', en:'Sweden, Germany, France, Netherlands, Belgium, Norway'} },
-    { name:{ar:'أفريقيا (6)', en:'Africa (6)'},
-      value:{ar:'ليبيا، المغرب، مدغشقر، جنوب أفريقيا، السودان، كينيا', en:'Libya, Morocco, Madagascar, South Africa, Sudan, Kenya'} },
-    { name:{ar:'الشرق الأوسط وآسيا (14)', en:'Middle East & Asia (14)'},
-      value:{ar:'الإمارات، قطر، تركيا، لبنان، البحرين، العراق، عمان، الأردن، فلسطين، اليمن، السعودية، الكويت، الهند، سوريا', en:'UAE, Qatar, Turkey, Lebanon, Bahrain, Iraq, Oman, Jordan, Palestine, Yemen, Saudi Arabia, Kuwait, India, Syria'} },
-    { name:{ar:'أمريكا (2)', en:'Americas (2)'},
-      value:{ar:'الولايات المتحدة، كوبا', en:'United States, Cuba'} },
+  "certifications": [
+    {
+      "name": {
+        "ar": "شهادة حلال",
+        "en": "HALAL Certified"
+      },
+      "code": "HALAL"
+    },
+    {
+      "name": {
+        "ar": "ISO 22000",
+        "en": "ISO 22000"
+      },
+      "code": "FOOD SAFETY"
+    },
+    {
+      "name": {
+        "ar": "ISO 45001",
+        "en": "ISO 45001"
+      },
+      "code": "OH&S"
+    },
+    {
+      "name": {
+        "ar": "ISO 9001",
+        "en": "ISO 9001"
+      },
+      "code": "QUALITY MGMT"
+    },
+    {
+      "name": {
+        "ar": "HACCP",
+        "en": "HACCP"
+      },
+      "code": "HAZARD CONTROL"
+    },
+    {
+      "name": {
+        "ar": "اعتماد FDA",
+        "en": "FDA Registered"
+      },
+      "code": "US MARKET"
+    }
   ],
-  leadership: [
-    { name:{ar:'[الاسم]', en:'[Name]'}, title:{ar:'رئيس مجلس الإدارة التنفيذي', en:'Executive Chairman'}, init:'A' },
-    { name:{ar:'[الاسم]', en:'[Name]'}, title:{ar:'المدير العام', en:'General Manager'}, init:'B' },
-    { name:{ar:'[الاسم]', en:'[Name]'}, title:{ar:'نائب رئيس مجلس الإدارة', en:'Vice Chairman'}, init:'C' },
-    { name:{ar:'[الاسم]', en:'[Name]'}, title:{ar:'عضو مجلس إدارة منتدب', en:'Managing Board Member'}, init:'D' },
-    { name:{ar:'[الاسم]', en:'[Name]'}, title:{ar:'عضو مجلس إدارة مستقل', en:'Independent Board Member'}, init:'E' },
-    { name:{ar:'[الاسم]', en:'[Name]'}, title:{ar:'عضو مجلس إدارة مستقل', en:'Independent Board Member'}, init:'F' },
+  "reach": [
+    {
+      "name": {
+        "ar": "أوروبا (6)",
+        "en": "Europe (6)"
+      },
+      "value": {
+        "ar": "السويد، ألمانيا، فرنسا، هولندا، بلجيكا، النرويج",
+        "en": "Sweden, Germany, France, Netherlands, Belgium, Norway"
+      }
+    },
+    {
+      "name": {
+        "ar": "أفريقيا (6)",
+        "en": "Africa (6)"
+      },
+      "value": {
+        "ar": "ليبيا، المغرب، مدغشقر، جنوب أفريقيا، السودان، كينيا",
+        "en": "Libya, Morocco, Madagascar, South Africa, Sudan, Kenya"
+      }
+    },
+    {
+      "name": {
+        "ar": "الشرق الأوسط وآسيا (14)",
+        "en": "Middle East & Asia (14)"
+      },
+      "value": {
+        "ar": "الإمارات، قطر، تركيا، لبنان، البحرين، العراق، عمان، الأردن، فلسطين، اليمن، السعودية، الكويت، الهند، سوريا",
+        "en": "UAE, Qatar, Turkey, Lebanon, Bahrain, Iraq, Oman, Jordan, Palestine, Yemen, Saudi Arabia, Kuwait, India, Syria"
+      }
+    },
+    {
+      "name": {
+        "ar": "أمريكا (2)",
+        "en": "Americas (2)"
+      },
+      "value": {
+        "ar": "الولايات المتحدة، كوبا",
+        "en": "United States, Cuba"
+      }
+    }
   ],
-  markets: [
-    { name:{ar:'الولايات المتحدة', en:'United States'} },
-    { name:{ar:'السويد', en:'Sweden'} },
-    { name:{ar:'ألمانيا', en:'Germany'} },
-    { name:{ar:'فرنسا', en:'France'} },
-    { name:{ar:'هولندا', en:'Netherlands'} },
-    { name:{ar:'كوبا', en:'Cuba'} },
-    { name:{ar:'بلجيكا', en:'Belgium'} },
-    { name:{ar:'الإمارات', en:'UAE'} },
-    { name:{ar:'قطر', en:'Qatar'} },
-    { name:{ar:'تركيا', en:'Turkey'} },
-    { name:{ar:'ليبيا', en:'Libya'} },
-    { name:{ar:'المغرب', en:'Morocco'} },
-    { name:{ar:'مدغشقر', en:'Madagascar'} },
-    { name:{ar:'لبنان', en:'Lebanon'} },
-    { name:{ar:'البحرين', en:'Bahrain'} },
-    { name:{ar:'العراق', en:'Iraq'} },
-    { name:{ar:'عمان', en:'Oman'} },
-    { name:{ar:'الأردن', en:'Jordan'} },
-    { name:{ar:'فلسطين', en:'Palestine'} },
-    { name:{ar:'اليمن', en:'Yemen'} },
-    { name:{ar:'جنوب أفريقيا', en:'South Africa'} },
-    { name:{ar:'السودان', en:'Sudan'} },
-    { name:{ar:'السعودية', en:'Saudi Arabia'} },
-    { name:{ar:'الكويت', en:'Kuwait'} },
-    { name:{ar:'الهند', en:'India'} },
-    { name:{ar:'سوريا', en:'Syria'} },
-    { name:{ar:'كينيا', en:'Kenya'} },
-    { name:{ar:'النرويج', en:'Norway'} },
+  "leadership": [
+    {
+      "name": {
+        "ar": "[الاسم]",
+        "en": "[Name]"
+      },
+      "title": {
+        "ar": "رئيس مجلس الإدارة التنفيذي",
+        "en": "Executive Chairman"
+      },
+      "init": "A"
+    },
+    {
+      "name": {
+        "ar": "[الاسم]",
+        "en": "[Name]"
+      },
+      "title": {
+        "ar": "المدير العام",
+        "en": "General Manager"
+      },
+      "init": "B"
+    },
+    {
+      "name": {
+        "ar": "[الاسم]",
+        "en": "[Name]"
+      },
+      "title": {
+        "ar": "نائب رئيس مجلس الإدارة",
+        "en": "Vice Chairman"
+      },
+      "init": "C"
+    },
+    {
+      "name": {
+        "ar": "[الاسم]",
+        "en": "[Name]"
+      },
+      "title": {
+        "ar": "عضو مجلس إدارة منتدب",
+        "en": "Managing Board Member"
+      },
+      "init": "D"
+    },
+    {
+      "name": {
+        "ar": "[الاسم]",
+        "en": "[Name]"
+      },
+      "title": {
+        "ar": "عضو مجلس إدارة مستقل",
+        "en": "Independent Board Member"
+      },
+      "init": "E"
+    },
+    {
+      "name": {
+        "ar": "[الاسم]",
+        "en": "[Name]"
+      },
+      "title": {
+        "ar": "عضو مجلس إدارة مستقل",
+        "en": "Independent Board Member"
+      },
+      "init": "F"
+    }
   ],
+  "markets": [
+    {
+      "name": {
+        "ar": "الولايات المتحدة",
+        "en": "United States"
+      }
+    },
+    {
+      "name": {
+        "ar": "السويد",
+        "en": "Sweden"
+      }
+    },
+    {
+      "name": {
+        "ar": "ألمانيا",
+        "en": "Germany"
+      }
+    },
+    {
+      "name": {
+        "ar": "فرنسا",
+        "en": "France"
+      }
+    },
+    {
+      "name": {
+        "ar": "هولندا",
+        "en": "Netherlands"
+      }
+    },
+    {
+      "name": {
+        "ar": "كوبا",
+        "en": "Cuba"
+      }
+    },
+    {
+      "name": {
+        "ar": "بلجيكا",
+        "en": "Belgium"
+      }
+    },
+    {
+      "name": {
+        "ar": "الإمارات",
+        "en": "UAE"
+      }
+    },
+    {
+      "name": {
+        "ar": "قطر",
+        "en": "Qatar"
+      }
+    },
+    {
+      "name": {
+        "ar": "تركيا",
+        "en": "Turkey"
+      }
+    },
+    {
+      "name": {
+        "ar": "ليبيا",
+        "en": "Libya"
+      }
+    },
+    {
+      "name": {
+        "ar": "المغرب",
+        "en": "Morocco"
+      }
+    },
+    {
+      "name": {
+        "ar": "مدغشقر",
+        "en": "Madagascar"
+      }
+    },
+    {
+      "name": {
+        "ar": "لبنان",
+        "en": "Lebanon"
+      }
+    },
+    {
+      "name": {
+        "ar": "البحرين",
+        "en": "Bahrain"
+      }
+    },
+    {
+      "name": {
+        "ar": "العراق",
+        "en": "Iraq"
+      }
+    },
+    {
+      "name": {
+        "ar": "عمان",
+        "en": "Oman"
+      }
+    },
+    {
+      "name": {
+        "ar": "الأردن",
+        "en": "Jordan"
+      }
+    },
+    {
+      "name": {
+        "ar": "فلسطين",
+        "en": "Palestine"
+      }
+    },
+    {
+      "name": {
+        "ar": "اليمن",
+        "en": "Yemen"
+      }
+    },
+    {
+      "name": {
+        "ar": "جنوب أفريقيا",
+        "en": "South Africa"
+      }
+    },
+    {
+      "name": {
+        "ar": "السودان",
+        "en": "Sudan"
+      }
+    },
+    {
+      "name": {
+        "ar": "السعودية",
+        "en": "Saudi Arabia"
+      }
+    },
+    {
+      "name": {
+        "ar": "الكويت",
+        "en": "Kuwait"
+      }
+    },
+    {
+      "name": {
+        "ar": "الهند",
+        "en": "India"
+      }
+    },
+    {
+      "name": {
+        "ar": "سوريا",
+        "en": "Syria"
+      }
+    },
+    {
+      "name": {
+        "ar": "كينيا",
+        "en": "Kenya"
+      }
+    },
+    {
+      "name": {
+        "ar": "النرويج",
+        "en": "Norway"
+      }
+    }
+  ]
 };
