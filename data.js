@@ -111,6 +111,20 @@ const SITE_DATA = {
         "ar": "تبادل الخبرات مع زملاء الصناعة",
         "en": "Exchanging insight with industry peers"
       }
+    },
+    {
+      "image": "",
+      "banner": true,
+      "title": {
+        "ar": "",
+        "en": ""
+      },
+      "sub": {
+        "ar": "",
+        "en": ""
+      },
+      "link": "",
+      "video": "images/uploads/whatsapp-video-2026-10-26-at-10-50-13-am-mw0ll8hc.mp4"
     }
   ],
   "brands": [
