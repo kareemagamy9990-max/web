@@ -124,7 +124,7 @@
         const t = pick(ev.title, l), sub = pick(ev.sub, l);
         return `<${tag} class="event-slide video-slide${ev.banner ? ' banner-slide' : ''}"${href} style="--img:url('${esc(ev.image || '')}');">
           ${ev.banner ? '<span class="banner-bg"></span>' : ''}
-          <video src="${esc(ev.video)}" ${ev.image ? `poster="${esc(ev.image)}"` : ''} muted loop playsinline preload="${i === 0 ? 'auto' : 'metadata'}" aria-label="${esc(t)}"></video>
+          <video src="${esc(ev.video)}" ${ev.image ? `poster="${esc(ev.image)}"` : ''} muted autoplay loop playsinline webkit-playsinline preload="${i === 0 ? 'auto' : 'metadata'}" aria-label="${esc(t)}"></video>
           ${!ev.banner && (t || sub) ? `<div class="event-caption">
             <span class="event-eyebrow"><span class="dot"></span>${l === 'ar' ? 'من فعالياتنا' : 'From our events'}</span>
             ${t ? `<h3>${esc(t)}</h3>` : ''}${sub ? `<p>${esc(sub)}</p>` : ''}
@@ -152,6 +152,23 @@
     if (next) next.textContent = rtl ? '‹' : '›';
     updateEventTrack();
   }
+  function playVideo(v, slide){
+    // browsers only autoplay when the *property* is muted, not just the attribute
+    v.muted = true; v.defaultMuted = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+    const tryPlay = () => {
+      const pr = v.play();
+      if (pr && pr.then) pr.then(() => slide.classList.remove('needs-tap')).catch(() => slide.classList.add('needs-tap'));
+    };
+    if (v.readyState < 2) { v.load(); v.addEventListener('canplay', tryPlay, { once:true }); }
+    tryPlay();
+    if (!slide.querySelector('.video-play')) {
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'video-play'; btn.setAttribute('aria-label', 'play'); btn.innerHTML = '▶';
+      btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); v.play().then(() => slide.classList.remove('needs-tap')).catch(() => {}); });
+      slide.appendChild(btn);
+    }
+  }
   function updateEventTrack(){
     const track = document.getElementById('eventTrack');
     if (!track) return;
@@ -161,8 +178,7 @@
     // only the visible slide's video plays
     track.querySelectorAll('.event-slide').forEach((slide, i) => {
       const v = slide.querySelector('video'); if (!v) return;
-      if (i === eventIndex) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
-      else { v.pause(); }
+      if (i === eventIndex) playVideo(v, slide); else v.pause();
     });
   }
   function goToEvent(i){

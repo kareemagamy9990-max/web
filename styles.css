@@ -91,6 +91,10 @@ button{font-family:inherit; cursor:pointer;}
 .video-slide.banner-slide video{object-fit:contain;}
 .video-slide:not(.banner-slide)::after{z-index:1; pointer-events:none;}
 .video-slide .event-caption{z-index:2;}
+.video-play{display:none; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:3;
+  width:68px; height:68px; border-radius:50%; border:2px solid rgba(255,255,255,.8); background:rgba(15,13,46,.55);
+  color:#fff; font-size:24px; cursor:pointer; padding-inline-start:5px;}
+.video-slide.needs-tap .video-play{display:flex; align-items:center; justify-content:center;}
 .event-caption{
   position:absolute; inset-inline-start:0; bottom:0; z-index:2;
   padding:30px 40px 34px; max-width:640px;
