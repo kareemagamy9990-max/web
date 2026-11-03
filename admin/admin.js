@@ -56,15 +56,26 @@ function evalFile(text, name){
    GitHub API
    ====================================================================== */
 async function gh(path, opts = {}){
-  const res = await fetch('https://api.github.com' + path, {
+  const doFetch = () => fetch('https://api.github.com' + path, {
     ...opts,
+    cache:'no-store',
     headers:{
       'Authorization':'Bearer ' + A.token,
       'Accept':'application/vnd.github+json',
-      'X-GitHub-Api-Version':'2022-11-28',
       ...(opts.body ? {'Content-Type':'application/json'} : {}),
     },
   });
+  let res;
+  try { res = await doFetch(); }
+  catch(e){
+    // network hiccup (or blocked request): wait and retry once
+    await new Promise(r => setTimeout(r, 2000));
+    try { res = await doFetch(); }
+    catch(e2){
+      const err = new Error('مفيش اتصال بـ GitHub' + (A.step ? ' أثناء: ' + A.step : '') + '. اتأكد من النت، واقفل أي Ad-blocker أو VPN للصفحة دي، وجرّب تاني.');
+      err.status = 0; throw err;
+    }
+  }
   if (!res.ok){
     let msg = res.status + '';
     try { const j = await res.json(); msg += ' — ' + (j.message || ''); } catch(e){}
@@ -233,6 +244,7 @@ async function save(){
   if (!changed.length && !imgs.length) return;
   $('#saveBtn').disabled = true;
   showLoading('جاري الحفظ على GitHub...');
+  A.step = 'التأكد من النسخة الحالية';
   try {
     // someone else (or another tab) changed the content since we loaded it?
     const [rd, rt] = await Promise.all([
@@ -244,6 +256,7 @@ async function save(){
       if (!confirm('المحتوى اتعدّل على GitHub من مكان تاني بعد ما فتحت اللوحة. لو حفظت دلوقتي هتكتب فوق التعديلات دي.\n\nتحفظ برضه؟')) { $('#saveBtn').disabled = false; return; }
       showLoading('جاري الحفظ على GitHub...');
     }
+    A.step = 'قراءة آخر نسخة';
     const ref = await gh(`${repoPath()}/git/ref/heads/${encodeURIComponent(A.branch)}`);
     const headSha = ref.object.sha;
     const head = await gh(`${repoPath()}/git/commits/${headSha}`);
@@ -254,16 +267,19 @@ async function save(){
     let n = 0;
     for (const p of imgs){
       showLoading(`جاري رفع الصور (${++n}/${imgs.length})...`);
+      A.step = 'رفع الصورة ' + p.split('/').pop();
       const blob = await gh(`${repoPath()}/git/blobs`, { method:'POST', body:JSON.stringify({ content:A.pending.get(p).b64, encoding:'base64' }) });
       tree.push({ path:p, mode:'100644', type:'blob', sha:blob.sha });
     }
     showLoading('جاري إنشاء الـ commit...');
+    A.step = 'إنشاء الـ commit';
     const newTree = await gh(`${repoPath()}/git/trees`, { method:'POST', body:JSON.stringify({ base_tree:head.tree.sha, tree }) });
     const parts = [];
     if (changed.length) parts.push('المحتوى');
     if (imgs.length) parts.push(imgs.length === 1 ? 'صورة' : imgs.length + ' صور');
     const commit = await gh(`${repoPath()}/git/commits`, { method:'POST', body:JSON.stringify({
       message:'تحديث ' + parts.join(' و') + ' من لوحة التحكم', tree:newTree.sha, parents:[headSha] }) });
+    A.step = 'تحديث الفرع';
     await gh(`${repoPath()}/git/refs/heads/${encodeURIComponent(A.branch)}`, { method:'PATCH', body:JSON.stringify({ sha:commit.sha }) });
 
     // refresh our baseline
