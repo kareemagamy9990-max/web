@@ -1532,6 +1532,12 @@ const SITE_DATA = {
         "ar": "النرويج",
         "en": "Norway"
       }
+    },
+    {
+      "name": {
+        "ar": "جيبوتي",
+        "en": "Djibouti"
+      }
     }
   ]
 };
