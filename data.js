@@ -52,7 +52,64 @@ const SITE_DATA = {
       }
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "image": "images/events/expo-2026-visitors.webp",
+      "banner": false,
+      "position": "center 35%",
+      "title": {
+        "ar": "جناح إيجي جالف فودز في المعرض",
+        "en": "EgyGulf Foods at the exhibition"
+      },
+      "sub": {
+        "ar": "زوار وتجار بيتذوقوا منتجاتنا ويتعرفوا على علاماتنا",
+        "en": "Visitors and traders tasting our products and meeting our brands"
+      },
+      "link": ""
+    },
+    {
+      "image": "images/events/expo-2026-brochures.webp",
+      "banner": false,
+      "position": "center 45%",
+      "title": {
+        "ar": "موجو وشيل آوت بين إيدين الزوار",
+        "en": "Mojo and ChillOut in visitors' hands"
+      },
+      "sub": {
+        "ar": "كتالوج علاماتنا ومنتجاتنا الجديدة في المعرض",
+        "en": "Our brand catalogue and newest products at the show"
+      },
+      "link": ""
+    },
+    {
+      "image": "images/events/expo-2026-alnahar-interview.webp",
+      "banner": false,
+      "position": "center 25%",
+      "title": {
+        "ar": "لقاء مع قناة النهار",
+        "en": "Interview with Al Nahar TV"
+      },
+      "sub": {
+        "ar": "من داخل جناح الشركة في المعرض",
+        "en": "From inside our booth at the exhibition"
+      },
+      "link": ""
+    },
+    {
+      "image": "images/events/expo-2026-team.webp",
+      "banner": false,
+      "position": "center 30%",
+      "title": {
+        "ar": "فريقنا في استقبالكم",
+        "en": "Our team, ready to welcome you"
+      },
+      "sub": {
+        "ar": "شرح المنتجات واستقبال طلبات التعاون والتصدير",
+        "en": "Walking visitors through our products and partnership requests"
+      },
+      "link": ""
+    }
+  ],
   "brands": [
     {
       "key": "chillout",
