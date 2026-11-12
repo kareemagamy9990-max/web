@@ -381,47 +381,42 @@
       if (phone.replace(/\D/g, '').length < 8) { status.textContent = msg('اكتب رقم موبايل صحيح.', 'Please enter a valid phone number.'); offersForm.phone.focus(); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = msg('اكتب إيميل صحيح.', 'Please enter a valid email.'); offersForm.email.focus(); return; }
 
-      const btn = offersForm.querySelector('button[type="submit"]');
-      const label = btn.innerHTML;
-      btn.disabled = true; btn.innerHTML = msg('جارٍ التسجيل...', 'Signing in...');
       status.textContent = ''; status.className = 'form-status';
       const fields = { name, phone, email, lang, page: location.pathname, time: new Date().toISOString() };
-      // Try every channel in turn; the visitor gets in as soon as one of them takes the lead.
-      const sendToSheet = async () => {
-        if (!S.offersSheetUrl) return false;
-        const body = new URLSearchParams(fields);
-        try {
-          // Apps Script sends no CORS headers, so the reply is opaque — reaching it is enough.
-          await fetch(S.offersSheetUrl, { method:'POST', mode:'no-cors', body });
-          return true;
-        } catch (err) { console.warn('offers: sheet fetch failed', err); return false; }
-      };
-      const sendBeacon = () => {
-        try { return Boolean(S.offersSheetUrl && navigator.sendBeacon && navigator.sendBeacon(S.offersSheetUrl, new URLSearchParams(fields))); }
-        catch (err) { console.warn('offers: sendBeacon failed', err); return false; }
-      };
-      const sendToFormspree = async () => {
-        if (!S.formEndpoint) return false;
-        try {
-          const fd = new FormData(); Object.entries({ ...fields, source:'offers' }).forEach(([k, v]) => fd.append(k, v));
-          const res = await fetch(S.formEndpoint, { method:'POST', body:fd, headers:{ 'Accept':'application/json' } });
-          return res.ok;
-        } catch (err) { console.warn('offers: formspree failed', err); return false; }
-      };
-      try {
-        const sent = (await sendToSheet()) || (await sendToFormspree()) || sendBeacon();
-        if (!sent && (S.offersSheetUrl || S.formEndpoint)) throw new Error('lead not sent');
-        try { localStorage.setItem(OFFERS_KEY, JSON.stringify({ name, phone, email })); } catch(err) {}
-        try { renderOffers(lang); } catch (err) { console.error('offers: render failed', err); }
-        const sec = document.getElementById('offers');
-        if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
-      } catch (err) {
-        status.textContent = msg('حصل خطأ أثناء التسجيل، حاول تاني.', 'Something went wrong — please try again.');
-        status.className = 'form-status form-status-error';
-      } finally {
-        btn.disabled = false; btn.innerHTML = label;
-      }
+
+      // The visitor gets in right away; the lead is sent in the background
+      // (Apps Script can take several seconds to answer, so nobody waits on it).
+      try { localStorage.setItem(OFFERS_KEY, JSON.stringify({ name, phone, email })); } catch(err) {}
+      try { renderOffers(lang); } catch (err) { console.error('offers: render failed', err); }
+      const sec = document.getElementById('offers');
+      if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
+      sendLead(fields);
     });
+  }
+
+  // Sheet first; if the browser can't reach Google (blocked, offline, timeout) → Formspree email.
+  // keepalive lets the request finish even if the visitor leaves the page.
+  async function sendLead(fields){
+    const withTimeout = (ms) => {
+      const c = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      if (c) setTimeout(() => c.abort(), ms);
+      return c ? c.signal : undefined;
+    };
+    if (S.offersSheetUrl) {
+      try {
+        // Apps Script sends no CORS headers, so the reply is opaque — reaching it is enough.
+        await fetch(S.offersSheetUrl, { method:'POST', mode:'no-cors', keepalive:true,
+          body:new URLSearchParams(fields), signal:withTimeout(20000) });
+        return;
+      } catch (err) { console.warn('offers: sheet unreachable, falling back to Formspree', err); }
+    }
+    if (S.formEndpoint) {
+      try {
+        const fd = new FormData(); Object.entries({ ...fields, source:'offers' }).forEach(([k, v]) => fd.append(k, v));
+        await fetch(S.formEndpoint, { method:'POST', body:fd, keepalive:true,
+          headers:{ 'Accept':'application/json' }, signal:withTimeout(20000) });
+      } catch (err) { console.warn('offers: formspree failed too', err); }
+    }
   }
   const offersLogout = document.getElementById('offersLogout');
   if (offersLogout) {
