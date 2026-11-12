@@ -333,7 +333,40 @@
     if (isNaN(d)) return iso;
     return d.toLocaleDateString(l === 'ar' ? 'ar-EG' : 'en-GB', { day:'numeric', month:'long', year:'numeric' });
   }
+  // Make live offers hard to miss: a top bar on every page + the homepage band.
+  function promoteOffers(l){
+    const count = activeOffers().length;
+    const dict = (typeof I18N !== 'undefined' && (I18N[l] || I18N.ar)) || {};
+    const band = document.getElementById('offersBand');
+    if (band) {
+      band.hidden = count === 0;
+      const c = document.getElementById('offersBandCount');
+      if (c) c.textContent = count > 0 ? String(count) : '';
+    }
+    let bar = document.querySelector('.offers-bar');
+    const onOffersPage = Boolean(document.getElementById('offersGate'));
+    let dismissed = false;
+    try { dismissed = sessionStorage.getItem('egygulf_offers_bar') === 'off'; } catch(e) {}
+    if (count === 0 || onOffersPage || dismissed) { if (bar) bar.remove(); return; }
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.className = 'offers-bar';
+      document.body.insertBefore(bar, document.body.firstChild);
+      bar.addEventListener('click', e => {
+        if (!e.target.closest('.offers-bar-close')) return;
+        try { sessionStorage.setItem('egygulf_offers_bar', 'off'); } catch(err) {}
+        bar.remove();
+      });
+    }
+    bar.innerHTML = `<div class="container">
+      <span>🎉 ${dict['offers.bar'] || ''}</span>
+      <a class="offers-bar-link" href="offers.html">${dict['offers.barBtn'] || ''}</a>
+      <button type="button" class="offers-bar-close" aria-label="${l === 'ar' ? 'إغلاق' : 'Close'}">×</button>
+    </div>`;
+  }
+
   function renderOffers(l){
+    promoteOffers(l);
     const gate = document.getElementById('offersGate');
     const box = document.getElementById('offersContent');
     const grid = document.getElementById('offersGrid');

@@ -107,7 +107,12 @@ const I18N = {
     "offers.notMe": "مش أنت؟",
     "offers.empty": "مفيش عروض متاحة دلوقتي — تابعنا، عروض جديدة قريب.",
     "offers.validUntil": "العرض سارٍ حتى",
-    "offers.cta": "اطلب العرض ›"
+    "offers.cta": "اطلب العرض ›",
+    "offers.bandTitle": "عروض وخصومات جديدة على منتجاتنا",
+    "offers.bandSub": "سجّل باسمك ورقمك وشوف أحدث العروض المتاحة دلوقتي.",
+    "offers.bandBtn": "شوف العروض",
+    "offers.bar": "عروض جديدة متاحة دلوقتي على منتجات إيجي جالف فودز",
+    "offers.barBtn": "شوف العروض ›"
   },
   "en": {
     "util.location": "Kilo 90, Tanta–Cairo/Alexandria Agricultural Road",
@@ -216,6 +221,11 @@ const I18N = {
     "offers.notMe": "Not you?",
     "offers.empty": "No offers right now — check back soon.",
     "offers.validUntil": "Valid until",
-    "offers.cta": "Get this offer ›"
+    "offers.cta": "Get this offer ›",
+    "offers.bandTitle": "New deals and discounts on our products",
+    "offers.bandSub": "Register with your name and phone to see our latest offers.",
+    "offers.bandBtn": "See the offers",
+    "offers.bar": "New offers on EgyGulf Foods products are live now",
+    "offers.barBtn": "See offers ›"
   }
 };

@@ -60,7 +60,7 @@
       <a href="products-candy.html" data-i18n="nav.candy">سويتس</a>
       <a href="certifications.html" data-i18n="nav.certs">الجودة والاعتماد</a>
       <a href="export.html" data-i18n="nav.export">التصدير</a>
-      <a href="offers.html" data-i18n="nav.offers">العروض</a>
+      <a href="offers.html" class="nav-offers"><span class="nav-offers-dot" aria-hidden="true"></span><span data-i18n="nav.offers">العروض</span></a>
     </nav>
     <a href="contact.html" class="nav-cta" data-i18n="nav.cta">اطلب عرض سعر</a>
     <button class="nav-toggle" aria-label="menu">☰</button>
@@ -112,6 +112,21 @@
     <div class="stat"><b>9</b><span>خطوط إنتاج</span></div>
     <div class="stat"><b>6</b><span>علامات تجارية</span></div>
     <div class="stat"><b>28</b><span>دولة تصدير</span></div>
+  </div>
+</section>
+
+<!-- Offers promo (shown only while there are active offers) -->
+<section class="offers-band" id="offersBand" hidden>
+  <div class="container">
+    <div class="offers-band-inner">
+      <span class="offers-band-icon" aria-hidden="true">%</span>
+      <div class="offers-band-copy">
+        <span class="offers-band-eyebrow" data-i18n="offers.eyebrow">عروض حصرية</span>
+        <h2 data-i18n="offers.bandTitle">عروض وخصومات جديدة على منتجاتنا</h2>
+        <p data-i18n="offers.bandSub">سجّل باسمك ورقمك وشوف أحدث العروض المتاحة دلوقتي.</p>
+      </div>
+      <a href="offers.html" class="btn btn-primary offers-band-btn"><span data-i18n="offers.bandBtn">شوف العروض</span> <span class="offers-band-count" id="offersBandCount"></span></a>
+    </div>
   </div>
 </section>
 
