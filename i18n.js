@@ -91,7 +91,23 @@ const I18N = {
     "privateLabel.title": "تصنيع خاص (Private Label):",
     "privateLabel.sub": "بننتج كمان تحت علامتك التجارية الخاصة، بنفس معايير الجودة اللي بنصنّع بيها علاماتنا.",
     "expoVideo.eyebrow": "من معارضنا الدولية",
-    "expoVideo.title": "جناحنا في المعارض الدولية"
+    "expoVideo.title": "جناحنا في المعارض الدولية",
+    "nav.offers": "العروض",
+    "offers.eyebrow": "عروض حصرية",
+    "offers.title": "عروض <em>إيجي جالف فودز</em>",
+    "offers.sub": "أحدث الخصومات والعروض على منتجاتنا — متاحة للعملاء المسجّلين بس.",
+    "offers.gateTitle": "سجّل دخولك عشان تشوف العروض",
+    "offers.gateSub": "اكتب اسمك ورقمك وإيميلك، وهتتفتحلك العروض على طول.",
+    "offers.name": "الاسم",
+    "offers.phone": "رقم الموبايل",
+    "offers.email": "البريد الإلكتروني",
+    "offers.submit": "افتح العروض",
+    "offers.privacy": "بياناتك بتوصل لفريق المبيعات بس عشان يتواصل معاك بخصوص العروض.",
+    "offers.hello": "أهلاً",
+    "offers.notMe": "مش أنت؟",
+    "offers.empty": "مفيش عروض متاحة دلوقتي — تابعنا، عروض جديدة قريب.",
+    "offers.validUntil": "العرض سارٍ حتى",
+    "offers.cta": "اطلب العرض ›"
   },
   "en": {
     "util.location": "Kilo 90, Tanta–Cairo/Alexandria Agricultural Road",
@@ -184,6 +200,22 @@ const I18N = {
     "privateLabel.title": "Private Label:",
     "privateLabel.sub": "We also manufacture under your own brand, to the same quality standards behind our own brands.",
     "expoVideo.eyebrow": "From our exhibitions",
-    "expoVideo.title": "Our booth at international expos"
+    "expoVideo.title": "Our booth at international expos",
+    "nav.offers": "Offers",
+    "offers.eyebrow": "Exclusive offers",
+    "offers.title": "EgyGulf Foods <em>offers</em>",
+    "offers.sub": "Our latest discounts and deals — available to registered customers only.",
+    "offers.gateTitle": "Sign in to see the offers",
+    "offers.gateSub": "Enter your name, phone and email to unlock the offers right away.",
+    "offers.name": "Full name",
+    "offers.phone": "Phone number",
+    "offers.email": "Email",
+    "offers.submit": "Show me the offers",
+    "offers.privacy": "Your details go to our sales team only, so they can follow up about offers.",
+    "offers.hello": "Welcome",
+    "offers.notMe": "Not you?",
+    "offers.empty": "No offers right now — check back soon.",
+    "offers.validUntil": "Valid until",
+    "offers.cta": "Get this offer ›"
   }
 };

@@ -85,7 +85,7 @@ details.panel[open] > summary{margin-bottom:14px;}
 /* fields */
 .f{display:grid; gap:5px; margin-bottom:12px; min-width:0;}
 .f-label{font-weight:700; font-size:13px; color:#3B3866;}
-.f input[type=text],.f input[type=email],.f input:not([type]),.f textarea,.f select,.search{
+.f input[type=text],.f input[type=email],.f input[type=date],.f input:not([type]),.f textarea,.f select,.search{
   width:100%; border:1px solid var(--line); border-radius:10px; padding:9px 11px; background:#FCFCFF; transition:border-color .15s, box-shadow .15s;}
 .f textarea{resize:vertical; min-height:44px;}
 .f input:focus,.f textarea:focus,.f select:focus,.search:focus{outline:none; border-color:var(--navy-3); box-shadow:0 0 0 3px rgba(46,42,116,.12); background:#fff;}

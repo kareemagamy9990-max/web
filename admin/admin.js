@@ -499,6 +499,7 @@ const NEW = {
   reach: () => ({ name:{ar:'',en:''}, value:{ar:'',en:''} }),
   market: () => ({ name:{ar:'',en:''} }),
   leader: () => ({ name:{ar:'',en:''}, title:{ar:'',en:''}, photo:'' }),
+  offer: () => ({ title:{ar:'',en:''}, desc:{ar:'',en:''}, badge:{ar:'',en:''}, image:'', validUntil:'', link:'' }),
 };
 
 /* ======================================================================
@@ -509,7 +510,7 @@ const GROUPS = {
   about:'من نحن', chairman:'كلمة رئيس مجلس الإدارة', leadership:'فريق القيادة', markets:'أسواقنا',
   brands:'العلامات — عنوان القسم', brandsPage:'صفحة العلامات', products:'المنتجات — عنوان القسم', productsPage:'صفحات المنتجات',
   certs:'الجودة والاعتماد', reach:'التصدير', privateLabel:'التصنيع الخاص', expoVideo:'فيديو المعارض',
-  cta:'قسم "راسلنا" أسفل الصفحات', form:'خانات الفورم', contact:'صفحة التواصل', footer:'الفوتر',
+  offers:'صفحة العروض', cta:'قسم "راسلنا" أسفل الصفحات', form:'خانات الفورم', contact:'صفحة التواصل', footer:'الفوتر',
 };
 const KEY_HINTS = { eyebrow:'العنوان الصغير', title:'العنوان', sub:'الوصف', button:'الزرار', name:'الاسم', role:'المنصب' };
 function keyLabel(k){
@@ -545,6 +546,7 @@ const SECTIONS = [
   { id:'certs',    label:'الشهادات',        render:secCerts },
   { id:'export',   label:'التصدير والأسواق', render:secExport },
   { id:'team',     label:'من نحن والإدارة',  render:secTeam },
+  { id:'offers',   label:'العروض',           render:secOffers },
   { id:'texts',    label:'كل نصوص الموقع',   render:secTexts },
   { id:'settings', label:'التواصل والإعدادات', render:secSettings },
 ];
@@ -699,6 +701,33 @@ function secTeam(){
   ${textBlock(['leadership','markets'], 'عناوين الأقسام')}</div>`;
 }
 
+function secOffers(){
+  if (!Array.isArray(A.data.offers)) A.data.offers = [];
+  const today = new Date().toISOString().slice(0, 10);
+  const sheet = A.data.settings && A.data.settings.offersSheetUrl;
+  return `<p class="lead">العروض بتظهر في صفحة <b>العروض</b> بعد ما الزائر يسجّل باسمه ورقمه وإيميله.</p>
+  ${sheet ? '' : '<div class="tip">لسه مفيش Google Sheet مربوط — بيانات اللي بيسجّلوا بتوصل على إيميل Formspree لحد ما تحط رابط الشيت في <b>التواصل والإعدادات</b>.</div>'}
+  ${cards(P('d','offers'), {
+    newKey:'offer', addLabel:'إضافة عرض',
+    thumb:o => o.image || '',
+    title:o => pick(o.title, 'ar'),
+    sub:o => [pick(o.badge,'ar'), o.validUntil ? (o.validUntil < today ? 'منتهي' : 'لحد ' + o.validUntil) : 'من غير تاريخ انتهاء'].filter(Boolean).join(' · '),
+    body:p => `
+      ${fBi(P(p,'title'), 'عنوان العرض')}
+      ${fBi(P(p,'badge'), 'الشارة على الصورة', { help:'كلمة قصيرة زي: خصم 20% — اشتري 2 والتالت هدية. سيبها فاضية لو مش عايزها.' })}
+      ${fBi(P(p,'desc'), 'تفاصيل العرض', { area:true })}
+      <div class="grid2">
+        ${fImage(P(p,'image'), 'صورة العرض', { max:1200, help:'صورة عرضية (4:3) بتظهر أحسن.' })}
+        <div>
+          ${fText(P(p,'validUntil'), 'العرض سارٍ حتى (اختياري)', { type:'date', dir:'ltr', help:'بعد التاريخ ده العرض بيختفي من الموقع لوحده.' })}
+          ${fText(P(p,'link'), 'زرار "اطلب العرض" بيودّي على', { dir:'ltr', ph:'contact.html أو https://wa.me/...', help:'لو فاضي بيودّي على صفحة التواصل.' })}
+          ${fCheck(P(p,'hidden'), 'إخفاء العرض مؤقتاً')}
+        </div>
+      </div>`,
+  })}
+  ${textBlock(['offers'], 'نصوص صفحة العروض')}`;
+}
+
 function secTexts(){
   const q = A.q.trim().toLowerCase();
   const all = Object.keys(A.i18n.ar);
@@ -732,6 +761,9 @@ function secSettings(){
   </div><small class="f-help">سيب الخانة فاضية عشان الأيقونة تختفي.</small></div>
   <div class="panel"><h3>الفورم</h3>
     ${fText(P(s,'formEndpoint'), 'رابط Formspree', { dir:'ltr', help:'الرسايل اللي بتتبعت من فورم الموقع بتوصل على الإيميل المربوط بالرابط ده في Formspree.' })}
+  </div>
+  <div class="panel"><h3>تسجيلات صفحة العروض</h3>
+    ${fText(P(s,'offersSheetUrl'), 'رابط Google Apps Script (Web app URL)', { dir:'ltr', ph:'https://script.google.com/macros/s/.../exec', help:'كل اللي بيسجّل في صفحة العروض بيتضاف صف في الشيت. خطوات الربط في ملف OFFERS-SHEET.md في الريبو. لو فاضي، التسجيلات بتوصل على إيميل Formspree.' })}
   </div>
   <div class="panel"><h3>الحساب</h3>
     <p class="muted small">متصل بـ <code dir="ltr">${esc(A.owner)}/${esc(A.repo)}</code> على فرع <code dir="ltr">${esc(A.branch)}</code>.</p>

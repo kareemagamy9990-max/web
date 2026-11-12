@@ -838,3 +838,63 @@ section.category-blocks{padding:0;}
   .contact-form-card{padding:26px 18px;}
   .wa-float{width:50px; height:50px; bottom:16px; inset-inline-end:16px;}
 }
+
+/* ==========================================================================
+   Offers page — registration gate + offer cards
+   ========================================================================== */
+.offers-page{background:var(--lavender-50); min-height:60vh;}
+.offers-page .section-head{margin-inline:auto; text-align:center;}
+.offers-page .section-head h2 em{font-style:normal; color:var(--blue-400);}
+.offers-gate{max-width:560px; margin:0 auto;}
+.offers-gate .contact-form-card{box-shadow:0 24px 60px rgba(20,18,59,0.10);}
+.offers-gate .cta-form .btn-primary{width:100%; justify-content:center;}
+.offers-privacy{grid-column:1 / -1; margin:0; font-size:12.5px; color:rgba(26,21,51,0.55); text-align:center;}
+.offers-welcome{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius-pill);
+  padding:10px 12px 10px 22px; margin-bottom:28px; font-size:15px; color:var(--ink);
+}
+html[dir="rtl"] .offers-welcome{padding:10px 22px 10px 12px;}
+.offers-logout{
+  background:none; border:1px solid var(--line); border-radius:var(--radius-pill);
+  padding:6px 14px; font:inherit; font-size:13px; color:rgba(26,21,51,0.65); cursor:pointer;
+}
+.offers-logout:hover{border-color:var(--blue-900); color:var(--blue-900);}
+.offers-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:24px;}
+.offer-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius-card);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:transform .2s, box-shadow .2s;
+}
+.offer-card:hover{transform:translateY(-4px); box-shadow:0 20px 44px rgba(20,18,59,0.12);}
+.offer-media{
+  position:relative; aspect-ratio:4/3; overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 30%, var(--blue-600) 0%, var(--blue-900) 70%);
+  display:flex; align-items:center; justify-content:center;
+}
+.offer-media img{
+  position:absolute; inset:0; width:100%; height:100%; display:block;
+  object-fit:contain; padding:18px; transition:transform .35s;
+  filter:drop-shadow(0 14px 22px rgba(4,3,20,0.35));
+}
+.offer-card:hover .offer-media img{transform:scale(1.04);}
+.offer-media-empty{font-family:var(--font-display-en); font-size:72px; font-weight:900; color:var(--gold-500);}
+.offer-badge{
+  position:absolute; top:14px; inset-inline-start:14px;
+  background:var(--gold-500); color:var(--blue-950); font-weight:800; font-size:14px;
+  padding:6px 14px; border-radius:var(--radius-pill); box-shadow:0 6px 16px rgba(0,0,0,0.18);
+}
+.offer-body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.offer-body h3{font-size:19px; line-height:1.35; color:var(--ink);}
+.offer-body p{font-size:14.5px; color:rgba(26,21,51,0.7); line-height:1.7;}
+.offer-valid{font-size:12.5px; font-weight:700; color:var(--blue-400);}
+.offer-btn{margin-top:auto; align-self:flex-start; padding:11px 22px; font-size:14px;}
+.offers-empty{
+  grid-column:1 / -1; text-align:center; padding:48px 20px; font-size:16px;
+  background:var(--white); border:1px dashed var(--line); border-radius:var(--radius-card);
+  color:rgba(26,21,51,0.65);
+}
+@media (max-width:560px){
+  .offers-gate .cta-form{grid-template-columns:1fr;}
+  .offers-welcome{border-radius:16px;}
+}

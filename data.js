@@ -11,12 +11,13 @@ const SITE_DATA = {
     "facebook": "https://www.facebook.com/egygulffoods",
     "instagram": "https://www.instagram.com/egygulffoods/",
     "linkedin": "https://www.linkedin.com/company/102147127/",
-    "formEndpoint": "https://formspree.io/f/maewjkel"
+    "formEndpoint": "https://formspree.io/f/maewjkel",
+    "offersSheetUrl": "https://script.google.com/macros/s/AKfycbw0D_RwlwOS64AAtHT4IecBWQNpLYmrI2b4p_E4ApAWXEwdnegMgIY1TNGVBSFL0gRx2A/exec"
   },
   "images": {
     "heroMosaic": "images/products-mosaic.webp",
     "snacksMosaic": "images/snacks-mosaic.webp",
-    "candyMosaic": "images/candy-mosaic.webp",
+    "candyMosaic": "images/candy-lineup.webp",
     "aboutImage": "images/logo.png",
     "chairmanPhoto": "",
     "expoVideo": "images/videos/expo-booth.mp4"
@@ -1478,5 +1479,6 @@ const SITE_DATA = {
         "en": "Djibouti"
       }
     }
-  ]
+  ],
+  "offers": []
 };

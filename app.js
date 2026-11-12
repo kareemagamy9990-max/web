@@ -314,6 +314,108 @@
     if (marketsGrid && D.markets) {
       marketsGrid.innerHTML = D.markets.map(p => `<div class="partner-logo market-chip">${esc(pick(p.name,l))}</div>`).join('');
     }
+
+    renderOffers(l);
+  }
+
+  /* ---------- Offers page: register (name/phone/email) → offers unlock ---------- */
+  const OFFERS_KEY = 'egygulf_offers_user';
+  function offersUser(){
+    try { return JSON.parse(localStorage.getItem(OFFERS_KEY) || 'null'); } catch(e) { return null; }
+  }
+  function activeOffers(){
+    const today = new Date().toISOString().slice(0, 10);
+    // an offer disappears by itself the day after its end date
+    return (D.offers || []).filter(o => o && !o.hidden && !(o.validUntil && o.validUntil < today));
+  }
+  function fmtDate(iso, l){
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString(l === 'ar' ? 'ar-EG' : 'en-GB', { day:'numeric', month:'long', year:'numeric' });
+  }
+  function renderOffers(l){
+    const gate = document.getElementById('offersGate');
+    const box = document.getElementById('offersContent');
+    const grid = document.getElementById('offersGrid');
+    if (!gate || !box || !grid) return;
+    const user = offersUser();
+    gate.hidden = Boolean(user);
+    box.hidden = !user;
+    if (!user) return;
+    const nameEl = document.getElementById('offersUserName');
+    if (nameEl) nameEl.textContent = user.name || '';
+    const dict = (typeof I18N !== 'undefined' && (I18N[l] || I18N.ar)) || {};
+    const list = activeOffers();
+    if (!list.length) { grid.innerHTML = `<p class="offers-empty">${dict['offers.empty'] || ''}</p>`; return; }
+    grid.innerHTML = list.map(o => {
+      const link = o.link || 'contact.html';
+      return `
+      <article class="offer-card">
+        <div class="offer-media">
+          ${o.image ? `<img src="${esc(o.image)}" alt="${esc(pick(o.title,l))}" loading="lazy">` : '<span class="offer-media-empty">%</span>'}
+          ${pick(o.badge,l) ? `<span class="offer-badge">${esc(pick(o.badge,l))}</span>` : ''}
+        </div>
+        <div class="offer-body">
+          <h3>${esc(pick(o.title,l))}</h3>
+          ${pick(o.desc,l) ? `<p>${esc(pick(o.desc,l))}</p>` : ''}
+          ${o.validUntil ? `<span class="offer-valid">${dict['offers.validUntil'] || ''} ${esc(fmtDate(o.validUntil, l))}</span>` : ''}
+          <a class="btn btn-primary offer-btn" href="${esc(link)}"${/^https?:/i.test(link) ? ' target="_blank" rel="noopener"' : ''}>${dict['offers.cta'] || ''}</a>
+        </div>
+      </article>`;
+    }).join('');
+  }
+
+  const offersForm = document.getElementById('offersForm');
+  if (offersForm) {
+    const status = document.createElement('p');
+    status.className = 'form-status'; status.setAttribute('role', 'status');
+    offersForm.appendChild(status);
+    const msg = (ar, en) => lang === 'ar' ? ar : en;
+    offersForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = offersForm.name.value.trim();
+      const phone = offersForm.phone.value.trim();
+      const email = offersForm.email.value.trim();
+      status.className = 'form-status form-status-error';
+      if (name.length < 2) { status.textContent = msg('اكتب اسمك.', 'Please enter your name.'); offersForm.name.focus(); return; }
+      if (phone.replace(/\D/g, '').length < 8) { status.textContent = msg('اكتب رقم موبايل صحيح.', 'Please enter a valid phone number.'); offersForm.phone.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = msg('اكتب إيميل صحيح.', 'Please enter a valid email.'); offersForm.email.focus(); return; }
+
+      const btn = offersForm.querySelector('button[type="submit"]');
+      const label = btn.innerHTML;
+      btn.disabled = true; btn.innerHTML = msg('جارٍ التسجيل...', 'Signing in...');
+      status.textContent = ''; status.className = 'form-status';
+      const fields = { name, phone, email, lang, page: location.pathname, time: new Date().toISOString() };
+      try {
+        if (S.offersSheetUrl) {
+          // Google Apps Script web app → appends a row in the sheet.
+          // no-cors: Apps Script doesn't send CORS headers, so the response can't be read.
+          await fetch(S.offersSheetUrl, { method:'POST', mode:'no-cors', body:new URLSearchParams(fields) });
+        } else if (S.formEndpoint) {
+          // fallback until the sheet is connected: the lead arrives by email via Formspree
+          const fd = new FormData(); Object.entries({ ...fields, source:'offers' }).forEach(([k, v]) => fd.append(k, v));
+          const res = await fetch(S.formEndpoint, { method:'POST', body:fd, headers:{ 'Accept':'application/json' } });
+          if (!res.ok) throw new Error('bad status');
+        }
+        try { localStorage.setItem(OFFERS_KEY, JSON.stringify({ name, phone, email })); } catch(err) {}
+        renderOffers(lang);
+        const sec = document.getElementById('offers');
+        if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
+      } catch (err) {
+        status.textContent = msg('حصل خطأ أثناء التسجيل، حاول تاني.', 'Something went wrong — please try again.');
+        status.className = 'form-status form-status-error';
+      } finally {
+        btn.disabled = false; btn.innerHTML = label;
+      }
+    });
+  }
+  const offersLogout = document.getElementById('offersLogout');
+  if (offersLogout) {
+    offersLogout.addEventListener('click', () => {
+      try { localStorage.removeItem(OFFERS_KEY); } catch(e) {}
+      if (offersForm) offersForm.reset();
+      renderOffers(lang);
+    });
   }
 
   /* ---------- Forms (Formspree, no page reload) ---------- */
