@@ -386,19 +386,33 @@
       btn.disabled = true; btn.innerHTML = msg('جارٍ التسجيل...', 'Signing in...');
       status.textContent = ''; status.className = 'form-status';
       const fields = { name, phone, email, lang, page: location.pathname, time: new Date().toISOString() };
-      try {
-        if (S.offersSheetUrl) {
-          // Google Apps Script web app → appends a row in the sheet.
-          // no-cors: Apps Script doesn't send CORS headers, so the response can't be read.
-          await fetch(S.offersSheetUrl, { method:'POST', mode:'no-cors', body:new URLSearchParams(fields) });
-        } else if (S.formEndpoint) {
-          // fallback until the sheet is connected: the lead arrives by email via Formspree
+      // Try every channel in turn; the visitor gets in as soon as one of them takes the lead.
+      const sendToSheet = async () => {
+        if (!S.offersSheetUrl) return false;
+        const body = new URLSearchParams(fields);
+        try {
+          // Apps Script sends no CORS headers, so the reply is opaque — reaching it is enough.
+          await fetch(S.offersSheetUrl, { method:'POST', mode:'no-cors', body });
+          return true;
+        } catch (err) { console.warn('offers: sheet fetch failed', err); return false; }
+      };
+      const sendBeacon = () => {
+        try { return Boolean(S.offersSheetUrl && navigator.sendBeacon && navigator.sendBeacon(S.offersSheetUrl, new URLSearchParams(fields))); }
+        catch (err) { console.warn('offers: sendBeacon failed', err); return false; }
+      };
+      const sendToFormspree = async () => {
+        if (!S.formEndpoint) return false;
+        try {
           const fd = new FormData(); Object.entries({ ...fields, source:'offers' }).forEach(([k, v]) => fd.append(k, v));
           const res = await fetch(S.formEndpoint, { method:'POST', body:fd, headers:{ 'Accept':'application/json' } });
-          if (!res.ok) throw new Error('bad status');
-        }
+          return res.ok;
+        } catch (err) { console.warn('offers: formspree failed', err); return false; }
+      };
+      try {
+        const sent = (await sendToSheet()) || (await sendToFormspree()) || sendBeacon();
+        if (!sent && (S.offersSheetUrl || S.formEndpoint)) throw new Error('lead not sent');
         try { localStorage.setItem(OFFERS_KEY, JSON.stringify({ name, phone, email })); } catch(err) {}
-        renderOffers(lang);
+        try { renderOffers(lang); } catch (err) { console.error('offers: render failed', err); }
         const sec = document.getElementById('offers');
         if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
       } catch (err) {
