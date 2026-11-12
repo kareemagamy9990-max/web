@@ -58,8 +58,8 @@ const SITE_DATA = {
       "banner": false,
       "position": "center 35%",
       "title": {
-        "ar": "جناح إيجي جالف فودز في المعرض",
-        "en": "EgyGulf Foods at the exhibition"
+        "ar": "إيجي جالف فودز في معرض فود أفريقيا",
+        "en": "EgyGulf Foods at Food Africa"
       },
       "sub": {
         "ar": "زوار وتجار بيتذوقوا منتجاتنا ويتعرفوا على علاماتنا",
@@ -76,8 +76,8 @@ const SITE_DATA = {
         "en": "Mojo and ChillOut in visitors' hands"
       },
       "sub": {
-        "ar": "كتالوج علاماتنا ومنتجاتنا الجديدة في المعرض",
-        "en": "Our brand catalogue and newest products at the show"
+        "ar": "كتالوج علاماتنا ومنتجاتنا الجديدة في معرض فود أفريقيا",
+        "en": "Our brand catalogue and newest products at Food Africa"
       },
       "link": ""
     },
@@ -90,8 +90,8 @@ const SITE_DATA = {
         "en": "Interview with Al Nahar TV"
       },
       "sub": {
-        "ar": "من داخل جناح الشركة في المعرض",
-        "en": "From inside our booth at the exhibition"
+        "ar": "من داخل جناح الشركة في معرض فود أفريقيا",
+        "en": "From inside our booth at Food Africa"
       },
       "link": ""
     },
@@ -104,8 +104,8 @@ const SITE_DATA = {
         "en": "Our team, ready to welcome you"
       },
       "sub": {
-        "ar": "شرح المنتجات واستقبال طلبات التعاون والتصدير",
-        "en": "Walking visitors through our products and partnership requests"
+        "ar": "استقبال الزوار وطلبات التعاون والتصدير في معرض فود أفريقيا",
+        "en": "Welcoming visitors and partnership requests at Food Africa"
       },
       "link": ""
     }
