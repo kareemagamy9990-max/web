@@ -248,10 +248,16 @@
     if (bA) bA.innerHTML = brands.map(brandCard).join('');
 
     const products = D.products || [];
-    const productCard = p => {
+    const brandLogo = p => {
+      const b = (D.brands || []).find(b => b.logo && b.name && p.brand && b.name.en === p.brand.en);
+      return b ? b.logo : '';
+    };
+    // useLogo: show the brand logo on the card; product photos only appear inside the popup
+    const productCard = (p, useLogo) => {
       const idx = products.indexOf(p);
       const flavors = (p.flavors || []).filter(f => f && f.img);
-      const cover = p.image || (flavors[0] && flavors[0].img);
+      const logo = useLogo ? brandLogo(p) : '';
+      const cover = logo || p.image || (flavors[0] && flavors[0].img);
       const hasGallery = flavors.length > 0;
       const clickable = hasGallery || Boolean(pick(p.sizes,l) || pick(p.details,l));
       const moreLabel = hasGallery
@@ -259,9 +265,9 @@
         : (clickable ? (l === 'ar' ? 'التفاصيل ›' : 'View details ›') : '');
       return `
       <div class="product-card${clickable ? ' has-gallery' : ''}" ${clickable ? `data-product-idx="${idx}" tabindex="0" role="button"` : ''}>
-        <div class="product-media" style="background:${esc(p.color)}1A">
+        <div class="product-media${logo ? ' is-logo' : ''}" style="background:${logo ? `linear-gradient(135deg, ${esc(p.color)} 0%, ${esc(p.color)}CC 100%)` : `${esc(p.color)}1A`}">
           ${cover
-            ? `<img src="${esc(cover)}" alt="${esc(pick(p.name,l))}" class="product-photo${p.wide ? ' wide' : ''}" loading="lazy">`
+            ? `<img src="${esc(cover)}" alt="${esc(logo ? pick(p.brand,l) : pick(p.name,l))}" class="${logo ? 'product-logo' : 'product-photo' + (p.wide ? ' wide' : '')}" loading="lazy">`
             : `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="30" cy="30" r="22" fill="${esc(p.color)}" opacity="0.85"/>
             <circle cx="30" cy="30" r="8" fill="#FFF8ED"/></svg>`}
@@ -275,9 +281,9 @@
     };
     const visible = products.filter(p => !p.hidden);
     const pS = document.getElementById('productStripSnacks'), pC = document.getElementById('productStripCandy'), pA = document.getElementById('productStrip');
-    if (pS) pS.innerHTML = visible.filter(p => p.category === 'snacks').map(productCard).join('');
-    if (pC) pC.innerHTML = visible.filter(p => p.category === 'candy').map(productCard).join('');
-    if (pA) pA.innerHTML = visible.map(productCard).join('');
+    if (pS) pS.innerHTML = visible.filter(p => p.category === 'snacks').map(p => productCard(p)).join('');
+    if (pC) pC.innerHTML = visible.filter(p => p.category === 'candy').map(p => productCard(p, true)).join('');
+    if (pA) pA.innerHTML = visible.map(p => productCard(p)).join('');
 
     const certGrid = document.getElementById('certGrid');
     if (certGrid && D.certifications) {
