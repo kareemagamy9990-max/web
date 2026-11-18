@@ -1099,7 +1099,72 @@ const SITE_DATA = {
       "sizes": {
         "ar": "14-24 جم للقطعة، علب 30-100 قطعة",
         "en": "14-24g per piece, boxes of 30-100 pieces"
-      }
+      },
+      "flavors": [
+        {
+          "img": "images/mojo-strawberry-box.webp",
+          "name": {
+            "ar": "فراولة – علبة عرض",
+            "en": "Strawberry – Display Box"
+          }
+        },
+        {
+          "img": "images/mojo-mango-box.webp",
+          "name": {
+            "ar": "مانجو – علبة عرض",
+            "en": "Mango – Display Box"
+          }
+        },
+        {
+          "img": "images/mojo-green-apple-box.webp",
+          "name": {
+            "ar": "تفاح أخضر – علبة عرض",
+            "en": "Green Apple – Display Box"
+          }
+        },
+        {
+          "img": "images/mojo-cola-box.webp",
+          "name": {
+            "ar": "كولا – علبة عرض",
+            "en": "Cola – Display Box"
+          }
+        },
+        {
+          "img": "images/mojo-assorted-box.webp",
+          "name": {
+            "ar": "مشكّل – علبة عرض",
+            "en": "Assorted – Display Box"
+          }
+        },
+        {
+          "img": "images/mojo-red-box.webp",
+          "name": {
+            "ar": "علبة كرتون",
+            "en": "Carton Box"
+          }
+        },
+        {
+          "img": "images/mojo-jar-stand.webp",
+          "name": {
+            "ar": "برطمان بستاند",
+            "en": "Jar with Stand"
+          }
+        },
+        {
+          "img": "images/mojo-tower-display.webp",
+          "name": {
+            "ar": "ستاند برج",
+            "en": "Tower Display"
+          }
+        },
+        {
+          "img": "images/mojo-bags.webp",
+          "name": {
+            "ar": "أكياس",
+            "en": "Bags"
+          }
+        }
+      ]
     },
     {
       "name": {
