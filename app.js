@@ -63,7 +63,10 @@
       } else if (key === 'phones' && Array.isArray(S.phones)) {
         el.innerHTML = S.phones.filter(Boolean)
           .map(p => `<a href="${esc(telHref(p))}" dir="ltr">${esc(p)}</a>`).join(' · ');
-      } else if (['facebook','instagram','linkedin'].includes(key)) {
+      } else if (key === 'whatsapp') {
+        const num = String(S.whatsapp || '').replace(/\D/g,'').replace(/^0/, '20');
+        if (num) el.setAttribute('href', 'https://wa.me/' + num); else el.style.display = 'none';
+      } else if (['facebook','instagram','linkedin','youtube','tiktok','x'].includes(key)) {
         if (S[key]) el.setAttribute('href', S[key]); else el.style.display = 'none';
       }
     });

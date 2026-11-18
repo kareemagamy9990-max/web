@@ -11,6 +11,9 @@ const SITE_DATA = {
     "facebook": "https://www.facebook.com/egygulffoods",
     "instagram": "https://www.instagram.com/egygulffoods/",
     "linkedin": "https://www.linkedin.com/company/102147127/",
+    "youtube": "",
+    "tiktok": "",
+    "x": "",
     "formEndpoint": "https://formspree.io/f/maewjkel",
     "offersSheetUrl": "https://script.google.com/macros/s/AKfycbw0D_RwlwOS64AAtHT4IecBWQNpLYmrI2b4p_E4ApAWXEwdnegMgIY1TNGVBSFL0gRx2A/exec"
   },

@@ -127,7 +127,7 @@ async function connect(){
 
 function normalise(){
   const d = A.data;
-  d.settings = Object.assign({ siteUrl:'', email:'', phones:[], whatsapp:'', facebook:'', instagram:'', linkedin:'', formEndpoint:'' }, d.settings || {});
+  d.settings = Object.assign({ siteUrl:'', email:'', phones:[], whatsapp:'', facebook:'', instagram:'', linkedin:'', youtube:'', tiktok:'', x:'', formEndpoint:'' }, d.settings || {});
   d.images = Object.assign({ heroMosaic:'', snacksMosaic:'', candyMosaic:'', aboutImage:'', chairmanPhoto:'', expoVideo:'' }, d.images || {});
   for (const k of ['stats','events','brands','products','certifications','reach','leadership','markets']) if (!Array.isArray(d[k])) d[k] = [];
   A.i18n.ar = A.i18n.ar || {}; A.i18n.en = A.i18n.en || {};
@@ -758,7 +758,10 @@ function secSettings(){
     ${fText(P(s,'facebook'), 'فيسبوك', { dir:'ltr' })}
     ${fText(P(s,'instagram'), 'إنستجرام', { dir:'ltr' })}
     ${fText(P(s,'linkedin'), 'لينكدإن', { dir:'ltr' })}
-  </div><small class="f-help">سيب الخانة فاضية عشان الأيقونة تختفي.</small></div>
+    ${fText(P(s,'youtube'), 'يوتيوب', { dir:'ltr' })}
+    ${fText(P(s,'tiktok'), 'تيك توك', { dir:'ltr' })}
+    ${fText(P(s,'x'), 'X (تويتر)', { dir:'ltr' })}
+  </div><small class="f-help">سيب الخانة فاضية عشان الأيقونة تختفي. أيقونة واتساب بتاخد الرقم من خانة "رقم واتساب" فوق.</small></div>
   <div class="panel"><h3>الفورم</h3>
     ${fText(P(s,'formEndpoint'), 'رابط Formspree', { dir:'ltr', help:'الرسايل اللي بتتبعت من فورم الموقع بتوصل على الإيميل المربوط بالرابط ده في Formspree.' })}
   </div>
