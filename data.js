@@ -249,7 +249,7 @@ const SITE_DATA = {
     {
       "key": "mojo",
       "category": "candy",
-      "color": "#FFCB4D",
+      "color": "#E5196B",
       "init": {
         "ar": "M",
         "en": "M"
@@ -1094,7 +1094,7 @@ const SITE_DATA = {
         "ar": "موجو",
         "en": "MOJO"
       },
-      "color": "#FFCB4D",
+      "color": "#E5196B",
       "category": "candy",
       "sizes": {
         "ar": "14-24 جم للقطعة، علب 30-100 قطعة",
