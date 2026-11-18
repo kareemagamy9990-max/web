@@ -992,6 +992,7 @@ const SITE_DATA = {
         "ar": "لولي بوب مِكس فليفرز",
         "en": "Lollipop Mix Flavors"
       },
+      "hidden": true,
       "brand": {
         "ar": "لايت بوب",
         "en": "Light Pop"
