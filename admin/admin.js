@@ -624,7 +624,7 @@ function secProducts(){
       ${fBi(P(p,'details'), 'الوصف', { area:true })}
       <div class="grid2">
         ${fImage(P(p,'image'), 'صورة الغلاف (اختياري)', { max:1000, help:'لو فاضية بتظهر صورة أول نكهة.' })}
-        <div>${fCheck(P(p,'wide'), 'صورة عريضة (تكبير الصورة في الكارت)')}${fCheck(P(p,'hidden'), 'إخفاء المنتج من الموقع')}</div>
+        <div>${fCheck(P(p,'wide'), 'صورة عريضة (تكبير الصورة في الكارت)')}${fCheck(P(p,'hidden'), 'إخفاء المنتج من الموقع')}${fCheck(P(p,'soon'), 'علامة «قريبًا» على الكارت')}</div>
       </div>
       <div class="sub-panel"><h4>النكهات (${(it.flavors || []).length})</h4>
       ${cards(P(p,'flavors'), {

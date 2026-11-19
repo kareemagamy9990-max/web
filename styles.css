@@ -981,3 +981,12 @@ html[dir="rtl"] .offers-welcome{padding:10px 22px 10px 12px;}
   .offers-band .btn.offers-band-btn{width:100%; justify-content:center;}
 }
 
+
+/* "Coming soon" badge on product cards */
+.product-media{position:relative;}
+.product-soon{
+  position:absolute; top:14px; inset-inline-start:14px;
+  background:#fff; color:var(--indigo-950); font-weight:800; font-size:13px;
+  padding:6px 14px; border-radius:999px; box-shadow:0 6px 16px rgba(0,0,0,.18);
+  letter-spacing:.02em;
+}

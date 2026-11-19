@@ -271,6 +271,7 @@
             : `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="30" cy="30" r="22" fill="${esc(p.color)}" opacity="0.85"/>
             <circle cx="30" cy="30" r="8" fill="#FFF8ED"/></svg>`}
+          ${p.soon ? `<span class="product-soon">${l === 'ar' ? 'قريبًا' : 'Coming soon'}</span>` : ''}
         </div>
         <div class="product-body">
           <span>${esc(pick(p.brand,l))}</span>

@@ -1184,10 +1184,88 @@ const SITE_DATA = {
       },
       "flavors": [
         {
-          "img": "images/tuttilolly-mini.webp",
+          "img": "images/tutti-strawberry.webp",
+          "name": {
+            "ar": "فراولة",
+            "en": "Strawberry"
+          }
+        },
+        {
+          "img": "images/tutti-tropical.webp",
+          "name": {
+            "ar": "فواكه استوائية",
+            "en": "Tropical Fruits"
+          }
+        },
+        {
+          "img": "images/tutti-orange.webp",
+          "name": {
+            "ar": "برتقال",
+            "en": "Orange"
+          }
+        },
+        {
+          "img": "images/tutti-green-apple.webp",
+          "name": {
+            "ar": "تفاح أخضر",
+            "en": "Green Apple"
+          }
+        },
+        {
+          "img": "images/tutti-blueberry.webp",
+          "name": {
+            "ar": "توت",
+            "en": "Blueberry"
+          }
+        },
+        {
+          "img": "images/tutti-cola.webp",
           "name": {
             "ar": "كولا",
             "en": "Cola"
+          }
+        },
+        {
+          "img": "images/tutti-jar-stand.webp",
+          "name": {
+            "ar": "برطمان بستاند",
+            "en": "Jar with Stand"
+          }
+        },
+        {
+          "img": "images/tutti-tower.webp",
+          "name": {
+            "ar": "ستاند برج",
+            "en": "Tower Display"
+          }
+        },
+        {
+          "img": "images/tutti-jar.webp",
+          "name": {
+            "ar": "برطمان",
+            "en": "Jar"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "توتي لولي ميكس فليفرز",
+        "en": "Tutti Lolly Mix Flavors"
+      },
+      "brand": {
+        "ar": "توتي لولي",
+        "en": "Tutti Lolly"
+      },
+      "color": "#4A44A8",
+      "category": "candy",
+      "soon": true,
+      "flavors": [
+        {
+          "img": "images/tutti-mix-bag.webp",
+          "name": {
+            "ar": "ميكس فليفرز – كيس",
+            "en": "Mix Flavors – Bag"
           }
         }
       ]
