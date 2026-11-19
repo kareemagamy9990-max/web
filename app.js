@@ -5,9 +5,9 @@
   const IMG = D.images || {};
 
   // Language is remembered across page loads so navigating keeps the visitor's choice.
-  let lang = 'ar';
-  try { lang = localStorage.getItem('egygulf_lang') || 'ar'; } catch(e) {}
-  if (lang !== 'ar' && lang !== 'en') lang = 'ar';
+  let lang = 'en';
+  try { lang = localStorage.getItem('egygulf_lang') || 'en'; } catch(e) {}
+  if (lang !== 'ar' && lang !== 'en') lang = 'en';
 
   const esc = s => String(s == null ? '' : s)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
