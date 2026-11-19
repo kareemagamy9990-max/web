@@ -163,8 +163,9 @@
     document.querySelectorAll('.event-arrow').forEach(b => b.hidden = list.length < 2);
     const rtl = document.documentElement.dir === 'rtl';
     const prev = document.getElementById('eventPrev'), next = document.getElementById('eventNext');
-    if (prev) prev.textContent = rtl ? '›' : '‹';
-    if (next) next.textContent = rtl ? '‹' : '›';
+    const chev = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
+    if (prev) prev.innerHTML = chev;
+    if (next) next.innerHTML = chev;
     updateEventTrack();
   }
   function playVideo(v, slide){
@@ -289,8 +290,8 @@
       const hasGallery = flavors.length > 0;
       const clickable = hasGallery || Boolean(pick(p.sizes,l) || pick(p.details,l));
       const moreLabel = hasGallery
-        ? (l === 'ar' ? 'عرض النكهات ›' : 'View flavors ›')
-        : (clickable ? (l === 'ar' ? 'التفاصيل ›' : 'View details ›') : '');
+        ? (l === 'ar' ? 'عرض النكهات' : 'View flavors')
+        : (clickable ? (l === 'ar' ? 'التفاصيل' : 'View details') : '');
       return `
       <div class="product-card${clickable ? ' has-gallery' : ''}" ${clickable ? `data-product-idx="${idx}" tabindex="0" role="button"` : ''}>
         <div class="product-media${logo ? ' is-logo' : ''}" style="background:${logo ? `linear-gradient(135deg, ${esc(p.color)} 0%, ${esc(p.color)}CC 100%)` : `${esc(p.color)}1A`}">
@@ -304,7 +305,7 @@
         <div class="product-body">
           <span>${esc(pick(p.brand,l))}</span>
           <h4>${esc(pick(p.name,l))}</h4>
-          ${moreLabel ? `<span class="product-more">${moreLabel}</span>` : ''}
+          ${moreLabel ? `<span class="product-more has-arrow">${moreLabel}</span>` : ''}
         </div>
       </div>`;
     };
@@ -335,7 +336,7 @@
           <h3>${esc(pick(b.name,l))}</h3>
           <div class="hub-foot">
             <span class="hub-count">${n} ${l === 'ar' ? (n === 1 ? 'منتج' : (n === 2 ? 'منتجين' : 'منتجات')) : (n === 1 ? 'product' : 'products')}</span>
-            <span class="hub-go">${l === 'ar' ? 'شوف المنتجات ‹' : 'View products ›'}</span>
+            <span class="hub-go has-arrow">${l === 'ar' ? 'شوف المنتجات' : 'View products'}</span>
           </div>
         </div>
       </a>`;
@@ -373,7 +374,7 @@
           <span class="hub-dots" aria-hidden="true"></span>
           <div class="container brand-hero-inner">
             <div class="brand-hero-text">
-              <a class="brand-back" href="products.html?cat=${esc(b.category)}">${l === 'ar' ? '› كل البراندات' : '‹ All brands'}</a>
+              <a class="brand-back has-arrow back" href="products.html?cat=${esc(b.category)}">${l === 'ar' ? 'كل البراندات' : 'All brands'}</a>
               <span class="brand-hero-cat">${esc(catLabel(b.category))}</span>
               <h1>${esc(pick(b.name,l))}</h1>
               <p>${esc(pick(b.desc,l))}</p>
@@ -510,7 +511,7 @@
     }
     bar.innerHTML = `<div class="container">
       <span>🎉 ${dict['offers.bar'] || ''}</span>
-      <a class="offers-bar-link" href="offers.html">${dict['offers.barBtn'] || ''}</a>
+      <a class="offers-bar-link has-arrow" href="offers.html">${dict['offers.barBtn'] || ''}</a>
       <button type="button" class="offers-bar-close" aria-label="${l === 'ar' ? 'إغلاق' : 'Close'}">×</button>
     </div>`;
   }
@@ -542,7 +543,7 @@
           <h3>${esc(pick(o.title,l))}</h3>
           ${pick(o.desc,l) ? `<p>${esc(pick(o.desc,l))}</p>` : ''}
           ${o.validUntil ? `<span class="offer-valid">${dict['offers.validUntil'] || ''} ${esc(fmtDate(o.validUntil, l))}</span>` : ''}
-          <a class="btn btn-primary offer-btn" href="${esc(link)}"${/^https?:/i.test(link) ? ' target="_blank" rel="noopener"' : ''}>${dict['offers.cta'] || ''}</a>
+          <a class="btn btn-primary offer-btn has-arrow" href="${esc(link)}"${/^https?:/i.test(link) ? ' target="_blank" rel="noopener"' : ''}>${dict['offers.cta'] || ''}</a>
         </div>
       </article>`;
     }).join('');
