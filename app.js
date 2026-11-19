@@ -253,7 +253,23 @@
       return b ? b.logo : '';
     };
     // useLogo: show the brand logo on the card; product photos only appear inside the popup
+    // "Coming soon" products: a full-width exclusive teaser banner, not clickable
+    const soonCard = p => {
+      const logo = brandLogo(p);
+      return `
+      <div class="product-soon-card" style="--soon-accent:${esc(p.color || '#4A44A8')}">
+        <span class="soon-glow" aria-hidden="true"></span>
+        <div class="soon-logo">${logo ? `<img src="${esc(logo)}" alt="${esc(pick(p.brand,l))}" loading="lazy">` : ''}</div>
+        <div class="soon-text">
+          <span class="soon-eyebrow">${l === 'ar' ? 'حصريًا ✦ منتج جديد' : 'Exclusive ✦ New product'}</span>
+          <h4>${esc(pick(p.name,l))}</h4>
+          <p>${esc(pick(p.teaser,l)) || (l === 'ar' ? 'جاهزين لحاجة جديدة؟ استنونا قريب جدًا.' : 'Something new is on its way — stay tuned.')}</p>
+        </div>
+        <span class="soon-pill"><span class="soon-dot"></span>${l === 'ar' ? 'قريبًا' : 'Coming soon'}</span>
+      </div>`;
+    };
     const productCard = (p, useLogo) => {
+      if (p.soon) return soonCard(p);
       const idx = products.indexOf(p);
       const flavors = (p.flavors || []).filter(f => f && f.img);
       const logo = useLogo ? brandLogo(p) : '';
@@ -280,7 +296,8 @@
         </div>
       </div>`;
     };
-    const visible = products.filter(p => !p.hidden);
+    // coming-soon teasers always sit at the end of each list
+    const visible = products.filter(p => !p.hidden).sort((x, y) => (x.soon ? 1 : 0) - (y.soon ? 1 : 0));
     const pS = document.getElementById('productStripSnacks'), pC = document.getElementById('productStripCandy'), pA = document.getElementById('productStrip');
     if (pS) pS.innerHTML = visible.filter(p => p.category === 'snacks').map(p => productCard(p)).join('');
     if (pC) pC.innerHTML = visible.filter(p => p.category === 'candy').map(p => productCard(p, true)).join('');

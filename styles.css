@@ -990,3 +990,48 @@ html[dir="rtl"] .offers-welcome{padding:10px 22px 10px 12px;}
   padding:6px 14px; border-radius:999px; box-shadow:0 6px 16px rgba(0,0,0,.18);
   letter-spacing:.02em;
 }
+
+/* ==========================================================================
+   Coming-soon teaser — full-width exclusive banner at the end of a product list
+   ========================================================================== */
+.product-soon-card{
+  grid-column:1 / -1; position:relative; overflow:hidden; isolation:isolate;
+  display:flex; align-items:center; gap:36px; padding:34px 44px; border-radius:22px;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255,255,255,.10) 0 2px, transparent 3px) 0 0/38px 38px,
+    linear-gradient(120deg, #120C3A 0%, #3A1478 40%, #C2185B 100%);
+  color:#fff; box-shadow:0 18px 40px rgba(18,12,58,.28);
+}
+.product-soon-card::before{ /* animated gold frame */
+  content:""; position:absolute; inset:0; border-radius:inherit; padding:2px; z-index:-1;
+  background:linear-gradient(90deg, var(--gold-500), #fff3c4, var(--gold-500), #b8860b, var(--gold-500));
+  background-size:300% 100%; animation:soonFrame 6s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude;
+}
+.soon-glow{
+  position:absolute; width:340px; height:340px; border-radius:50%; z-index:-1;
+  inset-inline-end:-80px; top:-120px; background:radial-gradient(circle, rgba(253,184,21,.35), transparent 65%);
+}
+.soon-logo{flex:0 0 auto; width:190px; display:flex; align-items:center; justify-content:center;}
+.soon-logo img{width:100%; height:auto; filter:drop-shadow(0 10px 22px rgba(0,0,0,.35)); animation:soonFloat 4s ease-in-out infinite;}
+.soon-text{flex:1; min-width:0;}
+.soon-eyebrow{display:inline-block; color:var(--gold-500); font-weight:800; font-size:13px; letter-spacing:.08em; text-transform:uppercase;}
+.soon-text h4{font-size:28px; margin:8px 0 6px; color:#fff;}
+.soon-text p{margin:0; color:rgba(255,255,255,.78); font-size:15px;}
+.soon-pill{
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:10px;
+  background:var(--gold-500); color:var(--indigo-950); font-weight:900; font-size:18px;
+  padding:12px 26px; border-radius:999px; box-shadow:0 8px 22px rgba(253,184,21,.4);
+}
+.soon-dot{width:10px; height:10px; border-radius:50%; background:#E0217A; box-shadow:0 0 0 0 rgba(224,33,122,.6); animation:soonPulse 1.6s infinite;}
+@keyframes soonFrame{to{background-position:300% 0;}}
+@keyframes soonFloat{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-8px) rotate(2deg);}}
+@keyframes soonPulse{70%{box-shadow:0 0 0 10px rgba(224,33,122,0);}100%{box-shadow:0 0 0 0 rgba(224,33,122,0);}}
+@media (max-width:760px){
+  .product-soon-card{flex-direction:column; text-align:center; gap:16px; padding:28px 20px;}
+  .soon-logo{width:150px;}
+  .soon-text h4{font-size:22px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .product-soon-card::before, .soon-logo img, .soon-dot{animation:none;}
+}

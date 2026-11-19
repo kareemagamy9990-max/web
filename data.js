@@ -1269,16 +1269,7 @@ const SITE_DATA = {
       },
       "color": "#4A44A8",
       "category": "candy",
-      "soon": true,
-      "flavors": [
-        {
-          "img": "images/tutti-mix-bag.webp",
-          "name": {
-            "ar": "ميكس فليفرز – كيس",
-            "en": "Mix Flavors – Bag"
-          }
-        }
-      ]
+      "soon": true
     },
     {
       "name": {
