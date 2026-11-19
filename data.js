@@ -1083,6 +1083,20 @@ const SITE_DATA = {
             "ar": "كراميل بشوكولاتة",
             "en": "Chocolate Caramel"
           }
+        },
+        {
+          "img": "images/eclair-milk.webp",
+          "name": {
+            "ar": "حليب",
+            "en": "Milk"
+          }
+        },
+        {
+          "img": "images/eclair-chocolate.webp",
+          "name": {
+            "ar": "شوكولاتة",
+            "en": "Chocolate"
+          }
         }
       ]
     },
