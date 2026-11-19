@@ -20,7 +20,7 @@ const SITE_DATA = {
   "images": {
     "heroMosaic": "images/products-mosaic.webp",
     "snacksMosaic": "images/snacks-mosaic.webp",
-    "candyMosaic": "images/candy-lineup.webp",
+    "candyMosaic": "images/candy-lineup-v2.webp",
     "aboutImage": "images/logo.png",
     "chairmanPhoto": "",
     "expoVideo": "images/videos/expo-booth.mp4"
