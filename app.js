@@ -303,6 +303,90 @@
     if (pC) pC.innerHTML = visible.filter(p => p.category === 'candy').map(p => productCard(p)).join('');
     if (pA) pA.innerHTML = visible.map(p => productCard(p)).join('');
 
+    /* ---------- Our Products hub (products.html) + brand pages (brand.html?b=key) ---------- */
+    const brandProducts = b => visible.filter(p => p.brand && b.name && p.brand.en === b.name.en);
+    const catLabel = c => c === 'candy' ? (l === 'ar' ? 'حلويات' : 'Confectionery') : (l === 'ar' ? 'سناكس' : 'Snacks');
+    const hubCard = b => {
+      const items = brandProducts(b);
+      const thumbs = items.filter(p => !p.soon).map(p => p.image || ((p.flavors || []).find(f => f && f.img) || {}).img).filter(Boolean).slice(0, 3);
+      const n = items.filter(p => !p.soon).length;
+      return `
+      <a class="hub-card" href="brand.html?b=${encodeURIComponent(b.key)}" data-cat="${esc(b.category)}" style="--brand:${esc(b.color)}">
+        <div class="hub-media">
+          <span class="hub-dots" aria-hidden="true"></span>
+          ${b.logo ? `<img class="hub-logo" src="${esc(b.logo)}" alt="${esc(pick(b.name,l))}" loading="lazy">`
+                   : `<span class="brand-monogram">${esc(pick(b.init,l) || pick(b.name,l).charAt(0))}</span>`}
+          <div class="hub-thumbs" aria-hidden="true">${thumbs.map(t => `<img src="${esc(t)}" alt="" loading="lazy">`).join('')}</div>
+        </div>
+        <div class="hub-body">
+          <span class="hub-cat">${esc(catLabel(b.category))}</span>
+          <h3>${esc(pick(b.name,l))}</h3>
+          <div class="hub-foot">
+            <span class="hub-count">${n} ${l === 'ar' ? (n === 1 ? 'منتج' : (n === 2 ? 'منتجين' : 'منتجات')) : (n === 1 ? 'product' : 'products')}</span>
+            <span class="hub-go">${l === 'ar' ? 'شوف المنتجات ‹' : 'View products ›'}</span>
+          </div>
+        </div>
+      </a>`;
+    };
+    const hub = document.getElementById('brandHub');
+    if (hub) {
+      const params = new URLSearchParams(location.search);
+      let cat = params.get('cat'); if (!['snacks','candy'].includes(cat)) cat = 'all';
+      hub.innerHTML = brands.filter(b => brandProducts(b).length).map(hubCard).join('');
+      const applyFilter = c => {
+        hub.querySelectorAll('.hub-card').forEach(el => { el.hidden = c !== 'all' && el.dataset.cat !== c; });
+        document.querySelectorAll('.hub-filter button').forEach(btn => btn.classList.toggle('active', btn.dataset.cat === c));
+      };
+      document.querySelectorAll('.hub-filter button').forEach(btn => {
+        btn.onclick = () => {
+          const c = btn.dataset.cat; applyFilter(c);
+          const u = new URL(location.href); if (c === 'all') u.searchParams.delete('cat'); else u.searchParams.set('cat', c);
+          history.replaceState(null, '', u);
+        };
+      });
+      applyFilter(cat);
+    }
+    const bp = document.getElementById('brandPage');
+    if (bp) {
+      const key = new URLSearchParams(location.search).get('b');
+      const b = brands.find(x => x.key === key);
+      if (!b) { location.replace('products.html'); return; }
+      document.title = `${pick(b.name,l)} — EgyGulf Foods`;
+      const isLight = hex => { const m = /^#?([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return false;
+        const n = parseInt(m[1], 16); return (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) > 170; };
+      const items = brandProducts(b);
+      const others = brands.filter(x => x.key !== b.key && brandProducts(x).length);
+      bp.innerHTML = `
+        <section class="brand-hero${isLight(b.color) ? ' is-light' : ''}" style="--brand:${esc(b.color)}">
+          <span class="hub-dots" aria-hidden="true"></span>
+          <div class="container brand-hero-inner">
+            <div class="brand-hero-text">
+              <a class="brand-back" href="products.html?cat=${esc(b.category)}">${l === 'ar' ? '› كل البراندات' : '‹ All brands'}</a>
+              <span class="brand-hero-cat">${esc(catLabel(b.category))}</span>
+              <h1>${esc(pick(b.name,l))}</h1>
+              <p>${esc(pick(b.desc,l))}</p>
+            </div>
+            ${b.logo ? `<img class="brand-hero-logo" src="${esc(b.logo)}" alt="${esc(pick(b.name,l))}">` : ''}
+          </div>
+        </section>
+        <section class="products brand-products">
+          <div class="container">
+            <div class="product-strip">${items.map(p => productCard(p)).join('')}</div>
+          </div>
+        </section>
+        ${others.length ? `
+        <section class="brand-others">
+          <div class="container">
+            <h3>${l === 'ar' ? 'براندات تانية' : 'More brands'}</h3>
+            <div class="brand-others-row">${others.map(x => `
+              <a href="brand.html?b=${encodeURIComponent(x.key)}" style="--brand:${esc(x.color)}" title="${esc(pick(x.name,l))}">
+                ${x.logo ? `<img src="${esc(x.logo)}" alt="${esc(pick(x.name,l))}" loading="lazy">` : esc(pick(x.name,l))}
+              </a>`).join('')}
+            </div>
+          </div>
+        </section>` : ''}`;
+    }
+
     const certGrid = document.getElementById('certGrid');
     if (certGrid && D.certifications) {
       certGrid.innerHTML = D.certifications.map(c => `

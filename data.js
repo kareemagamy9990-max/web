@@ -597,8 +597,8 @@ const SITE_DATA = {
         "en": "Crazy Crisps Popcorn"
       },
       "brand": {
-        "ar": "شيل آوت",
-        "en": "ChillOut"
+        "ar": "كريزي",
+        "en": "Crazy"
       },
       "color": "#2E2A74",
       "category": "snacks",
@@ -892,8 +892,8 @@ const SITE_DATA = {
         "en": "Bozo Puffs"
       },
       "brand": {
-        "ar": "برافو",
-        "en": "Bravo"
+        "ar": "بوزو",
+        "en": "Bozo"
       },
       "color": "#14123B",
       "category": "snacks",
@@ -956,8 +956,8 @@ const SITE_DATA = {
         "en": "Crazy Crisps"
       },
       "brand": {
-        "ar": "زجزاج",
-        "en": "Zegzag"
+        "ar": "كريزي",
+        "en": "Crazy"
       },
       "color": "#1A1A1A",
       "category": "snacks",
@@ -1006,8 +1006,8 @@ const SITE_DATA = {
         "en": "Crazy Crisps Crinkle"
       },
       "brand": {
-        "ar": "زجزاج",
-        "en": "Zegzag"
+        "ar": "كريزي",
+        "en": "Crazy"
       },
       "color": "#D62839",
       "category": "snacks",
@@ -1528,8 +1528,8 @@ const SITE_DATA = {
         "en": "Light Sugar Free"
       },
       "brand": {
-        "ar": "لايت",
-        "en": "Light"
+        "ar": "برافو لايت",
+        "en": "Bravo Light"
       },
       "color": "#E8432F",
       "category": "candy",
