@@ -371,7 +371,24 @@
         </section>
         <section class="products brand-products">
           <div class="container">
-            <div class="product-strip">${items.map(p => productCard(p)).join('')}</div>
+            ${items.filter(p => !p.soon).map(p => {
+              let shots = (p.flavors || []).filter(f => f && f.img);
+              if (!shots.length && p.image) shots = [{ img: p.image, name: p.name }];
+              return `
+              <div class="bp-product">
+                <div class="bp-head">
+                  <h2>${esc(pick(p.name,l))}</h2>
+                  ${pick(p.sizes,l) ? `<p class="bp-sizes">${esc(pick(p.sizes,l))}</p>` : ''}
+                  ${pick(p.details,l) ? `<p class="bp-details">${esc(pick(p.details,l))}</p>` : ''}
+                </div>
+                ${shots.length ? `<div class="bp-gallery">${shots.map(f => `
+                  <figure class="bp-shot" style="--brand:${esc(p.color || b.color)}">
+                    <div class="bp-shot-img"><img src="${esc(f.img)}" alt="${esc(pick(f.name,l) || pick(p.name,l))}" loading="lazy"></div>
+                    ${pick(f.name,l) && shots.length > 1 ? `<figcaption>${esc(pick(f.name,l))}</figcaption>` : ''}
+                  </figure>`).join('')}</div>` : ''}
+              </div>`;
+            }).join('')}
+            ${items.filter(p => p.soon).length ? `<div class="product-strip">${items.filter(p => p.soon).map(p => productCard(p)).join('')}</div>` : ''}
           </div>
         </section>
         ${others.length ? `
