@@ -1310,6 +1310,48 @@ const SITE_DATA = {
       },
       "flavors": [
         {
+          "img": "images/honey-piece-strawberry.webp",
+          "name": {
+            "ar": "فراولة – قطعة",
+            "en": "Strawberry – Piece"
+          }
+        },
+        {
+          "img": "images/honey-piece-mango.webp",
+          "name": {
+            "ar": "مانجو – قطعة",
+            "en": "Mango – Piece"
+          }
+        },
+        {
+          "img": "images/honey-piece-banana.webp",
+          "name": {
+            "ar": "موز – قطعة",
+            "en": "Banana – Piece"
+          }
+        },
+        {
+          "img": "images/honey-piece-green-apple.webp",
+          "name": {
+            "ar": "تفاح أخضر – قطعة",
+            "en": "Green Apple – Piece"
+          }
+        },
+        {
+          "img": "images/honey-piece-mint.webp",
+          "name": {
+            "ar": "نعناع – قطعة",
+            "en": "Mint – Piece"
+          }
+        },
+        {
+          "img": "images/honey-piece-cola.webp",
+          "name": {
+            "ar": "كولا – قطعة",
+            "en": "Cola – Piece"
+          }
+        },
+        {
           "img": "images/honey-gum-mint.webp",
           "name": {
             "ar": "نعناع",
@@ -1356,6 +1398,20 @@ const SITE_DATA = {
           "name": {
             "ar": "نكهات مشكلة",
             "en": "Mix Flavors"
+          }
+        },
+        {
+          "img": "images/honey-box.webp",
+          "name": {
+            "ar": "علبة",
+            "en": "Box"
+          }
+        },
+        {
+          "img": "images/honey-box-top.webp",
+          "name": {
+            "ar": "علبة – من فوق",
+            "en": "Box – Top View"
           }
         }
       ]
