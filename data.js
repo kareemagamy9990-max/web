@@ -1184,6 +1184,13 @@ const SITE_DATA = {
       },
       "flavors": [
         {
+          "img": "images/tutti-mix-bag.webp",
+          "name": {
+            "ar": "كيس ميكس فليفرز",
+            "en": "Mix Flavors Bag"
+          }
+        },
+        {
           "img": "images/tutti-strawberry.webp",
           "name": {
             "ar": "فراولة",
