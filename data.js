@@ -1080,7 +1080,8 @@ const SITE_DATA = {
             "en": "Boxes"
           }
         }
-      ]
+      ],
+      "image": "images/lp-lollipop-mix-bag.webp"
     },
     {
       "name": {
@@ -1161,7 +1162,8 @@ const SITE_DATA = {
             "en": "Bags"
           }
         }
-      ]
+      ],
+      "image": "images/mojo-strawberry-box.webp"
     },
     {
       "name": {
@@ -1249,7 +1251,8 @@ const SITE_DATA = {
             "en": "Jar"
           }
         }
-      ]
+      ],
+      "image": "images/tutti-jar-stand.webp"
     },
     {
       "name": {
@@ -1329,7 +1332,8 @@ const SITE_DATA = {
             "en": "Flavor Jars"
           }
         }
-      ]
+      ],
+      "image": "images/lightpop-fruits-bonbon.webp"
     },
     {
       "name": {
@@ -1452,7 +1456,8 @@ const SITE_DATA = {
             "en": "Box – Top View"
           }
         }
-      ]
+      ],
+      "image": "images/honey-gum-strawberry.webp"
     },
     {
       "name": {
@@ -1512,7 +1517,8 @@ const SITE_DATA = {
             "en": "Honey Light Gum – Pyramid"
           }
         }
-      ]
+      ],
+      "image": "images/light-sf-lollipops-bag.webp"
     },
     {
       "name": {
@@ -1544,7 +1550,8 @@ const SITE_DATA = {
             "en": "Chocolate"
           }
         }
-      ]
+      ],
+      "image": "images/toffee-milk.webp"
     },
     {
       "name": {

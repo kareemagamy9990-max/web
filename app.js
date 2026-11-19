@@ -300,7 +300,7 @@
     const visible = products.filter(p => !p.hidden).sort((x, y) => (x.soon ? 1 : 0) - (y.soon ? 1 : 0));
     const pS = document.getElementById('productStripSnacks'), pC = document.getElementById('productStripCandy'), pA = document.getElementById('productStrip');
     if (pS) pS.innerHTML = visible.filter(p => p.category === 'snacks').map(p => productCard(p)).join('');
-    if (pC) pC.innerHTML = visible.filter(p => p.category === 'candy').map(p => productCard(p, true)).join('');
+    if (pC) pC.innerHTML = visible.filter(p => p.category === 'candy').map(p => productCard(p)).join('');
     if (pA) pA.innerHTML = visible.map(p => productCard(p)).join('');
 
     const certGrid = document.getElementById('certGrid');
