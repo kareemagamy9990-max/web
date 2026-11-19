@@ -620,6 +620,69 @@ const SITE_DATA = {
             "ar": "جمبري تشيلي",
             "en": "Chili Shrimp"
           }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-bbq.webp",
+          "name": {
+            "ar": "باربكيو",
+            "en": "BBQ"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-seasoned-cheese.webp",
+          "name": {
+            "ar": "جبنة متبلة",
+            "en": "Seasoned Cheese"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-grilled-chicken.webp",
+          "name": {
+            "ar": "دجاج مشوي",
+            "en": "Grilled Chicken"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-korean-chicken.webp",
+          "name": {
+            "ar": "دجاج كوري",
+            "en": "Korean Chicken"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-korean-mixture.webp",
+          "name": {
+            "ar": "كوريان مكستشر",
+            "en": "Korean Mixture"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-sweet-paprika.webp",
+          "name": {
+            "ar": "بابريكا حلوة",
+            "en": "Sweet Paprika"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-rich-tomato.webp",
+          "name": {
+            "ar": "طماطم غنية",
+            "en": "Rich Tomato"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-sour-cream.webp",
+          "name": {
+            "ar": "كريمة حامضة",
+            "en": "Sour Cream"
+          }
+        },
+        {
+          "img": "images/crazy-crisps-popcorn-vinegar-salt.webp",
+          "name": {
+            "ar": "خل وملح",
+            "en": "Vinegar & Salt"
+          }
         }
       ]
     },
