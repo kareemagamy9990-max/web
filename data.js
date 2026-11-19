@@ -1046,13 +1046,6 @@ const SITE_DATA = {
           }
         },
         {
-          "img": "images/lp-lollipop-jar-2.webp",
-          "name": {
-            "ar": "برطمان",
-            "en": "Jar"
-          }
-        },
-        {
           "img": "images/lp-lollipop-jar-3.webp",
           "name": {
             "ar": "برطمان بستاند صغير",
