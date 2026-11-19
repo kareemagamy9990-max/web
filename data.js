@@ -20,7 +20,7 @@ const SITE_DATA = {
   "images": {
     "heroMosaic": "images/products-mosaic.webp",
     "snacksMosaic": "images/snacks-mosaic.webp",
-    "candyMosaic": "images/candy-lineup-v2.webp",
+    "candyMosaic": "images/candy-lineup-v3.webp",
     "aboutImage": "images/logo.png",
     "chairmanPhoto": "",
     "expoVideo": "images/videos/expo-booth.mp4"
@@ -1067,7 +1067,7 @@ const SITE_DATA = {
       },
       "flavors": [
         {
-          "img": "images/lp-lollipop-mix-bag.webp",
+          "img": "images/lp-lollipop-mix-bag-hd.webp",
           "name": {
             "ar": "كيس ميكس فليفرز",
             "en": "Mix Flavors Bag"
@@ -1144,7 +1144,7 @@ const SITE_DATA = {
           }
         }
       ],
-      "image": "images/lp-lollipop-mix-bag.webp"
+      "image": "images/lp-lollipop-mix-bag-hd.webp"
     },
     {
       "name": {
