@@ -216,8 +216,8 @@ const SITE_DATA = {
         "en": "Light Pop"
       },
       "desc": {
-        "ar": "مصاصات ولولي بوب بأشكال وتعبئات متعددة (أكياس، شجرة، حافلة، برطمان)، وبونبون وتوفي وإكلير.",
-        "en": "Lollipops in bags, jars and display stands, plus bonbon, toffee and eclair candy."
+        "ar": "مصاصات فواكه في أكياس وبرطمانات وشجرة وعربية عرض، وبون بون وتوفي.",
+        "en": "Fruit lollipops in bags, jars, tree and car displays, plus bon bon and toffee."
       },
       "tag": {
         "ar": "مصاصات وحلوى",
@@ -989,24 +989,7 @@ const SITE_DATA = {
     },
     {
       "name": {
-        "ar": "لولي بوب مِكس فليفرز",
-        "en": "Lollipop Mix Flavors"
-      },
-      "hidden": true,
-      "brand": {
-        "ar": "لايت بوب",
-        "en": "Light Pop"
-      },
-      "color": "#FDB815",
-      "category": "candy",
-      "sizes": {
-        "ar": "14-20 جم للقطعة، أكياس 50-100 قطعة",
-        "en": "14-20g per piece, bags of 50-100 pieces"
-      }
-    },
-    {
-      "name": {
-        "ar": "لولي بوب فروتس",
+        "ar": "مصاصة فواكه",
         "en": "Fruits Lollipop"
       },
       "brand": {
@@ -1016,88 +999,92 @@ const SITE_DATA = {
       "color": "#FDB815",
       "category": "candy",
       "sizes": {
-        "ar": "9-15 جم للقطعة، عرض 75-120 قطعة",
-        "en": "9-15g per piece, displays of 75-120 pieces"
-      }
-    },
-    {
-      "name": {
-        "ar": "بون بون فواكه ولبن",
-        "en": "Fruits & Milk Bon Bon"
-      },
-      "brand": {
-        "ar": "لايت بوب",
-        "en": "Light Pop"
-      },
-      "color": "#FDB815",
-      "category": "candy",
-      "sizes": {
-        "ar": "3-4 جم للقطعة، أكياس/برطمانات 50-250 قطعة",
-        "en": "3-4g per piece, bags/jars of 50-250 pieces"
+        "ar": "7-20 جم للقطعة · أكياس 50 و100 قطعة · برطمانات 120 و150 قطعة · شجرة 72 و120 قطعة · عربية 80 قطعة",
+        "en": "7-20g per piece · bags of 50 & 100 · jars of 120 & 150 · trees of 72 & 120 · car display of 80"
       },
       "flavors": [
         {
-          "img": "images/lightpop-fruits-bonbon.webp",
+          "img": "images/lp-lollipop-mix-bag.webp",
           "name": {
-            "ar": "فواكه",
-            "en": "Fruits"
-          }
-        }
-      ]
-    },
-    {
-      "name": {
-        "ar": "توفي",
-        "en": "Toffee"
-      },
-      "brand": {
-        "ar": "لايت بوب",
-        "en": "Light Pop"
-      },
-      "color": "#FDB815",
-      "category": "candy",
-      "sizes": {
-        "ar": "90-100 جم، عبوة (24 كيس)",
-        "en": "90-100g, bag pack (24 bags)"
-      },
-      "flavors": [
-        {
-          "img": "images/toffee-milk.webp",
-          "name": {
-            "ar": "حليب",
-            "en": "Milk"
+            "ar": "كيس ميكس فليفرز",
+            "en": "Mix Flavors Bag"
           }
         },
         {
-          "img": "images/toffee-chocolate.webp",
+          "img": "images/lp-lollipop-bag.webp",
           "name": {
-            "ar": "شوكولاتة",
-            "en": "Chocolate"
+            "ar": "كيس لولي بوب",
+            "en": "Lollipop Bag"
           }
-        }
-      ]
-    },
-    {
-      "name": {
-        "ar": "إكلير لايت",
-        "en": "Eclair"
-      },
-      "brand": {
-        "ar": "لايت بوب",
-        "en": "Light Pop"
-      },
-      "color": "#FDB815",
-      "category": "candy",
-      "sizes": {
-        "ar": "70-80 جم كيس / 400 جم علبة / 200 قطعة برطمان",
-        "en": "70-80g bag / 400g box / 200-piece jar"
-      },
-      "flavors": [
+        },
         {
-          "img": "images/eclair-light.webp",
+          "img": "images/lp-fruits-bag-red.webp",
           "name": {
-            "ar": "كراميل بشوكولاتة",
-            "en": "Chocolate Caramel"
+            "ar": "كيس فروتس – أحمر",
+            "en": "Fruits Bag – Red"
+          }
+        },
+        {
+          "img": "images/lp-fruits-bag-yellow.webp",
+          "name": {
+            "ar": "كيس فروتس – أصفر",
+            "en": "Fruits Bag – Yellow"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-jar-stand.webp",
+          "name": {
+            "ar": "برطمان بستاند",
+            "en": "Jar with Stand"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-jar-1.webp",
+          "name": {
+            "ar": "برطمان",
+            "en": "Jar"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-jar-2.webp",
+          "name": {
+            "ar": "برطمان",
+            "en": "Jar"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-jar-3.webp",
+          "name": {
+            "ar": "برطمان بستاند صغير",
+            "en": "Small Jar with Stand"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-tree-1.webp",
+          "name": {
+            "ar": "شجرة 72 قطعة",
+            "en": "Tree – 72 pcs"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-tree-2.webp",
+          "name": {
+            "ar": "شجرة 120 قطعة",
+            "en": "Tree – 120 pcs"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-car.webp",
+          "name": {
+            "ar": "عربية 80 قطعة",
+            "en": "Car Display – 80 pcs"
+          }
+        },
+        {
+          "img": "images/lp-lollipop-boxes.webp",
+          "name": {
+            "ar": "علب",
+            "en": "Boxes"
           }
         }
       ]
@@ -1114,8 +1101,8 @@ const SITE_DATA = {
       "color": "#E5196B",
       "category": "candy",
       "sizes": {
-        "ar": "14-24 جم للقطعة، علب 30-100 قطعة",
-        "en": "14-24g per piece, boxes of 30-100 pieces"
+        "ar": "14-15 جم للقطعة · كيس 50 قطعة · علب 30 و100 قطعة · برطمانات 120 و150 قطعة · شجرة 72 و120 قطعة",
+        "en": "14-15g per piece · bag of 50 · boxes of 30 & 100 · jars of 120 & 150 · trees of 72 & 120"
       },
       "flavors": [
         {
@@ -1185,8 +1172,8 @@ const SITE_DATA = {
     },
     {
       "name": {
-        "ar": "مصاصة فواكه",
-        "en": "Fruits Lollipop"
+        "ar": "مصاصات توتي لولي",
+        "en": "Tutti Lolly Lollipops"
       },
       "brand": {
         "ar": "توتي لولي",
@@ -1195,8 +1182,8 @@ const SITE_DATA = {
       "color": "#4A44A8",
       "category": "candy",
       "sizes": {
-        "ar": "7-8 جم، كيس (50 قطعة)",
-        "en": "7-8g, bag (50 pieces)"
+        "ar": "كيس 50 قطعة (7-8 جم) · برطمان 30 قطعة (7-8 جم) · شجرة 72 قطعة (14-15 جم)",
+        "en": "Bag of 50 (7-8g) · jar of 30 (7-8g) · tree of 72 (14-15g)"
       },
       "flavors": [
         {
@@ -1295,6 +1282,73 @@ const SITE_DATA = {
     },
     {
       "name": {
+        "ar": "بون بون",
+        "en": "Bon Bon"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "3-4 جم للقطعة · كيس 50 قطعة · علبة 100 قطعة · برطمان 250 قطعة",
+        "en": "3-4g per piece · bag of 50 · box of 100 · jar of 250"
+      },
+      "flavors": [
+        {
+          "img": "images/lightpop-fruits-bonbon.webp",
+          "name": {
+            "ar": "فواكه – كيس",
+            "en": "Fruits – Bag"
+          }
+        },
+        {
+          "img": "images/lp-bonbon-milky-fruity.webp",
+          "name": {
+            "ar": "ميلكي فروتي – كيس",
+            "en": "Milky Fruity – Bag"
+          }
+        },
+        {
+          "img": "images/lp-bonbon-coffee.webp",
+          "name": {
+            "ar": "قهوة – كيس",
+            "en": "Coffee – Bag"
+          }
+        },
+        {
+          "img": "images/lp-bonbon-strawberry-box.webp",
+          "name": {
+            "ar": "فراولة – علبة",
+            "en": "Strawberry – Box"
+          }
+        },
+        {
+          "img": "images/lp-bonbon-boxes.webp",
+          "name": {
+            "ar": "علب بالنكهات",
+            "en": "Flavor Boxes"
+          }
+        },
+        {
+          "img": "images/lp-bonbon-cola-jar.webp",
+          "name": {
+            "ar": "كولا – برطمان",
+            "en": "Cola – Jar"
+          }
+        },
+        {
+          "img": "images/lp-bonbon-jars.webp",
+          "name": {
+            "ar": "برطمانات بالنكهات",
+            "en": "Flavor Jars"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
         "ar": "لبان هَني",
         "en": "Honey Gum"
       },
@@ -1305,8 +1359,8 @@ const SITE_DATA = {
       "color": "#201C63",
       "category": "candy",
       "sizes": {
-        "ar": "3-4 جم للقطعة، علب/برطمانات 50-250 قطعة",
-        "en": "3-4g per piece, boxes/jars of 50-250 pieces"
+        "ar": "3-4 جم للقطعة · علبة 50 و100 قطعة · برطمان 250 قطعة",
+        "en": "3-4g per piece · boxes of 50 & 100 · jar of 250"
       },
       "flavors": [
         {
@@ -1418,19 +1472,138 @@ const SITE_DATA = {
     },
     {
       "name": {
-        "ar": "حلوى ولبان خالي من السكر",
-        "en": "Sugar-Free Candy & Gum"
+        "ar": "لايت شوجر فري – بدون سكر",
+        "en": "Light Sugar Free"
       },
       "brand": {
-        "ar": "برافو لايت",
-        "en": "Bravo Light"
+        "ar": "لايت",
+        "en": "Light"
       },
-      "color": "#14123B",
+      "color": "#E8432F",
       "category": "candy",
       "sizes": {
-        "ar": "30-45 جم، علبة (24 علبة)",
-        "en": "30-45g, box pack (24 boxes)"
+        "ar": "30-35 جم · كيس أو علبة هرم · الكرتونة 24 قطعة",
+        "en": "30-35g · pouch or pyramid box · 24 per carton"
+      },
+      "flavors": [
+        {
+          "img": "images/light-sf-lollipops-bag.webp",
+          "name": {
+            "ar": "مصاصات فواكه – كيس",
+            "en": "Mixed Fruit Lollipops – Pouch"
+          }
+        },
+        {
+          "img": "images/light-sf-bonbon-bag.webp",
+          "name": {
+            "ar": "بون بون فواكه – كيس",
+            "en": "Mixed Fruit Bonbon – Pouch"
+          }
+        },
+        {
+          "img": "images/light-sf-honey-gum-bag.webp",
+          "name": {
+            "ar": "هَني لايت لبان – كيس",
+            "en": "Honey Light Gum – Pouch"
+          }
+        },
+        {
+          "img": "images/light-sf-lollipops-pyramid.webp",
+          "name": {
+            "ar": "مصاصات فواكه – هرم",
+            "en": "Mixed Fruit Lollipops – Pyramid"
+          }
+        },
+        {
+          "img": "images/light-sf-bonbon-pyramid.webp",
+          "name": {
+            "ar": "بون بون فواكه – هرم",
+            "en": "Mixed Fruit Bonbon – Pyramid"
+          }
+        },
+        {
+          "img": "images/light-sf-honey-gum-pyramid.webp",
+          "name": {
+            "ar": "هَني لايت لبان – هرم",
+            "en": "Honey Light Gum – Pyramid"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "توفي",
+        "en": "Toffee"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "كيس 90-100 جم · الكرتونة 24 كيس",
+        "en": "90-100g bag · 24 bags per carton"
+      },
+      "flavors": [
+        {
+          "img": "images/toffee-milk.webp",
+          "name": {
+            "ar": "حليب",
+            "en": "Milk"
+          }
+        },
+        {
+          "img": "images/toffee-chocolate.webp",
+          "name": {
+            "ar": "شوكولاتة",
+            "en": "Chocolate"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "ar": "لولي بوب مِكس فليفرز",
+        "en": "Lollipop Mix Flavors"
+      },
+      "hidden": true,
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "14-20 جم للقطعة، أكياس 50-100 قطعة",
+        "en": "14-20g per piece, bags of 50-100 pieces"
       }
+    },
+    {
+      "name": {
+        "ar": "إكلير لايت",
+        "en": "Eclair"
+      },
+      "brand": {
+        "ar": "لايت بوب",
+        "en": "Light Pop"
+      },
+      "color": "#FDB815",
+      "category": "candy",
+      "sizes": {
+        "ar": "70-80 جم كيس / 400 جم علبة / 200 قطعة برطمان",
+        "en": "70-80g bag / 400g box / 200-piece jar"
+      },
+      "flavors": [
+        {
+          "img": "images/eclair-light.webp",
+          "name": {
+            "ar": "كراميل بشوكولاتة",
+            "en": "Chocolate Caramel"
+          }
+        }
+      ],
+      "hidden": true
     }
   ],
   "certifications": [
