@@ -1648,8 +1648,8 @@ const SITE_DATA = {
         "en": "Europe (7)"
       },
       "value": {
-        "ar": "السويد، ألمانيا، فرنسا، هولندا، بلجيكا، النرويج، إنجلترا",
-        "en": "Sweden, Germany, France, Netherlands, Belgium, Norway, England"
+        "ar": "هولندا، إنجلترا، فرنسا، رومانيا، السويد، بلجيكا، إيطاليا",
+        "en": "Netherlands, England, France, Romania, Sweden, Belgium, Italy"
       }
     },
     {
@@ -1766,12 +1766,6 @@ const SITE_DATA = {
     },
     {
       "name": {
-        "ar": "ألمانيا",
-        "en": "Germany"
-      }
-    },
-    {
-      "name": {
         "ar": "فرنسا",
         "en": "France"
       }
@@ -1792,6 +1786,18 @@ const SITE_DATA = {
       "name": {
         "ar": "بلجيكا",
         "en": "Belgium"
+      }
+    },
+    {
+      "name": {
+        "ar": "رومانيا",
+        "en": "Romania"
+      }
+    },
+    {
+      "name": {
+        "ar": "إيطاليا",
+        "en": "Italy"
       }
     },
     {
@@ -1912,12 +1918,6 @@ const SITE_DATA = {
       "name": {
         "ar": "كينيا",
         "en": "Kenya"
-      }
-    },
-    {
-      "name": {
-        "ar": "النرويج",
-        "en": "Norway"
       }
     },
     {
