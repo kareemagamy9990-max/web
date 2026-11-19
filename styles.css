@@ -25,11 +25,12 @@
   --violet-500:    var(--blue-400);
 
   /* Type — one bold display face carries both languages */
-  --font-display-ar: "Cairo", sans-serif;
-  --font-display-en: "Cairo", sans-serif;
-  --font-body-ar:   "Tajawal", sans-serif;
-  --font-body-en:   "Inter", sans-serif;
-  --font-mono:      "IBM Plex Mono", monospace;
+  --font-display-ar: "Cairo", "Outfit", sans-serif;
+  --font-display-en: "Outfit", "Cairo", sans-serif;
+  --font-body-ar:   "Tajawal", "Inter", sans-serif;
+  --font-body-en:   "Inter", "Tajawal", sans-serif;
+  /* small labels/eyebrows: same family as body, set as tracked caps (no typewriter face) */
+  --font-mono:      "Inter", "Tajawal", sans-serif;
 
   /* Layout */
   --maxw: 1240px;
@@ -49,7 +50,7 @@ body{
   position:relative;
 }
 html[lang="ar"] body{font-family:var(--font-body-ar);}
-h1,h2,h3,h4,.display{font-family:var(--font-display-en); font-weight:800; margin:0;}
+h1,h2,h3,h4,.display{font-family:var(--font-display-en); font-weight:700; margin:0; letter-spacing:-0.015em;}
 html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] .display{
   font-family:var(--font-display-ar); font-weight:900;
 }
@@ -1137,3 +1138,85 @@ html[dir="rtl"] .offers-welcome{padding:10px 22px 10px 12px;}
   .bp-head h2{font-size:22px;}
   .bp-shot figcaption{font-size:13px; padding:9px;}
 }
+
+/* ==========================================================================
+   Design polish pass (Nov 2026): typography, calmer sections, compact CTA
+   ========================================================================== */
+/* Labels/eyebrows: clean tracked caps in the body face; Arabic must never be letter-spaced */
+.eyebrow, .hero-eyebrow, .event-eyebrow, .category-block-copy .eyebrow, .brand-tag,
+.product-body span, .product-modal-brand, .cert-card span, .hub-cat, .brand-hero-cat{
+  font-weight:700; letter-spacing:.14em; font-size:12px;
+}
+html[lang="ar"] .eyebrow, html[lang="ar"] .hero-eyebrow, html[lang="ar"] .event-eyebrow,
+html[lang="ar"] .category-block-copy .eyebrow, html[lang="ar"] .brand-tag, html[lang="ar"] .product-body span,
+html[lang="ar"] .product-modal-brand, html[lang="ar"] .cert-card span, html[lang="ar"] .hub-cat,
+html[lang="ar"] .brand-hero-cat, html[lang="ar"] .product-more{
+  letter-spacing:0; font-size:13.5px; text-transform:none;
+}
+.about-point .num{font-weight:700; font-family:var(--font-display-en);}
+h1, h2{line-height:1.15;}
+html[lang="ar"] h1, html[lang="ar"] h2{line-height:1.35;}
+.section-head h2{font-size:clamp(28px, 3.2vw, 42px);}
+.section-head p{color:rgba(15,13,46,.62); font-size:17px; margin-top:12px;}
+
+/* Hero: message first, eyebrow sits above the headline */
+.hero-copy .hero-eyebrow{margin-bottom:22px;}
+.hero h1{font-size:clamp(34px, 4.4vw, 60px);}
+.hero-grain{opacity:.35;}
+
+/* Stats: quieter, aligned, numbers count up */
+.hero-stats .stat b{font-size:34px; font-family:var(--font-display-en); font-variant-numeric:tabular-nums; color:#fff;}
+.hero-stats .stat span{color:rgba(255,255,255,.65); font-size:14px;}
+.hero-stats .stat b::after{content:""; display:block; width:28px; height:3px; border-radius:2px; background:var(--gold-500); margin-top:10px;}
+
+/* Events: now a framed section under the hero */
+.events-section{background:var(--white); padding:84px 0 40px;}
+.events-section .event-banner{border-radius:24px; height:460px;}
+.events-section .section-head{margin-bottom:28px;}
+@media (max-width:760px){
+  .events-section{padding:56px 0 24px;}
+  .events-section .event-banner{height:300px; border-radius:18px;}
+  .event-arrow{top:22px; transform:none; width:36px; height:36px; font-size:18px;}
+  .event-arrow.prev{inset-inline-start:auto; inset-inline-end:62px;}
+  .event-arrow.next{inset-inline-end:16px;}
+  .event-caption{padding:20px 20px 40px;}
+  .event-caption h3{font-size:19px;}
+}
+
+/* Category blocks: no stray decorative shapes */
+.category-block{overflow:hidden;}
+
+/* Compact CTA band (full form lives on the contact page) */
+.cta-compact{padding:56px 0;}
+.cta-compact .container.cta-compact-inner{max-width:var(--maxw); display:flex; align-items:center; justify-content:space-between; gap:32px; text-align:start;}
+.cta-compact h2{font-size:clamp(22px, 2.4vw, 32px); margin-bottom:8px;}
+.cta-compact p{margin:0; max-width:560px;}
+.cta-compact-actions{display:flex; gap:12px; flex-shrink:0;}
+.btn-dark{background:var(--indigo-950); color:#fff;}
+.btn-dark:hover{background:var(--indigo-900); transform:translateY(-2px);}
+.btn-outline-dark{border:1.5px solid var(--indigo-950); color:var(--indigo-950);}
+.btn-outline-dark:hover{background:var(--indigo-950); color:#fff;}
+@media (max-width:760px){
+  .cta-compact .container.cta-compact-inner{flex-direction:column; align-items:flex-start; gap:20px;}
+  .cta-compact-actions{width:100%;}
+  .cta-compact-actions .btn{flex:1; justify-content:center; text-align:center;}
+}
+
+/* Consistent arrow glyphs inside buttons/links */
+.btn{gap:8px;}
+
+/* Certification seals: each badge shows its own standard, not the same generic icon */
+.cert-card .mark.cert-seal{
+  width:92px; height:92px; border-radius:50%; margin:0 auto 16px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; background:var(--indigo-950); color:#fff;
+  box-shadow:inset 0 0 0 4px var(--indigo-950), inset 0 0 0 6px var(--gold-500);
+}
+.cert-seal b{font-family:var(--font-display-en); font-size:21px; line-height:1; letter-spacing:.01em;}
+.cert-seal i{font-style:normal; font-size:9.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-500); margin-top:5px;}
+.cert-card{transition:transform .2s, box-shadow .2s;}
+.cert-card:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(36,22,80,.10);}
+
+/* About: until real chairman photo/name exist, the message runs full width */
+.chairman.no-photo .chairman-photo{display:none;}
+.chairman.no-photo .container{grid-template-columns:1fr !important;}
+.chairman.no-photo .chairman-body{max-width:820px;}

@@ -103,7 +103,19 @@
   function renderStats(l){
     const box = document.getElementById('heroStats');
     if (!box || !Array.isArray(D.stats)) return;
-    box.innerHTML = D.stats.map(s => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(pick(s.label, l))}</span></div>`).join('');
+    box.innerHTML = D.stats.map(s => `<div class="stat"><b data-count="${esc(s.value)}">${esc(s.value)}</b><span>${esc(pick(s.label, l))}</span></div>`).join('');
+    // count up once when the numbers scroll into view (years like 2004 count from 1990)
+    const run = el => {
+      const target = parseInt(el.dataset.count, 10); if (!target || el.dataset.done) return;
+      el.dataset.done = '1'; const from = target > 1900 ? 1990 : 0; const t0 = performance.now(), dur = 1200;
+      const step = now => { const k = Math.min(1, (now - t0) / dur); const e = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(from + (target - from) * e); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } }), { threshold: .6 });
+      box.querySelectorAll('b[data-count]').forEach(b => io.observe(b));
+    }
   }
 
   /* ---------- Events banner carousel ---------- */
@@ -408,12 +420,12 @@
     if (certGrid && D.certifications) {
       certGrid.innerHTML = D.certifications.map(c => `
         <div class="cert-card">
-          <div class="mark">${c.image
+          <div class="mark${c.image ? '' : ' cert-seal'}">${c.image
             ? `<img src="${esc(c.image)}" alt="" loading="lazy">`
-            : `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M12 2 L20 6 V12 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 12 V6 Z" stroke="#F2A93B" stroke-width="1.6"/>
-              <path d="M8.5 12 L11 14.5 L15.5 9.5" stroke="#F2A93B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>`}</div>
+            : (() => { const m = /^(ISO)\s*(\d+)/i.exec(c.code || '') || /^(ISO)\s*(\d+)/i.exec(pick(c.name,'en') || '');
+                const big = m ? m[2] : (pick(c.name,'en') || c.code || '').split(' ')[0].toUpperCase();
+                const small = m ? 'ISO' : ({ HALAL:'Certified', HACCP:'Certified', FDA:'Registered' }[big] || '');
+                return `<b>${esc(big)}</b>${small ? `<i>${esc(small)}</i>` : ''}`; })()}</div>
           <h4>${esc(pick(c.name,l))}</h4>
           <span>${esc(c.code)}</span>
         </div>`).join('');
@@ -427,7 +439,8 @@
 
     const leadershipGrid = document.getElementById('leadershipGrid');
     if (leadershipGrid) {
-      const people = D.leadership || [];
+      // names still written as "[Name]" are placeholders: don't show them on the live site
+      const people = (D.leadership || []).filter(p => !/^\s*\[/.test(pick(p.name,l) || ''));
       const sec = leadershipGrid.closest('section');
       if (sec) sec.hidden = people.length === 0;
       leadershipGrid.innerHTML = people.map(p => `
@@ -436,6 +449,15 @@
           <h4>${esc(pick(p.name,l))}</h4>
           <span>${esc(pick(p.title,l))}</span>
         </div>`).join('');
+    }
+
+    const chairman = document.querySelector('section.chairman');
+    if (chairman) {
+      const nameEl = chairman.querySelector('[data-i18n="chairman.name"]');
+      const placeholder = nameEl && /^\s*\[/.test(nameEl.textContent);
+      if (nameEl) nameEl.style.display = placeholder ? 'none' : '';
+      const photo = chairman.querySelector('.chairman-photo');
+      chairman.classList.toggle('no-photo', !!photo && !photo.classList.contains('has-photo'));
     }
 
     const marketsGrid = document.getElementById('marketsGrid');
