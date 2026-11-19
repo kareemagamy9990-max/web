@@ -1059,7 +1059,23 @@ const SITE_DATA = {
       "sizes": {
         "ar": "90-100 جم، عبوة (24 كيس)",
         "en": "90-100g, bag pack (24 bags)"
-      }
+      },
+      "flavors": [
+        {
+          "img": "images/toffee-milk.webp",
+          "name": {
+            "ar": "حليب",
+            "en": "Milk"
+          }
+        },
+        {
+          "img": "images/toffee-chocolate.webp",
+          "name": {
+            "ar": "شوكولاتة",
+            "en": "Chocolate"
+          }
+        }
+      ]
     },
     {
       "name": {
@@ -1082,20 +1098,6 @@ const SITE_DATA = {
           "name": {
             "ar": "كراميل بشوكولاتة",
             "en": "Chocolate Caramel"
-          }
-        },
-        {
-          "img": "images/eclair-milk.webp",
-          "name": {
-            "ar": "حليب",
-            "en": "Milk"
-          }
-        },
-        {
-          "img": "images/eclair-chocolate.webp",
-          "name": {
-            "ar": "شوكولاتة",
-            "en": "Chocolate"
           }
         }
       ]
