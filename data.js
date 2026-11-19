@@ -1169,8 +1169,8 @@ const SITE_DATA = {
     },
     {
       "name": {
-        "ar": "توتي لولي ميني سايز",
-        "en": "Mini Size Lollipop"
+        "ar": "مصاصة فواكه",
+        "en": "Fruits Lollipop"
       },
       "brand": {
         "ar": "توتي لولي",
