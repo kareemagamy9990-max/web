@@ -1644,12 +1644,12 @@ const SITE_DATA = {
   "reach": [
     {
       "name": {
-        "ar": "أوروبا (7)",
-        "en": "Europe (7)"
+        "ar": "أوروبا (9)",
+        "en": "Europe (9)"
       },
       "value": {
-        "ar": "هولندا، إنجلترا، فرنسا، رومانيا، السويد، بلجيكا، إيطاليا",
-        "en": "Netherlands, England, France, Romania, Sweden, Belgium, Italy"
+        "ar": "هولندا، إنجلترا، فرنسا، ألمانيا، رومانيا، السويد، النرويج، بلجيكا، إيطاليا",
+        "en": "Netherlands, England, France, Germany, Romania, Sweden, Norway, Belgium, Italy"
       }
     },
     {
@@ -1762,6 +1762,12 @@ const SITE_DATA = {
       "name": {
         "ar": "السويد",
         "en": "Sweden"
+      }
+    },
+    {
+      "name": {
+        "ar": "ألمانيا",
+        "en": "Germany"
       }
     },
     {
@@ -1918,6 +1924,12 @@ const SITE_DATA = {
       "name": {
         "ar": "كينيا",
         "en": "Kenya"
+      }
+    },
+    {
+      "name": {
+        "ar": "النرويج",
+        "en": "Norway"
       }
     },
     {
