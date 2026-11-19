@@ -48,7 +48,7 @@ const SITE_DATA = {
       }
     },
     {
-      "value": "28",
+      "value": "40",
       "label": {
         "ar": "دولة تصدير",
         "en": "Export countries"
@@ -1637,22 +1637,22 @@ const SITE_DATA = {
   "reach": [
     {
       "name": {
-        "ar": "أوروبا (6)",
-        "en": "Europe (6)"
+        "ar": "أوروبا (7)",
+        "en": "Europe (7)"
       },
       "value": {
-        "ar": "السويد، ألمانيا، فرنسا، هولندا، بلجيكا، النرويج",
-        "en": "Sweden, Germany, France, Netherlands, Belgium, Norway"
+        "ar": "السويد، ألمانيا، فرنسا، هولندا، بلجيكا، النرويج، إنجلترا",
+        "en": "Sweden, Germany, France, Netherlands, Belgium, Norway, England"
       }
     },
     {
       "name": {
-        "ar": "أفريقيا (6)",
-        "en": "Africa (6)"
+        "ar": "أفريقيا (15)",
+        "en": "Africa (15)"
       },
       "value": {
-        "ar": "ليبيا، المغرب، مدغشقر، جنوب أفريقيا، السودان، كينيا",
-        "en": "Libya, Morocco, Madagascar, South Africa, Sudan, Kenya"
+        "ar": "ليبيا، المغرب، السودان، جيبوتي، كينيا، أوغندا، تشاد، النيجر، السنغال، غانا، ساو تومي وبرينسيب، زيمبابوي، جنوب أفريقيا، مدغشقر، موريشيوس",
+        "en": "Libya, Morocco, Sudan, Djibouti, Kenya, Uganda, Chad, Niger, Senegal, Ghana, São Tomé & Príncipe, Zimbabwe, South Africa, Madagascar, Mauritius"
       }
     },
     {
@@ -1667,12 +1667,12 @@ const SITE_DATA = {
     },
     {
       "name": {
-        "ar": "أمريكا (2)",
-        "en": "Americas (2)"
+        "ar": "الأمريكتين (4)",
+        "en": "Americas (4)"
       },
       "value": {
-        "ar": "الولايات المتحدة، كوبا",
-        "en": "United States, Cuba"
+        "ar": "الولايات المتحدة، كندا، كوبا، الكاريبي",
+        "en": "United States, Canada, Cuba, Caribbean"
       }
     }
   ],
@@ -1917,6 +1917,72 @@ const SITE_DATA = {
       "name": {
         "ar": "جيبوتي",
         "en": "Djibouti"
+      }
+    },
+    {
+      "name": {
+        "ar": "كندا",
+        "en": "Canada"
+      }
+    },
+    {
+      "name": {
+        "ar": "إنجلترا",
+        "en": "England"
+      }
+    },
+    {
+      "name": {
+        "ar": "أوغندا",
+        "en": "Uganda"
+      }
+    },
+    {
+      "name": {
+        "ar": "تشاد",
+        "en": "Chad"
+      }
+    },
+    {
+      "name": {
+        "ar": "النيجر",
+        "en": "Niger"
+      }
+    },
+    {
+      "name": {
+        "ar": "السنغال",
+        "en": "Senegal"
+      }
+    },
+    {
+      "name": {
+        "ar": "غانا",
+        "en": "Ghana"
+      }
+    },
+    {
+      "name": {
+        "ar": "زيمبابوي",
+        "en": "Zimbabwe"
+      }
+    },
+    {
+      "name": {
+        "ar": "ساو تومي وبرينسيب",
+        "en": "São Tomé and Príncipe"
+      }
+    },
+    {
+      "name": {
+        "ar": "موريشيوس",
+        "en": "Mauritius"
+      }
+    },
+    {
+      "name": {
+        "ar": "الكاريبي",
+        "en": "Caribbean"
       }
     }
   ],
