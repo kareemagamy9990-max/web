@@ -206,7 +206,7 @@ const SITE_DATA = {
     {
       "key": "lightpop",
       "category": "candy",
-      "color": "#FDB815",
+      "color": "#7A3FE0",
       "init": {
         "ar": "L",
         "en": "L"
