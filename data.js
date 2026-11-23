@@ -299,7 +299,7 @@ const SITE_DATA = {
         "ar": "B",
         "en": "B"
       },
-      "logo": "images/bravo.webp",
+      "logo": "images/brands/light.webp",
       "name": {
         "ar": "برافو لايت",
         "en": "Bravo Light"
