@@ -319,25 +319,39 @@
     /* ---------- Our Products hub (products.html) + brand pages (brand.html?b=key) ---------- */
     const brandProducts = b => visible.filter(p => p.brand && b.name && p.brand.en === b.name.en);
     const catLabel = c => c === 'candy' ? (l === 'ar' ? 'حلويات' : 'Confectionery') : (l === 'ar' ? 'سناكس' : 'Snacks');
-    const hubCard = b => {
-      const items = brandProducts(b);
-      const thumbs = items.filter(p => !p.soon).map(p => p.image || ((p.flavors || []).find(f => f && f.img) || {}).img).filter(Boolean).slice(0, 3);
-      const n = items.filter(p => !p.soon).length;
+    const hubLight = hex => { const m = /^#?([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return false;
+      const n = parseInt(m[1], 16); return (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) > 170; };
+    const hubCard = (b, i) => {
+      const items = brandProducts(b).filter(p => !p.soon);
+      // up to 3 pack shots: one per product first, then more flavors to fill the fan
+      const pool = [];
+      items.forEach(p => { const f = p.image || ((p.flavors || []).find(f => f && f.img) || {}).img; if (f) pool.push(f); });
+      items.forEach(p => (p.flavors || []).forEach(f => { if (f && f.img && !pool.includes(f.img)) pool.push(f.img); }));
+      const thumbs = pool.slice(0, 3);
+      const n = items.length;
+      const count = l === 'ar' ? (n === 1 ? 'منتج واحد' : (n === 2 ? 'منتجين' : `${n} منتجات`)) : `${n} ${n === 1 ? 'product' : 'products'}`;
+      const arrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
       return `
-      <a class="hub-card" href="brand.html?b=${encodeURIComponent(b.key)}" data-cat="${esc(b.category)}" style="--brand:${esc(b.color)}">
-        <div class="hub-media">
-          <span class="hub-dots" aria-hidden="true"></span>
+      <a class="hub-card${hubLight(b.color) ? ' is-light' : ''}" href="brand.html?b=${encodeURIComponent(b.key)}" data-cat="${esc(b.category)}" style="--brand:${esc(b.color)}; --i:${i}">
+        <span class="hub-glow" aria-hidden="true"></span>
+        <span class="hub-dots" aria-hidden="true"></span>
+        <span class="hub-ring" aria-hidden="true"></span>
+        <span class="hub-shine" aria-hidden="true"></span>
+        <div class="hub-top">
+          <span class="hub-cat">${esc(catLabel(b.category))}</span>
+          <span class="hub-count">${esc(count)}</span>
+        </div>
+        <div class="hub-stage">
           ${b.logo ? `<img class="hub-logo" src="${esc(b.logo)}" alt="${esc(pick(b.name,l))}" loading="lazy">`
                    : `<span class="brand-monogram">${esc(pick(b.init,l) || pick(b.name,l).charAt(0))}</span>`}
-          <div class="hub-thumbs" aria-hidden="true">${thumbs.map(t => `<img src="${esc(t)}" alt="" loading="lazy">`).join('')}</div>
+          <div class="hub-thumbs n${thumbs.length}" aria-hidden="true">${thumbs.map(t => `<img src="${esc(t)}" alt="" loading="lazy">`).join('')}</div>
         </div>
         <div class="hub-body">
-          <span class="hub-cat">${esc(catLabel(b.category))}</span>
-          <h3>${esc(pick(b.name,l))}</h3>
-          <div class="hub-foot">
-            <span class="hub-count">${n} ${l === 'ar' ? (n === 1 ? 'منتج' : (n === 2 ? 'منتجين' : 'منتجات')) : (n === 1 ? 'product' : 'products')}</span>
-            <span class="hub-go has-arrow">${l === 'ar' ? 'شوف المنتجات' : 'View products'}</span>
+          <div class="hub-name">
+            <h3>${esc(pick(b.name,l))}</h3>
+            <span class="hub-go">${l === 'ar' ? 'شوف المنتجات' : 'View products'}</span>
           </div>
+          <span class="hub-arrow">${arrow}</span>
         </div>
       </a>`;
     };
@@ -346,6 +360,20 @@
       const params = new URLSearchParams(location.search);
       let cat = params.get('cat'); if (!['snacks','candy'].includes(cat)) cat = 'all';
       hub.innerHTML = brands.filter(b => brandProducts(b).length).map(hubCard).join('');
+      // subtle 3D tilt that follows the pointer (desktop only)
+      if (matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        hub.querySelectorAll('.hub-card').forEach(card => {
+          card.addEventListener('pointermove', e => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+            card.style.setProperty('--rx', ((.5 - y) * 8).toFixed(2) + 'deg');
+            card.style.setProperty('--ry', ((x - .5) * 10).toFixed(2) + 'deg');
+            card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+            card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+          });
+          card.addEventListener('pointerleave', () => { ['--rx','--ry','--mx','--my'].forEach(k => card.style.removeProperty(k)); });
+        });
+      }
       const applyFilter = c => {
         hub.querySelectorAll('.hub-card').forEach(el => { el.hidden = c !== 'all' && el.dataset.cat !== c; });
         document.querySelectorAll('.hub-filter button').forEach(btn => btn.classList.toggle('active', btn.dataset.cat === c));
