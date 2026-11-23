@@ -353,7 +353,7 @@
 
     /* ---------- Our Products hub (products.html) + brand pages (brand.html?b=key) ---------- */
     const brandProducts = b => visible.filter(p => p.brand && b.name && p.brand.en === b.name.en);
-    const catLabel = c => c === 'candy' ? (l === 'ar' ? 'حلويات' : 'Confectionery') : (l === 'ar' ? 'سناكس' : 'Snacks');
+    const catLabel = c => c === 'candy' ? (l === 'ar' ? 'حلويات' : 'Confectionery') : c === 'pasta' ? (l === 'ar' ? 'مكرونة' : 'Pasta') : (l === 'ar' ? 'سناكس' : 'Snacks');
     const hubLight = hex => { const m = /^#?([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return false;
       const n = parseInt(m[1], 16); return (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) > 170; };
     const hubCard = (b, i) => {
@@ -393,7 +393,7 @@
     const hub = document.getElementById('brandHub');
     if (hub) {
       const params = new URLSearchParams(location.search);
-      let cat = params.get('cat'); if (!['snacks','candy'].includes(cat)) cat = 'all';
+      let cat = params.get('cat'); if (!['snacks','candy','pasta'].includes(cat)) cat = 'all';
       hub.innerHTML = brands.filter(b => brandProducts(b).length).map(hubCard).join('');
       // subtle 3D tilt that follows the pointer (desktop only)
       if (matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {

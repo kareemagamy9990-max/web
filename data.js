@@ -312,6 +312,28 @@ const SITE_DATA = {
         "ar": "خالي من السكر",
         "en": "Sugar-Free"
       }
+    },
+    {
+      "key": "bronto",
+      "category": "pasta",
+      "color": "#9B1B1E",
+      "init": {
+        "ar": "B",
+        "en": "B"
+      },
+      "logo": "images/brands/bronto.webp",
+      "name": {
+        "ar": "برونتو",
+        "en": "Bronto"
+      },
+      "desc": {
+        "ar": "مكرونة برونتو، أصل المكرونة — مصنوعة من مكونات طبيعية 100% وبتستوي في 5 دقايق.",
+        "en": "Bronto pasta — made from 100% natural ingredients and ready in 5 minutes."
+      },
+      "tag": {
+        "ar": "مكرونة",
+        "en": "Pasta"
+      }
     }
   ],
   "products": [
@@ -1695,6 +1717,28 @@ const SITE_DATA = {
         }
       ],
       "hidden": true
+    },
+    {
+      "name": {
+        "ar": "مكرونة برونتو",
+        "en": "Bronto Pasta"
+      },
+      "brand": {
+        "ar": "برونتو",
+        "en": "Bronto"
+      },
+      "color": "#C8202A",
+      "category": "pasta",
+      "details": {
+        "ar": "مكرونة من مكونات طبيعية 100%، بتستوي في 5 دقايق.",
+        "en": "Made from 100% natural ingredients, cooks in 5 minutes."
+      },
+      "flavors": [
+        { "img": "images/bronto-spaghetti.webp", "name": { "ar": "اسباجيتي", "en": "Spaghetti" } },
+        { "img": "images/bronto-penne.webp", "name": { "ar": "أقلام", "en": "Penne" } },
+        { "img": "images/bronto-elbow.webp", "name": { "ar": "هلالية", "en": "Elbow Macaroni" } },
+        { "img": "images/bronto-ditalini.webp", "name": { "ar": "قصيرة", "en": "Ditalini" } }
+      ]
     }
   ],
   "certifications": [
