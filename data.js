@@ -923,7 +923,7 @@ const SITE_DATA = {
       },
       "flavors": [
         {
-          "img": "images/special-puffs-sweet-pepper.webp",
+          "img": "images/special-puffs-sweet-pepper-v2.webp",
           "name": {
             "ar": "فلفل حلو",
             "en": "Sweet Pepper"
