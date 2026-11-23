@@ -41,7 +41,7 @@ const SITE_DATA = {
       }
     },
     {
-      "value": "9",
+      "value": "10",
       "label": {
         "ar": "علامات تجارية",
         "en": "House brands"
