@@ -1367,38 +1367,3 @@ html[dir="rtl"] .has-arrow:hover::after, html[dir="rtl"] .hub-card:hover .has-ar
 .has-arrow.back::after{transform:scaleX(-1);}
 html[dir="rtl"] .has-arrow.back::after{transform:none;}
 .product-more.has-arrow{display:inline-flex;}
-
-/* ==========================================================================
-   Certifications (Nov 2026): clean cards, big typographic face, what each covers
-   ========================================================================== */
-.certs .cert-grid{grid-template-columns:repeat(3,1fr); gap:22px;}
-.certs .cert-card{display:flex; flex-direction:column; gap:16px; text-align:start; padding:16px 16px 22px; border-radius:22px;
-  background:#fff; border:1px solid var(--line); box-shadow:0 1px 2px rgba(20,18,59,.04);
-  transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;}
-.certs .cert-card:hover{transform:translateY(-5px); border-color:color-mix(in srgb, var(--acc) 30%, transparent);
-  box-shadow:0 22px 44px -24px color-mix(in srgb, var(--acc) 60%, transparent);}
-.cert-face{position:relative; overflow:hidden; height:150px; border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
-  background:radial-gradient(120% 120% at 50% 0%, color-mix(in srgb, var(--acc) 12%, #fff) 0%, color-mix(in srgb, var(--acc) 5%, #fff) 70%);}
-.cert-face::before{content:""; position:absolute; inset:0; opacity:.5; pointer-events:none;
-  background-image:radial-gradient(color-mix(in srgb, var(--acc) 22%, transparent) 1px, transparent 1.3px); background-size:14px 14px;
-  -webkit-mask-image:radial-gradient(circle at 50% 50%, transparent 30%, #000 75%); mask-image:radial-gradient(circle at 50% 50%, transparent 30%, #000 75%);}
-.cert-face img{position:relative; max-width:70%; max-height:110px; object-fit:contain;}
-.cert-face-big{position:relative; font-family:var(--font-display-en); font-weight:800; font-size:46px; line-height:1; letter-spacing:-.02em; color:var(--acc);
-  transition:transform .35s cubic-bezier(.3,1.5,.5,1);}
-.certs .cert-card:hover .cert-face-big{transform:scale(1.06);}
-.cert-face-small{position:relative; font-size:11px !important; font-weight:800 !important; letter-spacing:.22em !important; text-transform:uppercase; font-family:var(--font-body-en) !important;
-  color:color-mix(in srgb, var(--acc) 70%, var(--ink)) !important; opacity:.8;}
-.cert-face-tag{position:relative; margin-top:8px; font-size:10.5px !important; font-weight:800 !important; letter-spacing:.12em !important; text-transform:uppercase; font-family:var(--font-body-en) !important;
-  color:var(--acc) !important; background:#fff; padding:4px 10px; border-radius:999px; box-shadow:0 1px 0 color-mix(in srgb, var(--acc) 18%, transparent);}
-.cert-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:0 6px;}
-.certs .cert-card h4{margin:0; font-size:18px;}
-.cert-ok{flex:none; display:inline-flex; align-items:center; gap:5px; padding:5px 10px 5px 8px; border-radius:999px; background:#E8F6EE;
-  color:#1E7A48 !important; font-size:12px !important; font-weight:700 !important; letter-spacing:0 !important; font-family:inherit !important;}
-html[dir="rtl"] .cert-ok{padding:5px 8px 5px 10px;}
-.cert-ok svg{width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round;}
-.cert-desc{margin:0; padding:0 6px; color:#5d5a78; font-size:14px; line-height:1.65;}
-@media (max-width:1080px){ .certs .cert-grid{grid-template-columns:repeat(2,1fr);} }
-@media (max-width:600px){
-  .certs .cert-grid{grid-template-columns:1fr; gap:14px;}
-  .cert-face{height:120px;} .cert-face-big{font-size:38px;}
-}
