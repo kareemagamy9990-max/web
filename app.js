@@ -27,40 +27,7 @@
     });
   }
 
-  /* ---------- Header: rolling labels + sliding gold pill ---------- */
-  function wrapRolls(){
-    document.querySelectorAll('.roll').forEach(r => {
-      if (r.firstElementChild && r.firstElementChild.classList.contains('roll-in')) return;
-      r.innerHTML = `<span class="roll-in">${r.innerHTML}</span>`;
-    });
-  }
-  wrapRolls();
-  const navList = document.querySelector('.nav-links');
-  let moveInd = () => {};
-  if (navList) {
-    const ind = document.createElement('span');
-    ind.className = 'nav-ind'; ind.setAttribute('aria-hidden', 'true');
-    navList.prepend(ind);
-    const links = [...navList.querySelectorAll('a')];
-    moveInd = target => {
-      links.forEach(a => a.classList.toggle('is-ind', a === target));
-      if (!target) { ind.style.opacity = '0'; return; }
-      ind.classList.add('moving'); clearTimeout(ind._t); ind._t = setTimeout(() => ind.classList.remove('moving'), 260);
-      ind.style.left = target.offsetLeft + 'px';
-      ind.style.width = target.offsetWidth + 'px';
-      ind.style.opacity = '1';
-    };
-    const home = () => moveInd(navList.querySelector('a.active'));
-    links.forEach(a => a.addEventListener('mouseenter', () => moveInd(a)));
-    navList.addEventListener('mouseleave', home);
-    addEventListener('resize', home);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(home);
-    home();
-    // place it without the slide on first paint
-    ind.style.transition = 'none'; requestAnimationFrame(() => requestAnimationFrame(() => { ind.style.transition = ''; }));
-  }
-
-  /* ---------- Header: shadow once the page scrolls ---------- */
+  /* ---------- Header: compact + shadow once the page scrolls ---------- */
   const navbarEl = document.querySelector('.navbar');
   if (navbarEl) {
     const onScroll = () => navbarEl.classList.toggle('scrolled', scrollY > 40);
@@ -75,7 +42,6 @@
       const key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.innerHTML = dict[key];
     });
-    wrapRolls();
     document.documentElement.lang = l;
     document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
     document.body.classList.toggle('lang-en', l === 'en');
@@ -94,7 +60,6 @@
       updateToggleLabel();
       applyI18n(lang);
       renderContent(lang);
-      moveInd(document.querySelector('.nav-links a.active'));
     });
   }
 
@@ -291,7 +256,7 @@
     document.documentElement.style.setProperty('--nav-h', headH() + 'px');
     const goTo = id => {
       const el = document.getElementById(id); if (!el) return;
-      const y = el.getBoundingClientRect().top + scrollY - headH() - nav.offsetHeight - 24;
+      const y = el.getBoundingClientRect().top + scrollY - headH() - nav.offsetHeight - 14;
       scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     };
     document.querySelectorAll('.bp-nav-item, .bp-next').forEach(a => a.addEventListener('click', e => {

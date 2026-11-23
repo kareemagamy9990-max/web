@@ -1369,110 +1369,96 @@ html[dir="rtl"] .has-arrow.back::after{transform:none;}
 .product-more.has-arrow{display:inline-flex;}
 
 /* ==========================================================================
-   Header — "liquid glass" (Nov 2026): a floating frosted capsule with specular
-   edges; a glass lens slides between links; the bar floats over the page on scroll
+   Header redesign (Nov 2026): icon utility bar, pill nav, gift-icon offers, arrow CTA
    ========================================================================== */
-body{background:linear-gradient(var(--blue-950), var(--blue-950)) top / 100% 132px no-repeat, var(--cream-50);}
-.utility-bar{display:flex; align-items:stretch; height:36px; background:transparent; color:rgba(255,255,255,.62); border:0; font-size:12.5px; font-weight:600; overflow:hidden;}
-.ticker{flex:1; min-width:0; overflow:hidden; display:flex; align-items:center;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
-.ticker-track{display:flex; width:max-content; animation:tickerMove 60s linear infinite;}
-html[dir="rtl"] .ticker-track{animation-name:tickerMoveRtl;}
-.utility-bar:hover .ticker-track{animation-play-state:paused;}
-.ticker-group{display:flex; align-items:center; flex:none;}
-.tk{white-space:nowrap; padding:0 18px; color:rgba(255,255,255,.62);}
-a.tk, .tk-phones a{color:rgba(255,255,255,.8);}
-a.tk:hover, .tk-phones a:hover{color:#fff;}
-.tk-phones{display:inline-flex; gap:6px;}
-.tk-star{font-size:9px; color:rgba(255,255,255,.3);}
-@keyframes tickerMove{to{transform:translateX(-50%);}}
-@keyframes tickerMoveRtl{to{transform:translateX(50%);}}
+.utility-bar{background:var(--ink); border-bottom:1px solid rgba(255,255,255,.07); color:rgba(255,255,255,.7); font-size:13px;}
+.utility-bar .container{height:40px;}
+.utility-links{gap:8px; align-items:center;}
+.util-item{display:inline-flex; align-items:center; gap:8px; padding:0 14px; position:relative; white-space:nowrap;}
+.util-item:first-child{padding-inline-start:0;}
+.util-item + .util-item::before{content:""; position:absolute; inset-inline-start:-4px; top:50%; width:1px; height:14px; translate:0 -50%; background:rgba(255,255,255,.14);}
+.util-item svg{width:15px; height:15px; flex:none; fill:none; stroke:var(--gold-500); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
+.utility-links a{opacity:1; color:rgba(255,255,255,.78); transition:color .2s;}
+.utility-links a:hover{color:var(--gold-400);}
+.util-phones{display:inline-flex; gap:6px; color:rgba(255,255,255,.35);}
+.lang-toggle{display:inline-flex; align-items:center; gap:7px; height:28px; padding:0 12px 0 10px; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); color:#fff; font:inherit; font-size:12.5px; font-weight:700; cursor:pointer;
+  transition:background .2s, border-color .2s, color .2s;}
+html[dir="rtl"] .lang-toggle{padding:0 10px 0 12px;}
+.lang-toggle svg{width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.8;}
+.lang-toggle:hover{background:var(--gold-500); border-color:var(--gold-500); color:var(--ink);}
 
-/* the glass recipe, shared by the capsule, the lens, the language pill and the CTA */
-.lang-toggle, .navbar .container, .nav-ind, .nav-cta, .nav-links.open{
-  --g-tint: rgba(255,255,255,.08);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 55%),
-    var(--g-tint);
-  backdrop-filter:blur(24px) saturate(185%); -webkit-backdrop-filter:blur(24px) saturate(185%);
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.5),
-    inset 1px 0 0 rgba(255,255,255,.12),
-    inset 0 -1px 1px rgba(255,255,255,.12),
-    inset 0 0 24px rgba(255,255,255,.05);
-}
-.lang-toggle{flex:none; align-self:center; display:inline-flex; align-items:center; gap:7px; height:26px; margin-inline:14px; padding:0 12px; border-radius:999px;
-  color:#fff; font:inherit; font-weight:700; font-size:12px; cursor:pointer; transition:background .25s;}
-.lang-toggle svg{width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.8; transition:transform .6s;}
-.lang-toggle:hover{--g-tint:rgba(255,255,255,.2);}
-.lang-toggle:hover svg{transform:rotate(180deg);}
+.navbar{background:color-mix(in srgb, var(--blue-900) 94%, transparent);
+  backdrop-filter:blur(14px) saturate(1.3); -webkit-backdrop-filter:blur(14px) saturate(1.3);
+  border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s, background .3s;}
+.navbar.scrolled{background:color-mix(in srgb, var(--blue-950) 92%, transparent); box-shadow:0 12px 30px -12px rgba(5,4,25,.55);}
+.navbar .container{height:80px; gap:24px;}
 
-.navbar{position:sticky; top:10px; z-index:60; background:transparent; border:0; padding:8px 0 10px; pointer-events:none;}
-.navbar .container{pointer-events:auto; position:relative; height:70px; gap:20px; border-radius:26px; padding-inline:22px 10px;
-  --g-tint: rgba(32,28,99,.42); max-width:1260px; transition:box-shadow .35s, background .35s;}
-html[dir="rtl"] .navbar .container{padding-inline:22px 10px;}
-.navbar .container::before{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:radial-gradient(120% 140% at 12% -30%, rgba(255,255,255,.22), transparent 45%),
-             radial-gradient(80% 120% at 100% 130%, rgba(120,180,255,.14), transparent 50%);}
-.navbar.scrolled .container{--g-tint: rgba(20,18,59,.64);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 1px 0 0 rgba(255,255,255,.12), inset 0 -1px 1px rgba(255,255,255,.12), inset 0 0 24px rgba(255,255,255,.05),
-             0 24px 50px -20px rgba(8,6,40,.6), 0 2px 8px rgba(8,6,40,.18);}
-.brand{position:relative;}
-.brand-mark-img{height:40px; transition:transform .4s cubic-bezier(.3,1.6,.5,1);}
-.brand:hover .brand-mark-img{transform:scale(1.05);}
+/* links sit in one soft pill track; hover/active get their own pill */
+.nav-links{gap:4px; padding:5px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);}
+.nav-links a{padding:9px 16px; border-radius:999px; font-size:14.5px; font-weight:600; color:rgba(255,255,255,.78);
+  transition:background .2s, color .2s;}
+.nav-links a:hover{color:#fff; background:rgba(255,255,255,.08);}
+.nav-links a.active{color:var(--ink); background:#fff;}
+.nav-links a.active::after{display:none;}
 
-.nav-links{position:relative; gap:2px; isolation:isolate; padding:4px; border-radius:999px; background:rgba(0,0,0,.14); box-shadow:inset 0 1px 3px rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.08);}
-.nav-ind{position:absolute; z-index:-1; top:4px; bottom:4px; border-radius:999px; --g-tint:rgba(255,255,255,.16); opacity:0;
-  transition:left .5s cubic-bezier(.34,1.56,.64,1), width .5s cubic-bezier(.34,1.56,.64,1), opacity .25s, transform .25s;}
-.nav-ind.moving{transform:scaleY(.86);}
-.nav-links a{position:relative; display:inline-flex; align-items:center; padding:9px 16px; border-radius:999px;
-  font-size:14.5px; font-weight:600; color:rgba(255,255,255,.72); transition:color .25s;}
-.nav-links a::after, .nav-links a.active::after{display:none;}
-.nav-links a.active, .nav-links a.is-ind, .nav-links a:hover{color:#fff;}
-.roll{display:inline-block; overflow:hidden; height:1.4em; line-height:1.4em; vertical-align:top;}
-.roll-in{display:block; text-shadow:0 1.4em 0 currentColor; transition:transform .45s cubic-bezier(.6,0,.2,1);}
-a:hover .roll-in{transform:translateY(-1.4em);}
+/* offers: no loud yellow block — a gift icon with a live red dot */
+.nav-links a.nav-offers{background:transparent; color:var(--gold-400); font-weight:700; padding:9px 16px; gap:8px; animation:none; box-shadow:none;}
+.nav-links a.nav-offers:hover{background:rgba(253,184,21,.12); color:var(--gold-400);}
+.nav-links a.nav-offers.active{background:var(--gold-500); color:var(--ink); box-shadow:none;}
+.nav-offers-ic{position:relative; display:inline-flex;}
+.nav-offers-ic svg{width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round;}
+.nav-offers-ic .nav-offers-dot{position:absolute; top:-3px; inset-inline-end:-4px; width:8px; height:8px; border:2px solid var(--blue-900);
+  box-sizing:content-box; animation:offerPing 1.8s ease-out infinite;}
+@keyframes offerPing{0%{box-shadow:0 0 0 0 rgba(229,50,45,.6);} 80%,100%{box-shadow:0 0 0 7px rgba(229,50,45,0);}}
 
-.nav-links a.nav-offers{background:none; color:rgba(255,255,255,.72); padding:9px 16px; animation:none; box-shadow:none;}
-.nav-links a.nav-offers:hover, .nav-links a.nav-offers.is-ind, .nav-links a.nav-offers.active{background:none; color:#fff;}
-.hot-tag{position:absolute; top:-6px; inset-inline-end:-6px; padding:2px 7px; border-radius:999px; background:linear-gradient(180deg,#FF5A50,#E5322D); color:#fff;
-  font-size:9.5px; font-weight:800; letter-spacing:.05em; line-height:1.4; box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 4px 10px -3px rgba(229,50,45,.8); pointer-events:none;}
-html[dir="rtl"] .hot-tag{letter-spacing:0; font-size:10px;}
+/* CTA: gold pill with a round arrow chip */
+.nav-cta{display:inline-flex; align-items:center; gap:10px; padding:6px 6px 6px 20px; font-size:14.5px; font-weight:800;
+  background:var(--gold-500); color:var(--ink); border-radius:999px; box-shadow:0 10px 24px -10px rgba(253,184,21,.7);
+  transition:transform .2s, box-shadow .2s, background .2s;}
+html[dir="rtl"] .nav-cta{padding:6px 20px 6px 6px;}
+.nav-cta:hover{transform:translateY(-1px); background:var(--gold-400); box-shadow:0 14px 28px -10px rgba(253,184,21,.8);}
+.nav-cta-ic{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:var(--ink); color:#fff; transition:transform .3s;}
+.nav-cta-ic svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;}
+html[dir="rtl"] .nav-cta-ic svg{transform:scaleX(-1);}
+.nav-cta:hover .nav-cta-ic{transform:rotate(-45deg);}
+html[dir="rtl"] .nav-cta:hover .nav-cta-ic{transform:rotate(45deg);}
+.nav-cta.active{box-shadow:0 0 0 2px #fff, 0 10px 24px -10px rgba(253,184,21,.7);}
 
-.nav-cta{position:relative; overflow:hidden; display:inline-flex; align-items:center; height:50px; padding:0 22px; border-radius:999px;
-  --g-tint:rgba(255,255,255,.86); color:var(--blue-950); font-size:14.5px; font-weight:800;
-  transition:transform .25s cubic-bezier(.34,1.56,.64,1), --g-tint .25s;}
-.nav-cta::after{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.9) 50%, transparent 70%); translate:-130% 0;}
-.nav-cta:hover{transform:scale(1.04); --g-tint:#fff;}
-.nav-cta:hover::after{translate:130% 0; transition:translate .8s ease;}
-.nav-cta.active{outline:2px solid rgba(255,255,255,.6); outline-offset:3px;}
-
-.nav-toggle{flex-direction:column; justify-content:center; align-items:center; gap:5px; width:44px; height:44px; border-radius:999px;
-  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); box-shadow:inset 0 1px 0 rgba(255,255,255,.4); cursor:pointer; padding:0;}
-.nav-toggle span{display:block; width:18px; height:2px; border-radius:2px; background:#fff; transition:transform .25s, opacity .2s;}
+/* hamburger: three lines that morph into an X */
+.nav-toggle{flex-direction:column; justify-content:center; align-items:center; gap:5px; width:44px; height:44px; border-radius:12px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); cursor:pointer; padding:0;}
+.nav-toggle span{display:block; width:20px; height:2px; border-radius:2px; background:#fff; transition:transform .25s, opacity .2s;}
 .nav-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-toggle.is-open span:nth-child(2){opacity:0;}
 .nav-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-.bp-nav{top:calc(var(--nav-h, 88px) + 10px);}
-
-@media (max-width:1180px){ .nav-links a, .nav-links a.nav-offers{padding:9px 11px; font-size:14px;} .navbar .container{gap:12px;} }
-@media (max-width:960px){
-  body{background-size:100% 116px, auto;}
-  .navbar{top:8px; padding:6px 0 8px;}
-  .navbar .container{height:62px; border-radius:22px; padding-inline:16px 8px; margin-inline:10px; width:auto;}
-  html[dir="rtl"] .navbar .container{padding-inline:16px 8px;}
-  .nav-toggle{display:flex;}
-  .nav-ind{display:none;}
-  .nav-links{background:none; box-shadow:none; padding:0;}
-  .nav-links.open{--g-tint:#16144A; backdrop-filter:none; -webkit-backdrop-filter:none; top:calc(100% + 8px); inset-inline:0; border-radius:22px; padding:8px; gap:2px;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 24px 50px -16px rgba(0,0,0,.6);}
-  .nav-links.open a, .nav-links.open a.nav-offers{border:0; border-radius:16px; padding:14px 16px; font-size:16px; justify-content:flex-start; margin:0;}
-  .nav-links.open a.active{background:rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.3);}
-  .nav-links.open .hot-tag{position:static; margin-inline-start:10px;}
-  .nav-cta{height:44px; padding:0 16px; font-size:13px; white-space:nowrap;}
+@media (max-width:1180px){
+  .util-loc{display:none;}
+  .nav-links a{padding:8px 12px; font-size:14px;}
 }
-@media (max-width:420px){ .navbar .brand-mark-img{height:30px;} .nav-cta{padding:0 12px; font-size:12px;} }
-@media (prefers-reduced-motion:reduce){ .ticker-track{animation:none;} .roll-in, .nav-ind{transition:none;} }
+@media (max-width:960px){
+  .utility-links{display:flex;}
+  .util-item{padding:0 10px;}
+  .util-item:not(:first-child){display:none;}
+  .utility-bar .container{justify-content:space-between;}
+  .navbar .container{height:70px;}
+  .nav-toggle{display:flex;}
+  .nav-links{background:none; border:0; padding:0;}
+  .nav-links.open{background:var(--blue-950); padding:12px 16px 18px; gap:4px; border-radius:0;}
+  .nav-links.open a{border-bottom:0; padding:13px 16px; border-radius:14px;}
+  .nav-links.open a.nav-offers{justify-content:flex-start; margin:0; padding:13px 16px;}
+  .nav-cta{padding:5px 5px 5px 14px; font-size:13px; gap:8px;}
+  html[dir="rtl"] .nav-cta{padding:5px 14px 5px 5px;}
+  .nav-cta-ic{width:28px; height:28px;}
+}
+@media (max-width:420px){
+  .nav-cta{font-size:12px; white-space:nowrap;}
+  .navbar .container{gap:8px;}
+  .navbar .brand-mark-img{height:32px;}
+}
+@media (max-width:350px){
+  .nav-cta span[data-i18n]{display:none;}
+  .nav-cta, html[dir="rtl"] .nav-cta{padding:5px;}
+}
+@media (prefers-reduced-motion:reduce){ .nav-offers-ic .nav-offers-dot{animation:none;} }
