@@ -27,6 +27,18 @@
     });
   }
 
+  /* ---------- SEO: page title + description follow the visitor's language ---------- */
+  const PAGE_META = {"index": {"en": ["EgyGulf Foods | Egyptian Snacks, Candy, Pasta & Sauces Manufacturer & Exporter", "EgyGulf Foods is an Egyptian manufacturer and exporter since 2004: baked snacks, lollipops, chewing gum, hard candy, pasta and sauces. HALAL, ISO 22000, HACCP and FDA registered, exporting to 40+ countries with private label options."], "ar": ["إيجي جالف فودز | مصنع ومصدّر سناكس وحلويات ومكرونة وصوصات مصري", "إيجي جالف فودز مصنع ومصدّر مصري منذ 2004: سناكس مخبوزة، لولي بوب، لبان، حلوى، مكرونة وصوصات. حلال وISO 22000 وHACCP وFDA، وتصدير لأكثر من 40 دولة مع تصنيع خاص."]}, "about": {"en": ["About EgyGulf Foods | Egyptian Food Manufacturer Since 2004", "The story of EgyGulf Foods, from Delta Foods Industries in 2004 to an international Egyptian food manufacturer: the first oven-baked snacks in Egypt, exported to 40+ countries."], "ar": ["من نحن | إيجي جالف فودز — مصنع أغذية مصري منذ 2004", "قصة إيجي جالف فودز، من دلتا فودز إندستريز 2004 إلى شركة مصرية دولية: أول من قدّم سناكس مخبوزة في مصر، ومنتجاتنا بتوصل لأكثر من 40 دولة."]}, "products": {"en": ["Our Brands & Products | Snacks, Candy, Pasta & Sauces — EgyGulf Foods", "Browse EgyGulf Foods brands: ChillOut, Special and Crazy snacks; Light Pop, Honey, MOJO and Tutti Lolly confectionery; Bronto pasta and Hevory sauces — every product and flavor."], "ar": ["منتجاتنا وبراندتنا | سناكس وحلويات ومكرونة وصوصات — إيجي جالف فودز", "تصفّح براندات إيجي جالف فودز: شيل آوت وسبيشيال وكريزي للسناكس، لايت بوب وهني وموجو وتوتي لولي للحلويات، مكرونة برونتو وصوصات هيفوري — بكل المنتجات والنكهات."]}, "certifications": {"en": ["Quality & Certifications | HALAL, ISO 22000, HACCP, FDA — EgyGulf Foods", "EgyGulf Foods quality and food-safety certifications: HALAL, ISO 22000, ISO 45001, ISO 9001, HACCP and FDA registration covering every production line."], "ar": ["الجودة والاعتماد | حلال، ISO 22000، HACCP، FDA — إيجي جالف فودز", "شهادات الجودة وسلامة الغذاء لإيجي جالف فودز: حلال، ISO 22000، ISO 45001، ISO 9001، HACCP، وتسجيل FDA على كل خطوط الإنتاج."]}, "export": {"en": ["Export & Global Reach | 40+ Countries — EgyGulf Foods", "EgyGulf Foods exports to 40+ countries across Europe, Africa, the Middle East, Asia and the Americas, with a direct export team handling shipping, documents and private label."], "ar": ["التصدير والانتشار الدولي | أكثر من 40 دولة — إيجي جالف فودز", "إيجي جالف فودز بتصدّر لأكثر من 40 دولة في أوروبا وأفريقيا والشرق الأوسط وآسيا والأمريكتين، بفريق تصدير مباشر للشحن والمستندات والتصنيع الخاص."]}, "contact": {"en": ["Contact & Request a Quote — EgyGulf Foods", "Contact the EgyGulf Foods export team for prices, samples and private label: email, phone or visit our factory at Kilo 90, Tanta–Cairo/Alexandria Agricultural Road, Egypt."], "ar": ["تواصل معنا واطلب عرض سعر — إيجي جالف فودز", "تواصل مع فريق التصدير في إيجي جالف فودز للأسعار والعينات والتصنيع الخاص: إيميل أو تليفون أو زيارة المصنع في كيلو 90 طريق طنطا–القاهرة/الإسكندرية الزراعي."]}, "offers": {"en": ["Offers & Deals — EgyGulf Foods", "Exclusive offers and discounts on EgyGulf Foods snacks, candy, pasta and sauces for registered customers."], "ar": ["العروض — إيجي جالف فودز", "عروض وخصومات حصرية على سناكس وحلويات ومكرونة وصوصات إيجي جالف فودز للعملاء المسجّلين."]}, "brand": {"en": ["Our Brands — EgyGulf Foods", "EgyGulf Foods brand catalogue: every product and flavor."], "ar": ["براندتنا — إيجي جالف فودز", "كتالوج براندات إيجي جالف فودز بكل المنتجات والنكهات."]}};
+  const pageKey = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+  function setMeta(sel, attr, val){ const el = document.querySelector(sel); if (el && val) el.setAttribute(attr, val); }
+  function applyMeta(l, over){
+    const m = over || (PAGE_META[pageKey] && PAGE_META[pageKey][l]); if (!m) return;
+    document.title = m[0];
+    setMeta('meta[name="description"]','content',m[1]);
+    setMeta('meta[property="og:title"]','content',m[0]); setMeta('meta[property="og:description"]','content',m[1]);
+    setMeta('meta[name="twitter:title"]','content',m[0]); setMeta('meta[name="twitter:description"]','content',m[1]);
+  }
+
   /* ---------- Language ---------- */
   function applyI18n(l){
     if (typeof I18N === 'undefined') return;
@@ -35,6 +47,7 @@
       const key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.innerHTML = dict[key];
     });
+    applyMeta(l);
     document.documentElement.lang = l;
     document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
     document.body.classList.toggle('lang-en', l === 'en');
@@ -457,7 +470,10 @@
       const key = new URLSearchParams(location.search).get('b');
       const b = brands.find(x => x.key === key);
       if (!b) { location.replace('products.html'); return; }
-      document.title = `${pick(b.name,l)} — EgyGulf Foods`;
+      const bUrl = `https://www.egygulf-foods.com/brand.html?b=${encodeURIComponent(b.key)}`;
+      applyMeta(l, [ l === 'ar' ? `${pick(b.name,l)} | ${catLabel(b.category)} — إيجي جالف فودز` : `${pick(b.name,l)} ${catLabel(b.category)} | EgyGulf Foods`, pick(b.desc,l) ]);
+      setMeta('link[rel="canonical"]','href',bUrl); setMeta('meta[property="og:url"]','content',bUrl);
+      if (b.logo) { setMeta('meta[property="og:image"]','content','https://www.egygulf-foods.com/' + b.logo); setMeta('meta[name="twitter:image"]','content','https://www.egygulf-foods.com/' + b.logo); }
       const isLight = hex => { const m = /^#?([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return false;
         const n = parseInt(m[1], 16); return (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) > 170; };
       const items = brandProducts(b);

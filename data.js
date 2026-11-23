@@ -18,7 +18,7 @@ const SITE_DATA = {
     "offersSheetUrl": "https://script.google.com/macros/s/AKfycbw0D_RwlwOS64AAtHT4IecBWQNpLYmrI2b4p_E4ApAWXEwdnegMgIY1TNGVBSFL0gRx2A/exec"
   },
   "images": {
-    "heroMosaic": "images/products-mosaic-hd.webp",
+    "heroMosaic": "images/products-mosaic-hd-v2.webp",
     "snacksMosaic": "images/snacks-mosaic.webp",
     "candyMosaic": "images/candy-lineup-v5.webp",
     "aboutImage": "images/logo.png",
