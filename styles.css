@@ -1383,7 +1383,7 @@ html[lang="ar"] .nav-offers-dot::before{content:"جديد";}
 .nav-links a.has-mega{display:inline-flex; align-items:center; gap:6px;}
 .nav-links a.has-mega::before{content:""; order:2; width:7px; height:7px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:translateY(-2px) rotate(45deg); transition:transform .25s; opacity:.8;}
 .nav-mega-wrap.open a.has-mega::before{transform:translateY(1px) rotate(-135deg);}
-.nav-mega{position:absolute; top:calc(100% + 22px); left:50%; translate:-50% 0; z-index:80; width:min(860px, 92vw);
+.nav-mega{position:absolute; top:calc(100% + 22px); inset-inline-start:-40px; z-index:80; width:min(860px, 92vw);
   opacity:0; visibility:hidden; transform:translateY(10px); transition:opacity .22s, transform .22s, visibility .22s;}
 .nav-mega::before{content:""; position:absolute; inset:-24px 0 auto; height:24px;}
 .nav-mega-wrap.open .nav-mega{opacity:1; visibility:visible; transform:none;}
