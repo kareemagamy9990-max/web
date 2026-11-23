@@ -20,7 +20,7 @@ const SITE_DATA = {
   "images": {
     "heroMosaic": "images/products-mosaic-hd.webp",
     "snacksMosaic": "images/snacks-mosaic.webp",
-    "candyMosaic": "images/candy-lineup-v3.webp",
+    "candyMosaic": "images/candy-lineup-v4.webp",
     "aboutImage": "images/logo.png",
     "chairmanPhoto": "",
     "expoVideo": "images/videos/expo-booth.mp4"
@@ -1326,7 +1326,7 @@ const SITE_DATA = {
       },
       "flavors": [
         {
-          "img": "images/tutti-mix-bag.webp",
+          "img": "images/tutti-mix-bag-v2.webp",
           "name": {
             "ar": "كيس ميكس فليفرز",
             "en": "Mix Flavors Bag"
