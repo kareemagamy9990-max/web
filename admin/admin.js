@@ -493,7 +493,7 @@ const NEW = {
   event: () => ({ image:'', banner:true, title:{ar:'',en:''}, sub:{ar:'',en:''}, link:'' }),
   stat: () => ({ value:'', label:{ar:'',en:''} }),
   brand: () => ({ key:'brand-' + Date.now().toString(36), category:'snacks', color:'#201C63', logo:'', name:{ar:'',en:''}, desc:{ar:'',en:''}, tag:{ar:'',en:''}, init:{ar:'',en:''} }),
-  product: () => ({ name:{ar:'',en:''}, brand:{ar:'',en:''}, color:'#201C63', category: ['candy','pasta'].includes(A.cat) ? A.cat : 'snacks', sizes:{ar:'',en:''}, details:{ar:'',en:''}, flavors:[] }),
+  product: () => ({ name:{ar:'',en:''}, brand:{ar:'',en:''}, color:'#201C63', category: ['candy','pasta','sauces'].includes(A.cat) ? A.cat : 'snacks', sizes:{ar:'',en:''}, details:{ar:'',en:''}, flavors:[] }),
   flavor: () => ({ img:'', name:{ar:'',en:''} }),
   cert: () => ({ name:{ar:'',en:''}, code:'' }),
   reach: () => ({ name:{ar:'',en:''}, value:{ar:'',en:''} }),
@@ -602,7 +602,7 @@ function secProducts(){
   const match = p => (A.cat === 'all' || p.category === A.cat) &&
     (!q || [pick(p.name,'ar'), pick(p.name,'en'), pick(p.brand,'ar'), pick(p.brand,'en')].join(' ').toLowerCase().includes(q));
   return `<div class="toolbar">
-    <div class="seg">${[['all','الكل'],['snacks','سناكس'],['candy','حلويات'],['pasta','مكرونة']].map(([v,t]) => `<button type="button" class="${A.cat === v ? 'on' : ''}" data-act="cat" data-v="${v}">${t}</button>`).join('')}</div>
+    <div class="seg">${[['all','الكل'],['snacks','سناكس'],['candy','حلويات'],['pasta','مكرونة'],['sauces','صوصات']].map(([v,t]) => `<button type="button" class="${A.cat === v ? 'on' : ''}" data-act="cat" data-v="${v}">${t}</button>`).join('')}</div>
     <input type="search" class="search" data-act-input="q" value="${esc(A.q)}" placeholder="بحث باسم المنتج أو العلامة...">
   </div>
   <div class="tip">صورة المنتج في الكارت هي أول نكهة، إلا لو رفعت "صورة الغلاف". صور النكهات أحسن تكون بخلفية شفافة.</div>
@@ -611,11 +611,11 @@ function secProducts(){
     thumb:p => p.image || (p.flavors && p.flavors[0] && p.flavors[0].img) || '',
     color:p => p.color,
     title:p => pick(p.name, 'ar'),
-    sub:p => [pick(p.brand,'ar'), ({candy:'حلويات',pasta:'مكرونة'}[p.category] || 'سناكس'), (p.flavors || []).length + ' نكهة'].filter(Boolean).join(' · '),
+    sub:p => [pick(p.brand,'ar'), ({candy:'حلويات',pasta:'مكرونة',sauces:'صوصات'}[p.category] || 'سناكس'), (p.flavors || []).length + ' نكهة'].filter(Boolean).join(' · '),
     body:(p, it) => `
       ${fBi(P(p,'name'), 'اسم المنتج')}
       <div class="grid3">
-        ${fSelect(P(p,'category'), 'القسم', [['snacks','سناكس'],['candy','حلويات'],['pasta','مكرونة']])}
+        ${fSelect(P(p,'category'), 'القسم', [['snacks','سناكس'],['candy','حلويات'],['pasta','مكرونة'],['sauces','صوصات']])}
         <label class="f"><span class="f-label">العلامة</span><select data-act-change="pickBrand" data-path="${p}">${brandOptions().map(([v,t]) => `<option value="${v}">${esc(t)}</option>`).join('')}</select></label>
         ${fColor(P(p,'color'), 'لون الخلفية')}
       </div>
@@ -640,11 +640,11 @@ function secBrands(){
   ${cards(P('d','brands'), {
     newKey:'brand', addLabel:'إضافة علامة',
     thumb:b => b.logo, color:b => b.color,
-    title:b => pick(b.name, 'ar'), sub:b => ({candy:'حلويات',pasta:'مكرونة'}[b.category] || 'سناكس') + ' · ' + pick(b.tag, 'ar'),
+    title:b => pick(b.name, 'ar'), sub:b => ({candy:'حلويات',pasta:'مكرونة',sauces:'صوصات'}[b.category] || 'سناكس') + ' · ' + pick(b.tag, 'ar'),
     body:p => `
       ${fBi(P(p,'name'), 'اسم العلامة')}
       <div class="grid3">
-        ${fSelect(P(p,'category'), 'القسم', [['snacks','سناكس'],['candy','حلويات'],['pasta','مكرونة']])}
+        ${fSelect(P(p,'category'), 'القسم', [['snacks','سناكس'],['candy','حلويات'],['pasta','مكرونة'],['sauces','صوصات']])}
         ${fColor(P(p,'color'), 'لون الكارت')}
         ${fImage(P(p,'logo'), 'اللوجو', { max:800, help:'PNG/WebP بخلفية شفافة.' })}
       </div>

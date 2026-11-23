@@ -334,6 +334,28 @@ const SITE_DATA = {
         "ar": "مكرونة",
         "en": "Pasta"
       }
+    },
+    {
+      "key": "hevory",
+      "category": "sauces",
+      "color": "#1E56C8",
+      "init": {
+        "ar": "H",
+        "en": "H"
+      },
+      "logo": "images/brands/hevory.webp",
+      "name": {
+        "ar": "هيفوري",
+        "en": "Hevory"
+      },
+      "desc": {
+        "ar": "صوصات هيفوري — طعم متقن في كل عبوة: باربيكيو، مايونيز، رانش، ألف جزيرة ومسطردة.",
+        "en": "Hevory sauces — perfectly crafted taste: BBQ, mayonnaise, ranch, thousand island and mustard."
+      },
+      "tag": {
+        "ar": "صوصات",
+        "en": "Sauces"
+      }
     }
   ],
   "products": [
@@ -1738,6 +1760,29 @@ const SITE_DATA = {
         { "img": "images/bronto-penne.webp", "name": { "ar": "أقلام", "en": "Penne" } },
         { "img": "images/bronto-elbow.webp", "name": { "ar": "هلالية", "en": "Elbow Macaroni" } },
         { "img": "images/bronto-ditalini.webp", "name": { "ar": "قصيرة", "en": "Ditalini" } }
+      ]
+    },
+    {
+      "name": {
+        "ar": "صوصات هيفوري",
+        "en": "Hevory Sauces"
+      },
+      "brand": {
+        "ar": "هيفوري",
+        "en": "Hevory"
+      },
+      "color": "#1E56C8",
+      "category": "sauces",
+      "sizes": {
+        "ar": "عبوة 250 مل",
+        "en": "250 ml squeeze bottle"
+      },
+      "flavors": [
+        { "img": "images/hevory-bbq.webp", "name": { "ar": "صوص الباربيكيو", "en": "BBQ Sauce" } },
+        { "img": "images/hevory-mayonnaise.webp", "name": { "ar": "كلاسيك مايونيز", "en": "Classic Mayonnaise" } },
+        { "img": "images/hevory-ranch.webp", "name": { "ar": "رانش دريسنج", "en": "Ranch Dressing" } },
+        { "img": "images/hevory-1000-island.webp", "name": { "ar": "صوص ألف جزيرة", "en": "1000 Island" } },
+        { "img": "images/hevory-mustard.webp", "name": { "ar": "مسطردة أمريكي", "en": "American Mustard" } }
       ]
     }
   ],
