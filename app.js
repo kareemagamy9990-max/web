@@ -23,8 +23,15 @@
     navToggleBtn.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       navToggleBtn.setAttribute('aria-expanded', String(open));
-      navToggleBtn.textContent = open ? '✕' : '☰';
+      navToggleBtn.classList.toggle('is-open', open);
     });
+  }
+
+  /* ---------- Header: compact + shadow once the page scrolls ---------- */
+  const navbarEl = document.querySelector('.navbar');
+  if (navbarEl) {
+    const onScroll = () => navbarEl.classList.toggle('scrolled', scrollY > 40);
+    addEventListener('scroll', onScroll, { passive:true }); onScroll();
   }
 
   /* ---------- Language ---------- */
@@ -42,7 +49,9 @@
 
   const langToggleBtn = document.getElementById('langToggle');
   function updateToggleLabel(){
-    if (langToggleBtn) langToggleBtn.textContent = lang === 'ar' ? 'EN' : 'عربي';
+    if (!langToggleBtn) return;
+    const lbl = langToggleBtn.querySelector('.lang-label') || langToggleBtn;
+    lbl.textContent = lang === 'ar' ? 'EN' : 'عربي';
   }
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
