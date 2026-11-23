@@ -235,6 +235,41 @@
     });
   }
 
+  /* ---------- Brand page: sticky product switcher + scroll spy ---------- */
+  let bpSpyBound = false;
+  function setupBrandNav(){
+    const nav = document.getElementById('bpNav');
+    if (!nav) return;
+    const items = [...nav.querySelectorAll('.bp-nav-item')];
+    const secs = [...document.querySelectorAll('.bp-product[id^="bp-"]')];
+    const header = document.querySelector('.navbar');
+    const headH = () => (header ? header.offsetHeight : 0);
+    document.documentElement.style.setProperty('--nav-h', headH() + 'px');
+    const goTo = id => {
+      const el = document.getElementById(id); if (!el) return;
+      const y = el.getBoundingClientRect().top + scrollY - headH() - nav.offsetHeight - 14;
+      scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    document.querySelectorAll('.bp-nav-item, .bp-next').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault(); goTo(a.getAttribute('href').slice(1));
+    }));
+    const spy = () => {
+      const n = document.getElementById('bpNav'); if (!n) return;
+      const line = headH() + n.offsetHeight + 80;
+      let cur = 0;
+      document.querySelectorAll('.bp-product[id^="bp-"]').forEach((sec, i) => { if (sec.getBoundingClientRect().top <= line) cur = i; });
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = document.querySelectorAll('.bp-product[id^="bp-"]').length - 1;
+      n.querySelectorAll('.bp-nav-item').forEach((a, i) => {
+        const on = i === cur;
+        if (on && !a.classList.contains('active')) a.scrollIntoView({ block:'nearest', inline:'center', behavior:'smooth' });
+        a.classList.toggle('active', on);
+      });
+      n.classList.toggle('stuck', n.getBoundingClientRect().top <= headH() + 1);
+    };
+    if (!bpSpyBound) { bpSpyBound = true; addEventListener('scroll', spy, { passive:true }); addEventListener('resize', () => { document.documentElement.style.setProperty('--nav-h', headH() + 'px'); spy(); }); }
+    spy();
+  }
+
   /* ---------- Page content ---------- */
   function renderContent(l){
     renderStats(l);
@@ -397,6 +432,8 @@
         const n = parseInt(m[1], 16); return (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) > 170; };
       const items = brandProducts(b);
       const others = brands.filter(x => x.key !== b.key && brandProducts(x).length);
+      const live = items.filter(p => !p.soon);
+      const shotsOf = p => { let sh = (p.flavors || []).filter(f => f && f.img); if (!sh.length && p.image) sh = [{ img: p.image, name: p.name }]; return sh; };
       bp.innerHTML = `
         <section class="brand-hero${isLight(b.color) ? ' is-light' : ''}" style="--brand:${esc(b.color)}">
           <span class="hub-dots" aria-hidden="true"></span>
@@ -410,14 +447,28 @@
             ${b.logo ? `<img class="brand-hero-logo" src="${esc(b.logo)}" alt="${esc(pick(b.name,l))}">` : ''}
           </div>
         </section>
+        ${live.length > 1 ? `
+        <nav class="bp-nav" id="bpNav" style="--brand:${esc(b.color)}" aria-label="${l === 'ar' ? 'منتجات البراند' : 'Brand products'}">
+          <div class="container bp-nav-inner">
+            <span class="bp-nav-label">${l === 'ar' ? `${live.length} منتجات` : `${live.length} products`}</span>
+            <div class="bp-nav-list">${live.map((p, i) => {
+              const sh = shotsOf(p);
+              return `<a href="#bp-${i}" class="bp-nav-item" data-i="${i}">
+                ${sh[0] ? `<img src="${esc(sh[0].img)}" alt="" loading="lazy">` : ''}
+                <span class="bp-nav-name">${esc(pick(p.name,l))}</span>
+                ${sh.length > 1 ? `<span class="bp-nav-count">${sh.length}</span>` : ''}
+              </a>`; }).join('')}
+            </div>
+          </div>
+        </nav>` : ''}
         <section class="products brand-products">
           <div class="container">
-            ${items.filter(p => !p.soon).map(p => {
-              let shots = (p.flavors || []).filter(f => f && f.img);
-              if (!shots.length && p.image) shots = [{ img: p.image, name: p.name }];
+            ${live.map((p, i) => {
+              const shots = shotsOf(p);
               return `
-              <div class="bp-product">
+              <div class="bp-product" id="bp-${i}" data-i="${i}">
                 <div class="bp-head">
+                  ${live.length > 1 ? `<span class="bp-step">${l === 'ar' ? `منتج ${i + 1} من ${live.length}` : `Product ${i + 1} of ${live.length}`}</span>` : ''}
                   <h2>${esc(pick(p.name,l))}</h2>
                   ${pick(p.sizes,l) ? `<p class="bp-sizes">${esc(pick(p.sizes,l))}</p>` : ''}
                   ${pick(p.details,l) ? `<p class="bp-details">${esc(pick(p.details,l))}</p>` : ''}
@@ -427,6 +478,11 @@
                     <div class="bp-shot-img"><img src="${esc(f.img)}" alt="${esc(pick(f.name,l) || pick(p.name,l))}" loading="lazy"></div>
                     ${pick(f.name,l) && shots.length > 1 ? `<figcaption>${esc(pick(f.name,l))}</figcaption>` : ''}
                   </figure>`).join('')}</div>` : ''}
+                ${i < live.length - 1 ? `<a href="#bp-${i + 1}" class="bp-next" style="--brand:${esc(b.color)}">
+                  ${shotsOf(live[i + 1])[0] ? `<img src="${esc(shotsOf(live[i + 1])[0].img)}" alt="" loading="lazy">` : ''}
+                  <span class="bp-next-text"><small>${l === 'ar' ? 'المنتج اللي بعده' : 'Next product'}</small><b>${esc(pick(live[i + 1].name,l))}</b></span>
+                  <span class="bp-next-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+                </a>` : ''}
               </div>`;
             }).join('')}
             ${items.filter(p => p.soon).length ? `<div class="product-strip">${items.filter(p => p.soon).map(p => productCard(p)).join('')}</div>` : ''}
@@ -444,6 +500,8 @@
           </div>
         </section>` : ''}`;
     }
+
+    if (bp) setupBrandNav();
 
     const certGrid = document.getElementById('certGrid');
     if (certGrid && D.certifications) {
