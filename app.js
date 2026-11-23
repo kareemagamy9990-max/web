@@ -505,17 +505,35 @@
 
     const certGrid = document.getElementById('certGrid');
     if (certGrid && D.certifications) {
-      certGrid.innerHTML = D.certifications.map(c => `
-        <div class="cert-card">
-          <div class="mark${c.image ? '' : ' cert-seal'}">${c.image
-            ? `<img src="${esc(c.image)}" alt="" loading="lazy">`
-            : (() => { const m = /^(ISO)\s*(\d+)/i.exec(c.code || '') || /^(ISO)\s*(\d+)/i.exec(pick(c.name,'en') || '');
-                const big = m ? m[2] : (pick(c.name,'en') || c.code || '').split(' ')[0].toUpperCase();
-                const small = m ? 'ISO' : ({ HALAL:'Certified', HACCP:'Certified', FDA:'Registered' }[big] || '');
-                return `<b>${esc(big)}</b>${small ? `<i>${esc(small)}</i>` : ''}`; })()}</div>
-          <h4>${esc(pick(c.name,l))}</h4>
-          <span>${esc(c.code)}</span>
-        </div>`).join('');
+      // short line on what each standard covers + an accent colour, keyed by the big label
+      const CERT_INFO = {
+        HALAL: { c:'#1E9E5A', ar:'إنتاج مطابق لاشتراطات الحلال، ومقبول في أسواق الخليج والدول الإسلامية.', en:'Produced to halal requirements, accepted across the GCC and Muslim markets.' },
+        '22000': { c:'#2F7DE1', ar:'نظام إدارة سلامة الغذاء على كامل سلسلة الإنتاج.', en:'Food safety management across the whole production chain.' },
+        '45001': { c:'#E8772E', ar:'نظام إدارة الصحة والسلامة المهنية داخل المصنع.', en:'Occupational health & safety management on the factory floor.' },
+        '9001':  { c:'#7A4FE0', ar:'نظام إدارة جودة يضمن نفس المستوى في كل شحنة.', en:'Quality management that keeps every shipment to the same standard.' },
+        HACCP: { c:'#D6334A', ar:'تحليل المخاطر ونقاط التحكم الحرجة في كل مرحلة تصنيع.', en:'Hazard analysis and critical control points at every production step.' },
+        FDA:   { c:'#1B4F9C', ar:'منشأة غذائية مسجلة لدى إدارة الغذاء والدواء الأمريكية.', en:'Food facility registered with the US Food & Drug Administration.' }
+      };
+      certGrid.innerHTML = D.certifications.map(c => {
+        const m = /^(ISO)\s*(\d+)/i.exec(c.code || '') || /^(ISO)\s*(\d+)/i.exec(pick(c.name,'en') || '');
+        const big = m ? m[2] : (pick(c.name,'en') || c.code || '').split(' ')[0].toUpperCase();
+        const small = m ? 'ISO' : ({ HALAL:'Certified', HACCP:'Certified', FDA:'Registered' }[big] || '');
+        const info = CERT_INFO[big] || { c:'#2E2A74', ar:'', en:'' };
+        return `
+        <article class="cert-card" style="--acc:${info.c}">
+          <div class="cert-face">
+            ${c.image ? `<img src="${esc(c.image)}" alt="" loading="lazy">` : `
+            <span class="cert-face-small">${esc(small)}</span>
+            <b class="cert-face-big">${esc(big)}</b>
+            ${String(c.code).toUpperCase() !== big ? `<span class="cert-face-tag">${esc(c.code)}</span>` : ''}`}
+          </div>
+          <div class="cert-row">
+            <h4>${esc(pick(c.name,l))}</h4>
+            <span class="cert-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>${l === 'ar' ? 'معتمد' : 'Certified'}</span>
+          </div>
+          ${info[l] ? `<p class="cert-desc">${esc(info[l])}</p>` : ''}
+        </article>`;
+      }).join('');
     }
 
     const reachList = document.getElementById('reachList');
