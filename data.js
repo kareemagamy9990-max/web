@@ -884,6 +884,41 @@ const SITE_DATA = {
             "ar": "فلفل حلو",
             "en": "Sweet Pepper"
           }
+        },
+        {
+          "img": "images/special-puffs-chili-lemon.webp",
+          "name": {
+            "ar": "حار نار وليمون",
+            "en": "Chili Fire Lemon"
+          }
+        },
+        {
+          "img": "images/special-puffs-shrimps.webp",
+          "name": {
+            "ar": "جمبري متبل",
+            "en": "Seasoned Shrimps"
+          }
+        },
+        {
+          "img": "images/special-puffs-cheddar.webp",
+          "name": {
+            "ar": "جبنة شيدر",
+            "en": "Cheddar Cheese"
+          }
+        },
+        {
+          "img": "images/special-puffs-chicken.webp",
+          "name": {
+            "ar": "دجاج",
+            "en": "Tasty Chicken"
+          }
+        },
+        {
+          "img": "images/special-puffs-tomato-basil.webp",
+          "name": {
+            "ar": "ريحان وطماطم",
+            "en": "Basil & Tomato"
+          }
         }
       ]
     },
