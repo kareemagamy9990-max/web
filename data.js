@@ -294,15 +294,15 @@ const SITE_DATA = {
     {
       "key": "bravo",
       "category": "candy",
-      "color": "#14123B",
+      "color": "#EE5A24",
       "init": {
         "ar": "B",
         "en": "B"
       },
       "logo": "images/brands/light.webp",
       "name": {
-        "ar": "برافو لايت",
-        "en": "Bravo Light"
+        "ar": "لايت شوجر فري",
+        "en": "Light Sugar Free"
       },
       "desc": {
         "ar": "حلوى صلبة ولبان خاليين تماماً من السكر المضاف.",
@@ -1530,8 +1530,8 @@ const SITE_DATA = {
         "en": "Light Sugar Free"
       },
       "brand": {
-        "ar": "برافو لايت",
-        "en": "Bravo Light"
+        "ar": "لايت شوجر فري",
+        "en": "Light Sugar Free"
       },
       "color": "#E8432F",
       "category": "candy",
