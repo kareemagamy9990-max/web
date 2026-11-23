@@ -270,9 +270,39 @@
     spy();
   }
 
+  /* ---------- Nav: "Our Products" mega menu with every brand, grouped by category ---------- */
+  function buildMega(l){
+    const link = document.querySelector('.nav-links a[href="products.html"]');
+    if (!link) return;
+    let wrap = link.closest('.nav-mega-wrap');
+    if (!wrap) {
+      wrap = document.createElement('span'); wrap.className = 'nav-mega-wrap';
+      link.parentNode.insertBefore(wrap, link); wrap.appendChild(link);
+      link.classList.add('has-mega');
+      const panel = document.createElement('div'); panel.className = 'nav-mega'; wrap.appendChild(panel);
+      let t; const open = () => { clearTimeout(t); wrap.classList.add('open'); };
+      const close = () => { t = setTimeout(() => wrap.classList.remove('open'), 160); };
+      wrap.addEventListener('mouseenter', open); wrap.addEventListener('mouseleave', close);
+      wrap.addEventListener('focusin', open); wrap.addEventListener('focusout', close);
+    }
+    const panel = wrap.querySelector('.nav-mega');
+    const cats = [['snacks', l === 'ar' ? 'سناكس' : 'Snacks'], ['candy', l === 'ar' ? 'حلويات' : 'Confectionery'],
+                  ['pasta', l === 'ar' ? 'مكرونة' : 'Pasta'], ['sauces', l === 'ar' ? 'صوصات' : 'Sauces']];
+    const live = (D.brands || []).filter(b => !b.hidden);
+    panel.innerHTML = `<div class="nav-mega-inner">
+      ${cats.map(([c, name]) => { const bs = live.filter(b => b.category === c); if (!bs.length) return '';
+        return `<div class="mega-col"><a class="mega-cat" href="products.html?cat=${c}">${esc(name)}</a>
+          <div class="mega-brands">${bs.map(b => `<a class="mega-brand" href="brand.html?b=${encodeURIComponent(b.key)}" style="--brand:${esc(b.color)}">
+            <span class="mega-logo">${b.logo ? `<img src="${esc(b.logo)}" alt="" loading="lazy">` : esc(pick(b.name,l))}</span>
+            <span class="mega-name">${esc(pick(b.name,l))}</span></a>`).join('')}</div></div>`; }).join('')}
+      <a class="mega-all" href="products.html">${l === 'ar' ? 'كل المنتجات' : 'All products'} <span aria-hidden="true">${l === 'ar' ? '←' : '→'}</span></a>
+    </div>`;
+  }
+
   /* ---------- Page content ---------- */
   function renderContent(l){
     renderStats(l);
+    buildMega(l);
     renderEvents(l);
 
     const brandCard = b => `
