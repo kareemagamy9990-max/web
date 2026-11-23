@@ -160,6 +160,7 @@ const SITE_DATA = {
     },
     {
       "key": "bozo",
+      "hidden": true,
       "category": "snacks",
       "color": "#14123B",
       "init": {
@@ -891,6 +892,7 @@ const SITE_DATA = {
         "ar": "بوزو بافس",
         "en": "Bozo Puffs"
       },
+      "hidden": true,
       "brand": {
         "ar": "بوزو",
         "en": "Bozo"
